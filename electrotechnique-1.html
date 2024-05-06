@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<title>HELHa Révison</title>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Les synthèses pour vos études en informatique industrielle à la HELHa.">
+		<script src="css/count.js"></script>
+		<link rel="stylesheet" href="css/main.css" type="text/css">
+		<link href='https://fonts.googleapis.com/css?family=M%20PLUS%201p' rel='stylesheet'> <!-- Police utilisée pour les maths -->
+		<link rel="icon" 
+			  href="css/images/icon.png"
+			  type="image/png" />
+	</head>
+
+	<body>
+		<header>
+			<div id="titre-principal">
+				<div id="logo">
+					<img src="css/images/logo-helha.svg" alt="Logo Helha" />
+				</div>
+				<h1>Révision</h1>
+			</div>
+			
+			<!-------------------- BARRE DE NAVIGATION ---------------------->
+			<nav>
+				<ul>
+					<li><a href="index.html">ACCUEIL</a></li>
+					<li><a href="electrotechnique-1.html">ÉLECTROTECHNIQUE</a></li>
+					<li><a href="langage-c.html">LANGAGE C</a></li>
+					<li><a href="logique-binaire.html">LOGIQUE BINAIRE</a></li>					
+					<li><a href="maths.html">MATHS</a></li>
+					<li><a href="reseaux-1.html">RÉSEAUX</a></li>
+					<li><a href="autres.html">AUTRES</a></li>
+				</ul>
+			</nav>
+			<!--------------- FIN DE LA BARRE DE NAVIGATION ----------------->
+		
+			<div id="stuffing"></div>
+		
+		</header>
+		
+			<aside id="side-nav">
+				<h1>Électro-technique 1</h1>
+				<ul>
+					<li><a href="#Formules_physiques_utiles">1. Formules physiques utiles</a></li>
+					<li><a href="#Formules_de_base_liées_à_l_électricité">2. Formules de base liées à l'électricité</a></li>
+					<li>
+						<a href="#Circuits_à_courant_continu">3. Circuits à courant continu</a>
+						<ul>
+							<li><a href="#circuits-simples">3.1. Circuits simples</a></li>
+							<li><a href="#circuits-complexes">3.2. Circuits complexes (mailles, noeuds)</a></li>
+							<li><a href="#superposition">3.3. Théorème de superposition</a></li>
+							<li><a href="#etoile-triangle">3.4. Résistances en étoile et en triangle</a></li>
+							<li><a href="#exemples-schemas">3.5. Quelques exemples de schémas électriques</a></li>
+							<li><a href="#pont-tension">3.6. Pont diviseur de tension</a></li>
+							<li><a href="#pont-courant">3.7. Pont diviseur de courant</a></li>
+							<li><a href="#eq-thevenin">3.8. Équivalence de Thévenin</a></li>
+						</ul>
+					</li>
+					<li><a href="#Piles_et_accumulateurs">4. Piles et accumulateurs</a></li>
+					<li><a href="#Condensateurs">5. Condensateurs</a></li>
+					<li><a href="#outils-électro">A. Outils en ligne et références</a></li>
+				</ul>
+			</aside>
+
+
+		<div id="maincontent">
+			
+			<h2>Contenu</h2>
+			<p>Informations tirées du cours de M. Lisson.</p>
+			<h3>Évaluations</h3>
+			<p>Pour le cours d'Électrotechnique, 20&nbsp;% des points sont joués en novembre et 80&nbsp;% en janvier. La moyenne entre les deux notes est une moyenne géométrique.
+			En cas d'échec, 100&nbsp;% des points sont rejoués en août.</p>
+			<p>Pour toutes les évaluations d'Électrotechnique, nous avons droit à la calculatrice.</p>
+			
+			<h3>Balisage examen</h3>
+			<p>Pour le contenu de l'examen, il faut s'attendre à&nbsp;:</p>
+			<ul>
+				<li>Grandeurs du SI</li>
+				<li>F = m.a&nbsp;; U = R.I ;  P = U.I (pas de calcul de travail, résistivité...)</li>
+				<li>Calcul de consommation (kW/h)</li>
+				<li>Circuits simples et complexes (il n'y aura pas de résistances en étoile/triangle)</li>
+				<ul>
+					<li>Résistances</li>
+					<li>Condensateurs</li>
+					<li>Thévenin (un pas trop compliqué)</li>
+					<li>Lois des mailles et noeuds</li>
+					<li>Piles</li>
+				</ul>	
+			</ul>
+			
+			<p>Voici le <a href="files/balisage_evaluation.pdf" target="_blank">questionnaire de balisage de 2020</a> fourni en préparation à l'examen de janvier 2021.</p>
+			<p>Voici aussi l'<a href="files/interro_2020_corrige.pdf" target="_blank">interro de novembre 2020</a> qui avait été proposée en exercice.</p>
+			<p>Voici enfin l'<a href="files/1BINI_Electrotechnique_Q1_2021.pdf" target="_blank">examen de janvier 2021</a> qui avait été généré avec des valeurs différentes pour chaque étudiant.</p>
+			
+			<h2 id="Formules_physiques_utiles">1. Formules physiques utiles</h2>
+
+			<h3>1.1. Force</h3>
+				<table>
+					<tbody>
+						<tr>
+							<td class="formulafirstchar formulaallcells"><span class="orange">F</span></td>
+							<td class="formulaallcells">= m . a</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<p><span class="bold orange">F</span> est la force en newtons (N); <span class="bold">m</span> est la masse en kilogrammes (kg); <span class="bold">a</span> est
+				l'accélération (m/s<sup>2</sup>).</p>
+				<p>Dans le cas de <a href="https://fr.wikipedia.org/wiki/G_(acc%C3%A9l%C3%A9ration)" traget="_blank">la gravité terrestre</a> (la pesanteur), l'accélération est
+				égale à environ 9,81 m/s<sup>2</sup>. Si aucune accélération n'est précisée pour un calcul, on part du principe qu'on utilise cette valeur.</p>
+
+			<h3>1.2. Travail</h3>
+				<table>
+					<tbody>
+						<tr>
+							<td class="formulafirstchar formulaallcells"><span class="cyan">W</span></td>
+							<td class="formulaallcells">= <span class="orange">F</span> . d</td>
+						</tr>	
+					</tbody>
+				</table>
+
+				<p><span class="bold cyan">W</span> est le travail, en joules (J); <span class="bold orange">F</span> est la force, en newtons (N); <span class="bold">d</span> est la longueur du déplacement, en mètres (m). <br />
+				Attention à ne pas confondre W dans cette formule et le W qui sert de symbole à la puissance en watts !</p>
+
+
+			<h3>1.3. Puissance</h3>
+				<table>
+					<tbody>
+						<tr>
+							<td class="formulafirstchar formulaallcells" rowspan="3"><span class="mauve">P</span></td>
+							<td></td>
+							<td class="formulaallcells"><span class="cyan">W</span></td>
+						</tr>
+						<tr>
+							<td class="formulaallcells">=</td>
+							<td class="formulaallcells">&#x2e3a;</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td class="formulaallcells">t</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<p><span class="bold mauve">P</span> est la puissance, en watts (W)&nbsp;; <span class="bold cyan">W</span> est le travail effectué, en joules (J)&nbsp;; <span class="bold">t</span> est le temps en secondes (s).<br />
+				Attention à ne pas confondre W dans cette formule et le W qui sert de symbole à la puissance en watts !</p>
+
+				<p>Sur base de la formule du travail et de la force, on peut donc extrapoler que&nbsp;:</p>
+
+				<table>
+					<tbody>
+					<tr>
+						<td class="formulafirstchar formulaallcells" rowspan="3"><span class="mauve">P</span></td>
+						<td></td>
+						<td class="formulaallcells">m.a.d</td>
+					</tr>
+					<tr>
+						<td class="formulaallcells">=</td>
+						<td class="formulaallcells">&#x2E3B;</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td class="formulaallcells">t</td>
+					</tr>
+					</tbody>
+				</table>
+
+			<h3>1.4. Loi de Pouillet (Résistance)</h3>
+
+				<table>
+					<tbody>
+						<tr>
+							<td class="formulafirstchar formulaallcells" rowspan="3"><span class="gris-foncé">R</span></td>
+							<td></td>
+							<td class="formulaallcells" rowspan="3">&rho;</td>
+							<td class="formulaallcells">L</td>
+						</tr>
+						<tr>
+							<td class="formulaallcells">=</td>
+							<td class="formulaallcells">&#x2e3a;</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td class="formulaallcells">S</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<p><span class="bold gris-foncé">R</span> est la résistance du conducteur en ohms (&Omega;)&nbsp;; <span class="bold">&rho;</span> est la résistivité de la substance, en ohm-mètres (&Omega;.m)&nbsp;; <br />
+				<span class="bold">L</span> est la longueur du conducteur, en mètres (m); <span class="bold">S</span> est la section du conducteur, en mètres carrés (m<sup>2</sup>).</p>
+
+			<h3>1.5. Variation de la résistance en fonction de la température</h3>
+
+				<table>
+					<tbody>
+						<tr>
+							<td class="formulafirstchar formulaallcells">&rho;<sub>t</sub></td>
+							<td class="formulaallcells">=</td>
+							<td class="formulaallcells">&rho;<sub>0</sub></td>
+							<td class="formulaallcells">(1+&alpha;t)</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<p><span class="bold">ρ<sub>t</sub></span> est la résistivité à une température t, en ohm-mètres (&Omega;.m); <span class="bold">ρ<sub>0</sub></span> est la résistivité à 0°C, en ohm-mètres (&Omega;.m); <br />
+				<span class="bold">&alpha;</span> est le coefficient de température, en °C<sup>-1</sup>; <span class="bold">t</span> est la température, en °C.</p>
+
+
+			<h2 id="Formules_de_base_liées_à_l_électricité">2. Formules de base liées à l'électricité</h2>
+		
+				<h3>2.1. Loi d'Ohm</h3>
+				<p>La tension (<span class="vert">U</span>) aux bornes d'un conducteur ohmique est égale au produit de sa résistance (<span class="gris-foncé">R</span>) par l'intensité (<span class="rouge">I</span>) du courant qui le traverse.</p>
+				
+				<table>
+					<tbody>
+						<tr>
+							<td class="formulafirstchar formulaallcells"><span class="vert">U</span></td>
+							<td class="formulaallcells">= <span class="gris-foncé">R</span> . <span class="rouge">I</span></td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<p><span class="bold vert">U</span> est la tension en volts (V); <span class="bold gris-foncé">R</span> est la résistance en ohms (&Omega;); <span class="bold rouge">I</span> 
+				est le courant en ampère (A).</p>
+				<p>Sur base de cette formule, on sait donc aussi que&nbsp;:</p>
+				
+				<div class="tableauinline">
+					<table class="no-margin">
+						<tbody>
+							<tr>
+								<td class="formulafirstchar formulaallcells" rowspan="3"><span class="gris-foncé">R</span></td>
+								<td></td>
+								<td class="formulaallcells"><span class="vert">U</span></td>
+							</tr>
+							<tr>
+								<td class="formulaallcells">=</td>
+								<td class="formulaallcells">&#x2e3a;</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td class="formulaallcells"><span class="rouge">I</span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="tableauinline">
+					<table class="no-margin">
+						<tbody>
+							<tr>
+								<td class="formulafirstchar formulaallcells" rowspan="3"><span class="rouge">I</span></td>
+								<td></td>
+								<td class="formulaallcells"><span class="vert">U</span></td>
+							</tr>
+							<tr>
+								<td class="formulaallcells">=</td>
+								<td class="formulaallcells">&#x2e3a;</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td class="formulaallcells"><span class="gris-foncé">R</span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				
+				<p>On peut donc la voir sous trois angles, mais il n'y a <span class="bold">qu'une seule</span> Loi d'Ohm&nbsp;!</p>
+				
+				<h3>2.2. Puissance et effet Joule</h3>
+				<p>Si un courant parcourt une résistance, le frottement des électrons contre les atomes donne naissance à un dégagement de chaleur. <br />
+				La puissance dégagée sous forme de chaleur est directement proportionnelle à la tension (<span class="vert">U</span>) aux bornes de la résistance (<span class="gris-foncé">R</span>) et au courant qui la traverse (<span class="rouge">I</span>). <br />
+				Et sachant la loi d'Ohm, qui dit que la chute de tension (<span class="vert">U</span>) dans un conducteur est égale au produit de sa résistance (<span class="gris-foncé">R</span>) par l'intensité du courant (<span class="rouge">I</span>), on déduit que pour un conducteur donné
+				la puissance dissipée est proportionnelle au carré de l'intensité du courant. C'est ce qu'on appelle l'<strong>effet Joule</strong>.</p>
+				
+				<div class="tableauinline">
+					<table class="no-margin">
+						<tbody>
+							<tr>
+								<td class="formulafirstchar formulaallcells"><span class="mauve">P</span></td>
+								<td class="formulaallcells">= <span class="vert">U</span> . <span class="rouge">I</span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				
+				<div class="tableauinline">
+					<table class="no-margin">
+						<tbody>
+							<tr>
+								<td class="formulafirstchar formulaallcells"><span class="mauve">P</span></td>
+								<td class="formulaallcells">= <span class="gris-foncé">R</span> . <span class="rouge">I<sup>2</sup></span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				
+				<p>Ou encore&nbsp;:</p>
+				<table>
+					<tbody>
+						<tr>
+							<td class="formulafirstchar formulaallcells" rowspan="3"><span class="mauve">P</span></td>
+							<td></td>
+							<td class="formulaallcells"><span class="vert">U<sup>2</sup></span></td>
+						</tr>
+						<tr>
+							<td class="formulaallcells">=</td>
+							<td class="formulaallcells">&#x2e3a;</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td class="formulaallcells"><span class="gris-foncé">R</span></td>
+						</tr>
+					</tbody>
+				</table>
+				<p><span class="bold mauve">P</span> est la puissance, en watts (W); <span class="bold vert">U</span> est la tension en volts (V); <span class="bold rouge">I</span> est l'intensité en ampères (A); et <span class="bold gris-foncé">R</span> est la résistance en ohms (&Omega;).</p>
+				
+				<h3>2.3. Énergie</h3>
+				<p>La puissance électrique (P) représente le taux d'utilisation de l'énergie électrique (W) divisée par le temps. <br />
+				Inversement, l'énergie est la puissance multipliée par le temps.</p>
+				
+				<div class="tableauinline">
+					<table class="no-margin">
+						<tbody>
+							<tr>
+								<td class="formulafirstchar formulaallcells" rowspan="3"><span class="mauve">P</span></td>
+								<td></td>
+								<td class="formulaallcells"><span class="cyan">W</span></td>
+							</tr>
+							<tr>
+								<td class="formulaallcells">=</td>
+								<td class="formulaallcells">&#x2e3a;</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td class="formulaallcells">t</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				
+				<div class="tableauinline alignerfractionpasfraction">
+					<table>
+						<tbody>
+							<tr>
+								<td class="formulafirstchar formulaallcells"><span class="cyan">W</span></td>
+								<td class="formulaallcells">= <span class="mauve">P</span> . t</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<p><span class="bold cyan">W</span> est l'énergie électrique en joules (J); <span class="bold mauve">P</span> est la puissance électrique en watts (W); <span class="bold">t</span> est le temps en secondes (s).</p>
+				
+				
+				<h4>2.3.1. La consommation ménagère</h4>
+				<p>L'unité d'énergie conventionnelle pour la consommation des ménages est le Kilowatt-heure (kWh). <br />
+				Selon la formule énoncée juste au-dessus, on peut facilement calculer que 1 kWh est égal à 3 600 000 joules, puisque&nbsp;: W = 1000 watts x 3 600 sec.</p>
+				
+					
+				<h4>2.3.2. Formule du prix de la consommation</h4>
+				
+					<table>
+						<tr>
+							<td class="formulafirstchar formulaallcells" rowspan="3"><span class="rouge">&euro;	</span></td>
+							<td></td>
+							<td class="formulaallcells"><span class="mauve">P</span></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td class="formulaallcells">=</td>
+							<td class="formulaallcells">&#x2e3a;</td>
+							<td class="formulaallcells">.</td>
+							<td class="formulaallcells">t</td>
+							<td class="formulaallcells">.</td>
+							<td class="formulaallcells"><span class="orange italic">prix</span></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td class="formulaallcells">1000</td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
+					
+					<p><span class="bold rouge">&euro;</span> est le coût total de la consommation&nbsp;; <span class="bold mauve">P</span> est la puissance totale des appareils (on la divise
+					par 1000 pour avoir des kilowatts)&nbsp;; <span class="bold">t</span> est le temps total en heures pendant lequel les appareils fonctionnent&nbsp;; le 
+					<span class="bold orange italic">prix</span> est le prix du kW/h.</p>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+			<h2 id="Circuits_à_courant_continu">3. Circuits à courant continu</h2>
+		
+				<h3 id="circuits-simples">3.1. Circuits simples</h3>
+				<p>Dans un circuit, la <span class="bold gris-foncé">résistance</span> est une charge. Il peut très bien s'agir d'un moteur ou d'un radiateur, par exemple.
+				La source, le générateur, la pile, ou autre, s'occupe d'apporter la <span class="bold vert">tension</span>.</p>
+				
+				<h4 id="res-para">3.1.1 Résistances en parallèle</h4>
+				<p>La <span class="bold gris-foncé">résistance équivalente</span> (<span class="gris-foncé">R<sub>éq</sub></span>) de deux résistances placées en parallèle
+				est le produit de ces résistances divisé par la somme de ces résistances (formule 1). S'il y a plus deux résistances en parallèle, on peut aussi faire 
+				la somme des inverses des résistances pour obtenir l'inverse de la résistance équivalente (formule 2).</p>
+				<div class="tableauinline">
+					<table>
+						<tbody>
+						<tr>
+							<td></td>
+							<td class="formulaallcells">R<sub>1</sub> . R<sub>2</sub></td>
+							<td></td>
+							<td class="formulaallcells formulafirstchar" rowspan="3"><span class="gris-foncé">R<sub>éq</sub></span></td>
+						</tr>
+						<tr>
+							<td class="formulaallcells">(1)</td>
+							<td class="formulaallcells">&#x2E3B;</td>
+							<td class="formulaallcells">=</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td class="formulaallcells">R<sub>1</sub>+R<sub>2</sub></td>
+							<td></td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+				
+				<div class="tableauinline">
+					<table>
+						<tbody>
+							<tr>
+								<td></td>
+								<td class="formulaallcells">1</td>
+								<td></td>
+								<td></td>
+								<td class="formulaallcells">1</sub></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td class="formulaallcells">(2)</td>
+								<td class="formulaallcells">&#x2e3a;</td>
+								<td class="formulaallcells">=</td>
+								<td class="formulaallcells formulafirstchar">&#x2211;</td>
+								<td class="formulaallcells">&#x2e3a;</td>
+								<td class="formulaallcells">...</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td class="formulaallcells"><span class="gris-foncé">R<sub>éq</sub></span></td>
+								<td></td>
+								<td></td>
+								<td class="formulaallcells"><span class="gris-foncé">R<sub>#</sub></span></td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<p class="centered"><img class="small-image" src="css/images/resistances-paralleles.png" alt="schéma résistances en parallèle" /></p>
+
+				<p>Dans un montage parallèle, les branches sont soumises à la même <span class="bold vert">tension</span>, mais le <span class="bold rouge">courant</span> n'est pas le même.</p>
+				<h4>3.1.2 Résistances en série</h4>
+				<p>La résistance équivalente (R<sub>éq</sub>) de résistances placées en série est la somme de ces résistances. </p>
+				<table>
+					<tbody>
+						<tr>
+							<td class="formulafirstchar formulaallcells"><span class="gris-foncé">R<sub>éq</sub></span></td>
+							<td class="formulaallcells">= <span class="gris-foncé">R<sub>1</sub></span> + <span class="gris-foncé">R<sub>2</sub></span> + <span class="gris-foncé">R<sub>3</sub></span> ...</td>
+						</tr>
+					</tbody>
+				</table>
+				<p class="centered"><img class="small-image" src="css/images/resistances-en-serie.png" alt="schéma résistances en série" /></p>
+				
+				<p>Dans un montage en série, le <span class="bold rouge">courant</span> reste le même.</p>
+				
+				<h3 id="circuits-complexes">3.2. Circuits complexes</h3>
+				<p>Les formules présentées dans le point précédent ne suffisent pas toujours. Par exemple, si l'on trouve plusieurs générateurs dans un circuit, il est parfois impossible de
+				trouver la résistance équivalente. Et même dans un circuit à un seul générateur, <a href="css/images/circuit-complexe-1-generateur.jpg" target="_blank">certains agencements complexes</a> 
+				empêchent de trouver facilement la résistance équivalente. <br />
+				Dans ces situations, on peut utiliser les notions de <span class="bold vert-foncé">mailles</span> et de <span class="bold mauve-foncé">noeuds</span>.</p>
+				<p>Une <span class="bold vert-foncé">maille</span> est un parcours fermé sur le circuit qu'on décrit en partant d'un point donné et en y revenant en ne traversant qu'une seule 
+				fois les éléments qui le compose.</p>
+				<p>Un <span class="bold mauve-foncé">noeud</span> est un point d'un circuit où aboutissent un certain nombre de conducteurs. On appelle <span class="bold">branche</span> la portion
+				de circuit se trouvant entre deux <span class="bold mauve-foncé">noeud</span> voisins.</p>
+				
+				<p class="centered"><img class="medium-image" src="css/images/circuit-mailles-noeuds.png" alt="schéma noeuds et mailles" /></p>
+				
+				<p>Dans le schéma ci-dessus, on retrouve donc 3 <span class="bold vert-foncé">mailles</span>, 2 <span class="bold mauve-foncé">noeuds</span> et 3 <span class="bold">branches</span>.</p>
+				
+				<h4>3.2.1. Règle des noeuds</h4>
+				<p class="centered slightly-larger"><em>&laquo;&nbsp;La somme des courants qui arrivent à un noeud <br />est égale à la somme des courants qui en partent.&nbsp;&raquo;</em><br />
+				&mdash; 1re loi de Kirchhoff</p>
+				<p>En d'autres mots, tout <span class="bold rouge">courant</span> qui rentre dans un <span class="bold mauve-foncé">noeud</span> doit forcément en sortir de façon équivalente. <br /> 
+				Dans un <span class="bold mauve-foncé">noeud</span>, la somme des <span class="bold rouge">courants</span> est donc égale à zéro.</p>
+				<p class="centered"><img class="small-image" src="css/images/noeud.png" alt="schéma noeuds" /></p>
+				<table>
+					<tr>
+						<td class="formulaallcells"><span class="rouge">I<sub>1</sub></span> + <span class="rouge">I<sub>2</sub></span> = <span class="rouge">I<sub>3</sub></span> + <span class="rouge">I<sub>4</sub></span> + <span class="rouge">I<sub>5</sub></span> </td>
+					</tr>
+				</table>
+				<table>
+					<tr>
+						<td class="formulaallcells">&hArr; <span class="rouge">I<sub>1</sub></span> + <span class="rouge">I<sub>2</sub></span> &ndash; <span class="rouge">I<sub>3</sub></span> &ndash; <span class="rouge">I<sub>4</sub></span> &ndash; <span class="rouge">I<sub>5</sub></span>  = 0</td>
+					</tr>
+				</table>
+				<p>On notera que les <span class="bold mauve-foncé">noeuds</span> sont parfois appelés "sommets".</p>
+				
+				<h4>3.2.2. Règle des mailles</h4>
+				<p class="centered slightly-larger"><em>&laquo;&nbsp;La somme algébrique des tensions <br /> dans une boucle fermée d'un circuit est égale à zéro.&nbsp;&raquo;</em><br />
+				&mdash; 2e loi de Kirchhoff</p>
+				<p>Autrement dit, la somme des <span class="bold vert">tensions</span> des sources est égale à la somme des <span class="bold vert">tensions</span> sur les résistances. <br />
+				Dans une <span class="bold vert-foncé">maille</span>, la somme des <span class="bold vert">tensions</span> est donc égale à zéro.</p>
+				<p>Dans l'absolu&nbsp;:</p>
+				<table>
+					<tr>
+						<td class="formulaallcells"><span class="vert">U<sub>1</sub></span> + <span class="vert">U<sub>2</sub></span> = <span class="vert">U<sub>3</sub></span> + <span class="vert">U<sub>4</sub></span> + <span class="vert">U<sub>5</sub></span> </td>
+					</tr>
+				</table>
+				<table>
+					<tr>
+						<td class="formulaallcells">&hArr; <span class="vert">U<sub>1</sub></span> + <span class="vert">U<sub>2</sub></span> &ndash; <span class="vert">U<sub>3</sub></span> &ndash; <span class="vert">U<sub>4</sub></span> &ndash; <span class="vert">U<sub>5</sub></span>  = 0</td>
+					</tr>
+				</table>
+				
+				<p>Prenons un schéma en exemple&nbsp;:</p>
+				<p class="centered"><img class="medium-image" src="css/images/circuit-mailles-v4.png" alt="schéma mailles" /></p>
+				
+				<p>Dans ce schéma, on a&nbsp;: <br />
+				Dans la maille 1&nbsp;: <span class="formula-font larger">20 &ndash; <span class="vert">U<sub>1</sub></span> &ndash; <span class="vert">U<sub>2</sub></span> = 0</span><br />
+				Dans la maille 2&nbsp;: <span class="formula-font larger">60 + <span class="vert">U<sub>2</sub></span> &ndash; <span class="vert">U<sub>3</sub></span> = 0</span><br />
+				Dans la maille 3&nbsp;: <span class="formula-font larger">80 &ndash; <span class="vert">U<sub>1</sub></span> &ndash; <span class="vert">U<sub>3</sub></span> = 0</span></p>
+				
+				
+				
+				
+				<h3 id="superposition">3.3. Théorème de superposition</h3>
+				<p>Dans le cas où un circuit électrique possède plusieurs générateurs, on peut effectuer les calculs de courants séparément (comme s'il n'y avait qu'un générateur à chaque fois),
+				puis en faisant la somme des résultats obtenu (pour chaque courant). On décompose donc un circuit complexes en plusieurs circuits simples avant de les "superposer".</p>
+				<p>Le théorème peut être énoncé comme ceci&nbsp;:</p>
+				
+				<blockquote>&laquo;&nbsp;Le <span class="bold rouge">courant</span> circulant dans un élément de circuit est égal à la somme algébrique des <span class="bold rouge">courants</span> qui
+				seraient produits dans cet élément par chacune des sources agissant seule, les autres sources étant remplacées par des court-circuits.&nbsp;&raquo;</blockquote>
+				
+				<p>Une excellente vidéo sur le sujet :</p>
+				<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/BDIuzE4o6DY" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				
+				
+				
+				
+				<h3 id="etoile-triangle">3.4. Résistances en étoile et en triangle</h3>
+				
+				<div class="flex">
+					<p>Quelquefois, les résistances sont placées de façon plus complexe qu'en parallèle ou en série. Les calculs d'équivalence deviennent plus compliqués, mais il est tout à fait 
+					possible de retomber sur un schéma plus facile. Des formules existent pour passer d'un positionnement en étoile (ou "en Y") à un positionnement en triangle, et vice versa.</p>
+					<p><img class="medium-karnaugh" src="css/images/triangle-etoile-resistances-1.png" alt="schéma triangle étoile" /></p>
+				</div>
+				
+				<p>Les formules pour passer d'une représentation à l'autre (sur base des notations du schéma ci-dessus) sont les suivantes :</p>
+				<p class="centered"><img class="medium-image" src="css/images/resistance-triangle-a-etoile.png" alt="formule triangle étoile" /></p>
+				
+				<p>Dans le cas particulier où toutes les <span class="gris-foncé bold">résistances</span> sont identiques, on <span class="bold">triple</span> la valeur des résistances si
+				l'on passe de l'étoile (Y) au triangle (&Delta;) et on <span class="bold">divise par trois</span> la valeur des résistances si l'on passe du triangle (&Delta;) à l'étoile (Y).</p>
+				
+				<h4>3.4.1. Exemple</h4>
+				
+				<div class="flex">
+					<p>Voici un bon exemple, issu de Wikipédia, qui montre l'utilisation efficace d'une transformation de l'étoile au triangle. Le premier dessin est un schéma qui comporte une
+					étoile, qu'on transforme en triangle (dessin 2). Le troisième dessin est le même que le 2e, mais il est tracé de façon plus claire.</p>
+					<p><img class="medium-karnaugh" src="css/images/triangle-etoile-resistances-2.png" alt="schéma triangle étoile" /></p>
+				</div>
+				
+				
+				
+				
+				<h3 id="exemples-schemas">3.5. Quelques exemples de schémas électriques</h3>
+				<p>Pour résoudre des exercices avec des schémas électriques, il est important de savoir les redessiner de façon différente. Au premier coup d'oeil, ce n'est pas toujours évident de
+				voir ce qui est en parallèle et en série. Voici quelques exemples intéressants.</p>
+				<h4>Parallèle</h4>
+				<p>On ne le voit pas forcément tout de suite, mais ces deux schémas sont parfaitement équivalents. En effet, les noeuds A et B sont bien reliés aux mêmes éléments !
+				Être capable de remarquer que ces deux schémas sont identiques est pratique, car sur celui de droite, on pourrait douter que R2 et R3 sont parallèles. Tandis que
+				sur celui de gauche, c'est beaucoup plus clair.</p>
+				<p class="centered"><img class="medium-image" src="css/images/exemple-equivalence-not-a-star.png" alt="schéma qui peut faire penser à une étoile" /></p>
+				<h4>Parallèle... ou en série ?</h4>
+				<p>Ce schéma peut sembler bizarre au premier abord&nbsp;:</p>
+				<p class="centered"><img class="medium-image" src="css/images/weird-parallel-1.png" alt="schéma bizarre parallèle ou en série ?" /></p>
+				<p>Si on le redessine différemment, en "repliant" le côté gauche vers le dessous du schéma, ça devient déjà beaucoup plus clair.</p>
+				<div class="flex">
+					<p><img class="small-image" src="css/images/weird-parallel-2.png" alt="schéma bizarre parallèle ou en série ? Développement 1" /></p>
+					<p><img class="small-image" src="css/images/weird-parallel-3.png" alt="schéma bizarre parallèle ou en série ? Développement 2" /></p>
+				</div>
+				<p>On fait la même chose avec le côté droit, et on obtient un schéma avec lequel on ne peut plus se tromper.</p>
+				<p class="centered"><img class="small-image" src="css/images/weird-parallel-4.png" alt="schéma bizarre parallèle ou en série ? Développement 3" /></p>
+				
+				
+				<h3 id="pont-tension">3.6. Pont diviseur de tension</h3>
+				<p>Le diviseur de tension est un montage électronique simple qui permet de diviser une tension d'entrée, constitué par exemple de deux résistances en série.</p>
+				<table>
+					<tbody>
+						<tr>
+							<td class="formulaallcells"></td>
+							<td class="formulaallcells"></td>
+							<td class="formulaallcells"></td>
+							<td class="formulaallcells">R<sub>2</sub></td>
+						</tr>
+						<tr>
+							<td class="formulaallcells formulafirstchar"><span class="vert">U</span></td>
+							<td class="formulaallcells">=</td>
+							<td class="formulaallcells formulafirstchar"><span class="vert">E</span> .</td>
+							<td class="formulaallcells">&#x2E3B;</td>
+						</tr>
+						<tr>
+							<td class="formulaallcells"></td>
+							<td class="formulaallcells"></td>
+							<td class="formulaallcells"></td>
+							<td class="formulaallcells">R<sub>1</sub>+R<sub>2</sub></td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<p class="centered"><img class="small-image" src="css/images/pont-diviseur-tensions.png" alt="pont diviseur tensions" /></p>
+				
+				<p>Une excellente vidéo sur le sujet&nbsp;:</p>
+				<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/kFMW_AOtM0g" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				
+				
+				
+				<h3 id="pont-courant">3.7. Pont diviseur de courant</h3>
+				<p>Un diviseur de courant est un montage électronique simple permettant d'obtenir un courant proportionnel à un autre courant. Le circuit est constitué de branches parallèles 
+				et s'étudie grâce aux lois de Kirchhoff et notamment à la loi des nœuds.</p>
+				<p>La formule du diviseur de courant permet de calculer l'intensité du courant dans une résistance lorsque celle-ci fait partie d'un ensemble de résistances en parallèle 
+				et lorsque l'on connaît le courant total qui alimente cet ensemble.</p>
+				
+				<table>
+					<tbody>
+						<tr>
+							<td class="formulaallcells-tighter"></td>
+							<td class="formulaallcells-tighter"></td>
+							<td class="formulaallcells-tighter"></td>
+							<td class="formulaallcells-tighter">R<sub>1</sub></td>
+						</tr>
+						<tr>
+							<td class="formulaallcells-tighter formulafirstchar"><span class="rouge">I<sub>2</sub></span></td>
+							<td class="formulaallcells-tighter">=</td>
+							<td class="formulaallcells-tighter formulafirstchar"><span class="rouge">I</span></td>
+							<td class="formulaallcells-tighter">&#x2E3B;</td>
+						</tr>
+						<tr>
+							<td class="formulaallcells-tighter"></td>
+							<td class="formulaallcells-tighter"></td>
+							<td class="formulaallcells-tighter"></td>
+							<td class="formulaallcells-tighter">R<sub>1</sub>+R<sub>2</sub></td>
+						</tr>
+					</tbody>
+				</table>
+				<table>
+					<tbody>
+						<tr>
+							<td class="formulaallcells-tighter"></td>
+							<td class="formulaallcells-tighter"></td>
+							<td class="formulaallcells-tighter"></td>
+							<td class="formulaallcells-tighter">R<sub>2</sub></td>
+						</tr>
+						<tr>
+							<td class="formulaallcells-tighter formulafirstchar"><span class="rouge">I<sub>1</sub></span></td>
+							<td class="formulaallcells-tighter">=</td>
+							<td class="formulaallcells-tighter formulafirstchar"><span class="rouge">I</span></td>
+							<td class="formulaallcells-tighter">&#x2E3B;</td>
+						</tr>
+						<tr>
+							<td class="formulaallcells-tighter"></td>
+							<td class="formulaallcells-tighter"></td>
+							<td class="formulaallcells-tighter"></td>
+							<td class="formulaallcells-tighter">R<sub>1</sub>+R<sub>2</sub></td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<p class="centered"><img class="small-image" src="css/images/pont-diviseur-courants.png" alt="pont diviseur courants" /></p>
+				
+				<p>Une excellente vidéo sur le sujet&nbsp;:</p>
+				<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/ouvM1t5CFas?start=48" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					
+					
+					
+				<h3 id="eq-thevenin">3.8. Équivalence de Thévenin</h3>
+				<p>Pour calculer les changements sur un circuit lorsqu'on veut changer un seul composant, il y a une technique qui permet d'éviter de tout recalculer à zéro à chaque fois.
+				La clé de la compréhension du théorème de Thévenin est d'arriver à observer le circuit par rapport aux bornes A et B, qui sont celles "de sortie", là où on vient mettre
+				le nouveau composant.</p>
+				<p>Prenons l'exemple suivant. Ici, on aimerait remplacer la résistance R6 par la R7&nbsp;:</p>
+				<p class="centered"><img class="medium-karnaugh" src="css/images/resistance-thevenin-1b.png" alt="Résistance de Thévenin" /></p>
+				<div class="flex">
+					<p>D'abord, il va falloir qu'on calcule l'équivalence des résistances dans le système entouré en vert. Pour cela, on va mettre 
+					<span class="bold">toutes les sources de <span class="vert">tensions</span> en court-circuit</span>.</p>
+					<p class="centered"><img class="small-karnaugh" src="css/images/resistance-thevenin-1b-sans-source.png" alt="Résistance de Thévenin" /></p>
+				</div>
+				<div class="flex">
+					<p>On voit que les résistances R1 et R4 sont en série, que R1+R4 est en parallèle avec R3, et que ce groupement est en série avec R2 et R5.<br />
+					Cette équivalence de résistance donne la <span class="bold gris-foncé">résistance de Thévenin</span>.</p>
+					<p class="centered"><img class="small-karnaugh" src="css/images/resistance-thevenin-4b.png" alt="Résistance de Thévenin" /></p>
+				</div>
+				<div class="flex">
+					<p>Ce qui va nous intéresser maintenant, c'est ce savoir quelle est la tension aux bornes du composant que l'on va venir ajouter. Autrement dit, on cherche la tension
+					aux bornes A et B sur le schéma. Pour cela, repenchons-nous sur le schéma de départ.<br />
+					Comme on le sait, la tension reste la même dans des branches situées en parallèle. Cela signifie que si on trouve la tension qui passe
+					dans R3, on aura déterminé la tension à vide aux bornes A et B.<br />
+					Si l'on regarde bien, on a ici affaire à un <span class="bold">pont diviseur de <span class="vert">tension</span></span> ! (voir point 3.6.) Pour ce calcul, R2 et R5
+					ne nous sont donc pas utiles.
+					</p>
+					<p class="centered"><img class="small-karnaugh" src="css/images/resistance-thevenin-3.png" alt="Tension de Thévenin" /></p>
+				</div>
+				
+				<div class="flex">
+					<p>Cette tension que l'on peut calculer est appelée la <span class="bold vert">tension de Thévenin</span>. Dans un schéma résumé, on peut représenter les équivalences de Thévenin
+					comme ceci :</p>
+					<p class="centered"><img class="small-karnaugh" src="css/images/resistance-thevenin-2b.png" alt="Tension de Thévenin" /></p>
+				</div>
+		
+				<h4>3.8.1. Courts-circuits complexes</h4>
+				<p>Calculer la résistance de Thévenin n'est pas toujours très intuitif dans des circuits plus complexes. Prenons l'exemple suivant :</p>
+				
+				<p class="centered"><img class="height-350" src="css/images/thevenin-res-nulle-1.png" alt="Schéma résistance nulle" /></p>
+				
+				<div class="flex">
+					<p>Comme on l'a vu, pour calculer la résistance de Thévenin, il faut mettre <span class="bold">toutes</span> les sources de tensions en court-circuit (on les remplace par des fils).</p>
+					<p class="centered"><img class="medium-karnaugh" src="css/images/thevenin-res-nulle-2.png" alt="Schéma résistance nulle" /></p>
+				</div>
+				<div class="flex">
+					<p>Maintenant que c'est fait, si l'on regarde attentivement notre schéma, on se rend compte qu'il n'y aucune résistance dans le chemin entre les bornes A et B ! Le courant
+					prend nécessairement le chemin le plus court, donc il passera par les fils, et non pas par les résistances.</p>
+					<p class="centered"><img class="medium-karnaugh" src="css/images/thevenin-res-nulle-3.png" alt="Schéma résistance nulle" /><br />
+					<span class="formula-font bold larger"><span class="gris-foncé">R<sub>th</sub></span> = 0</span></p>
+				</div>
+				
+				<h4>3.8.2. Infos supplémentaires</h4>
+				<p>Comme ça ne mange pas de pain, voilà encore une bonne vidéo sur le sujet :</p>
+				<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/qxkGMryMHwQ" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				
+				
+				<h2 id="Piles_et_accumulateurs">4. Piles et accumulateurs</h2>
+				<p>Les piles et accumulateurs sont des générateurs électriques qui stockent l'énergie <span class="bold">sous forme chimique</span> 
+				et mettent en jeu une <span class="bold">réaction</span> chimique pour produire de l'électricité.</p>
+				
+				<h3>4.1. Piles</h3>
+				<figure class="float-right"><img class="small-karnaugh" src="css/images/pile-resistance.png"/>
+				<figcaption>Une pile à source de tension E0<br />en série avec une résistance r</figcaption></figure>
+				<p>Une pile est dotée d'un capital énergétique à sa fabrication. Ce capital est consommé par l'utilisation de la pile ; la transformation chimique qui s'opère est
+				<span class="bold">irréversible</span>.	Une fois ce capital épuisé, la pile est hors d'usage.</p>
+				
+				<h4>4.1.1. Résistances internes</h4>
+				<p>Les piles contiennent une <span class="bold">source d'énergie</span> et une <span class="bold">petite résistance interne</span>. La <span class="vert">tension</span> d'une pile prise seule sera donc exactement 
+				celle mentionnée dessus (1,5 V pour une pile AA), mais dès qu'on la connecte à une charge, on va perdre une partie de cette <span class="vert">tension</span> (car, pour rappel, une charge est une résistance).</p>
+				
+				<h4>4.1.2. Capacités des piles</h4>
+				<p>La capacité d'une pile est la <span class="bold">quantité d'électricité qu'elle peut débiter</span> avant que la <span class="vert">tension</span> à ses bornes atteigne la tension critique (c'est-à-dire qu'elle 
+				ne fonctionnera plus).
+				Par exemple, pour une pile d'une capacité de 30 A/h (ou bien 108&nbsp;000 coulombs), on pourra tirer 30&nbsp;A pendant 1&nbsp;h, ou 1&nbsp;A pendant 30&nbsp;h, ou 0,1&nbsp;A pendant 300&nbsp;h, etc.</p>
+				<p>Si on met des piles en <span class="bold">série</span>, on obtiendra la <span class="bold">somme des <span class="vert">tensions</span></span> fournies par chaque pile. Pour avoir 6&nbsp;V,
+				il faut donc quatre piles AA en série, par exemple. Sachant que chaque pile possède une petite résistance interne, ces résistances sont également positionnées en série.</p>
+				<p>Par contre, en mettant des piles <span class="bold">en parallèle</span>, on n'augmentera pas la <span class="vert">tension</span>. Ce qui change,
+				c'est qu'on aura <span class="bold">davantage de 
+				capacité</span>. Ainsi, si on place quatre piles AA d'une capacité de 30 A/h (108&nbsp;000 coulombs) en parallèle, on aura 1,5&nbsp;V aux bornes de ce système et une capacité totale
+				de 120 A/h (432&nbsp;000 coulombs).</p>
+				<p>Lorsqu'on veut à la fois augmenter la <span class="vert">tension</span> et la capacité, on mettra des piles à la fois en série et en parallèle. On appelle cela 
+				un <span class="bold">groupement mixte)</span>.</p>
+				
+				<h3>4.2. Accumulateurs</h3>
+				<p>Un accumulateur neuf ne produit pas d'électricité, il doit d'abord être chargé. Il obtient son énergie d'une autre source d'électricité, puis il produit de l'électricité en se
+				déchargeant. La tranformation chimique qui s'effectue lors de la décharge d'un accumulateur est <span class="bold">réversible</span> pour un accumulateur (contrairement à une pile).
+				Il n'est toutefois possible de le recharger qu'un certain nombre de fois (qu'on appelle "cycles").</p>
+
+
+
+
+
+
+
+
+
+
+
+				<h2 id="Condensateurs">5. Condensateurs</h2>
+				<figure class="float-right"><img class="medium-karnaugh" src="css/images/circuit-r-c.png"/></figure>
+				<p>Dans le courant continu (<span class="italic">direct current</span>, DC), la <span class="vert bold">tension</span> sur une <span class="gris-foncé bold">résistance</span> reste <span class="bold">constante en fonction
+				du temps</span>.
+				En revanche, dans un <span class="bleu-clair bold">condensateur</span>, la <span class="vert bold">tension</span> et le <span class="rouge bold">courant</span> sont variables en fonction du temps !</p>
+				<p>Le <span class="bleu-clair bold">condensateur</span> est un composant électronique <span class="bold">passif</span>. Il est conçu pour accumuler de l'énergie électrique pendant une courte durée. De ce fait,
+				on le caractérise principalement par sa <span class="bold">capacité</span> (notée <span class="bleu-clair slightly-larger bold formula-font">C</span> dans les formules&nbsp;; son unité est le farad, 
+				symbole F). La charge électrique emmagasinée est proportionnelle à la <span class="vert bold">tension</span> qui est appliquée dessus. On définit la capacité d'un condensateur par la
+				relation suivante&nbsp;:</p>
+				
+				<table>
+					<tr>
+						<td class="formulafirstchar formulaallcells">Q</td>
+						<td class="formulaallcells">= <span class="bleu-clair">C</span> . <span class="vert">U</span></td>
+						<td class="formulaallcells">&ensp;&equiv;&ensp;</td>
+						<td class="formulafirstchar formulaallcells"><span class="bleu-clair">C</span></td>
+						<td class="formulaallcells">= Q / <span class="vert">U</span></td>
+					</tr>
+				</table>
+
+				
+				<p><span class="formula-font bold slightly-larger">Q</span> est la charge stockée sur sa borne positive (qui s'exprime en coulombs, symbole C)&nbsp;;
+				<span class="formula-font bold bleu-clair slightly-larger">C</span> est la capacité électrique du condensateur (qui s'exprime en farads, symbole F)&nbsp;;
+				<span class="formula-font slightly-larger bold vert">U</span> est la tension aux bornes (en volts, symbole V).</p>
+				
+				
+				<p>Les condensateurs sont composés de deux <span class="bold">armatures</span> et d'un <span class="bold">diélectrique</span> (un isolant). Chaque diélectrique a
+				une <span class="bold">permittivité</span> qui lui est propre (notée <span class="formula-font slightly-larger">&epsilon;</span> dans les formules).</p>
+				
+				<h3>5.1. Charge et décharge d'un condensateur</h3>
+				<p>Les formules que nous utiliserons le plus souvent concernent la charge et la décharge d'un <span class="bleu-clair bold">condensateur</span>. Quand on applique une tension constante 
+				sur un condensateur, il met un certain temps avant de se charger&nbsp;:</p>
+				<ul>
+					<li>À l'instant t = 0, càd lors de la mise sous tension, le <span class="bleu-clair bold">condensateur</span> se comporte comme une <span class="gris-foncé bold">résistance</span>
+					nulle (comme un fil sans résistance).</li>
+					<li>Durant la charge (ou la décharge), la <span class="vert bold">tension</span> dans le <span class="bleu-clair bold">condensateur</span> augmente (ou diminue) en fonction du temps
+					et l'<span class="rouge bold">intensité</span> diminue (ou augmente). On utilise les formules présentées plus bas pour calculer la tension à un moment précis.</li>
+					<li>À la fin de la charge, le <span class="bleu-clair bold">condensateur</span> n'absorbe plus aucun <span class="rouge bold">courant</span>&nbsp;; on est dans une situation
+					équivalente à un circuit ouvert (comme si on l'avait retiré du circuit et que les fils qui lui étaient connectés pendaient sans être connectés entre eux).</li>
+				</ul>
+				<p>Voici une comparaison des phénomènes de charge et de décharge&nbsp;:</p>
+				
+				<p class="centered"><img src="css/images/charge-decharge-rc.png" /></p>
+				
+				<p>Pour calculer la <span class="vert bold">tension</span> (dans le condensateur ou sur la résistance), ou le courant, à un temps donné, on utilise les formules suivantes&nbsp;:</p>
+				<div class="flex">
+					<div class="flex-column" id="formules-charge-decharge">
+						<p class="centered formula-font larger entouré bold no-margin">Charge</p>
+						<p class="centered"><img class="small-image" src="css/images/condensateur-charge.png" /></p>
+						<p class="centered">Au besoin, pour trouver <span class="formula-font larger italic">t</span><br />
+						en connaissant <span class="formula-font larger"><span class="vert">U</span><sub><span class="bleu-clair">C</span></sub></span>&nbsp;:</p>
+						<p class="centered"><img class="small-image" src="css/images/condensateur-charge-t.png" /></p>
+					</div>
+					<div class="flex-column">
+						<p class="centered formula-font larger entouré bold no-margin">Décharge</p>
+						<p class="centered"><img class="small-image" src="css/images/condensateur-decharge.png" /></p>
+						<p class="centered">Au besoin, pour trouver <span class="formula-font larger italic">t</span><br />
+						en connaissant <span class="formula-font larger"><span class="vert">U</span><sub><span class="bleu-clair">C</span></sub></span>&nbsp;:</p>
+						<p class="centered"><img class="small-image" src="css/images/condensateur-decharge-t.png" /></p>
+					</div>
+				</div>
+				
+				<p>Dans ces formules, <span class="bold formula-font slightly-larger">e</span> est le nombre d'Euler ou de Neper&nbsp;; c'est une constante mathématique égale à 2,7182818284
+				(on la trouve sur toutes les calculatrices scientifiques). Un logarithme en base <span class="bold formula-font slightly-larger">e</span> est appelé
+				<span class="bold">logarithme népérien</span> et se note usuellement <span class="bold formula-font slightly-larger">ln</span>.</p>
+				<p><span class="bold formula-font larger mauve-foncé italic">&tau;</span>, la lettre grecque tau, est la <span class="bold">constante de temps</span>, que l'on calcule en multipliant 
+				la résistance fois la capacité du <span class="bleu-clair bold">condensateur</span>&nbsp;:</p>
+			
+				<table>
+					<tr>
+						<td class="formulafirstchar formulaallcells"><span class="mauve-foncé slightly-larger italic">&tau;</span></td>
+						<td class="formulaallcells">= <span class="gris-foncé">R</span> . <span class="bleu-clair">C</span></td>
+					</tr>
+				</table>
+			
+				<p>En tant que constante de temps, <span class="bold formula-font larger mauve-foncé italic">&tau;</span> s'exprime en secondes (s). On considère qu'un <span class="bleu-clair bold">condensateur</span>
+				est complètement chargé après <span class="formula-font slightly-larger ">5</span><span class="bold formula-font larger mauve-foncé italic">&tau;</span> (ce qui l'amène à 99,3&nbsp;% 
+				de charge).</p>
+				<p>Voici un exemple d'utilisation d'un <span class="bold">logarithme népérien</span>&nbsp;:</p>
+				
+				<p class="centered"><img class="small-image" src="css/images/equa-ln.png" /></p>
+				
+				<h3>5.2. Associations</h3>
+				<p>On notera que les formules présentées pour la charge et la décharge sont <span class="bold">uniquement valable</span> dans le cas d'un circuit contenant une seule 
+				<span class="gris-foncé bold">résistance</span> et un seul <span class="bleu-clair bold">condensateur</span>.
+				Si on a affaire à un circuit plus complexe, il faut calculer la <span class="gris-foncé bold">résistance de Thévenin</span>
+				(voir 3.8. Équivalence de Thévenin) et la valeur du <span class="bleu-clair bold">condensateur équivalent</span>.</p>
+				<p>On calcule un <span class="bleu-clair bold">condensateur équivalent</span> sur <a href="#Circuits_à_courant_continu">le même principe qu'une résistance équivalente</a>,
+				à cette différence près que <span class="bold">les formules sont inversées</span>&nbsp;: on additionne les capacités des condensateurs s'ils sont mis en parallèle et on additionne l'inverse 
+				de la capacité des condensateurs pour obtenir l'inverse du condensateur équivalent si on les associe en série.</p>
+			
+				<div class="flex">
+					<div class="flex-column">
+						<p class="formula-font larger bold no-margin">En parallèle</p>
+						<table>						
+							<tr>
+								<td class="formulafirstchar formulaallcells"><span class="bleu-clair">C<sub>éq</sub></span></td>
+								<td class="formulaallcells">= <span class="bleu-clair">C<sub>1</sub></span> + <span class="bleu-clair">C<sub>2</sub></span> + <span class="bleu-clair">C<sub>3</sub></span> ...</td>
+							</tr>						
+						</table>
+						<p class="italic formula-font slightly-larger">Augmente la capacité</p>
+					</div>
+					<div class="flex-column">
+						<p class="formula-font larger bold no-margin">En série</p>
+						<table>						
+							<tr>
+								<td class="formulaallcells">1</td>
+								<td></td>
+								<td></td>
+								<td class="formulaallcells">1</sub></td>
+								<td></td>
+							</tr>
+							<tr>								
+								<td class="formulaallcells">&#x2e3a;</td>
+								<td class="formulaallcells">=</td>
+								<td class="formulaallcells formulafirstchar">&#x2211;</td>
+								<td class="formulaallcells">&#x2e3a;</td>
+								<td class="formulaallcells">...</td>
+							</tr>
+							<tr>
+								<td class="formulaallcells"><span class="bleu-clair">C<sub>éq</sub></span></td>
+								<td></td>
+								<td></td>
+								<td class="formulaallcells"><span class="bleu-clair">C<sub>#</sub></span></td>
+								<td></td>
+							</tr>						
+						</table>
+						<p class="italic formula-font slightly-larger">Diminue la capacité</p>
+					</div>				
+				</div>		
+				<p>On notera que ces associations sont possibles uniquement si les condensateurs sont physiquement de même type (même armature, même isolant).</p>
+		
+		
+				<h2 id="outils-électro">A. Outils en ligne et références</h2>
+				<h3>A.1. Tableau des préfixes internationaux</h3>
+				<p class="centered"><img class="large-image" src="css/images/prefixe-multiplicateurs.png" /></p>
+		
+		
+		
+		
+		</div>
+
+		
+		
+
+		<footer><p>&copy; Website built by Nicolas Toffolo (2020-2021)</p></footer>
+	</body>
+</html>

@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<title>HELHa Révison</title>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Les synthèses pour vos études en informatique industrielle à la HELHa.">
+		<script src="css/count.js"></script>
+		<link rel="stylesheet" href="css/main.css" type="text/css">
+		<link href='https://fonts.googleapis.com/css?family=M%20PLUS%201p' rel='stylesheet'> <!-- Police utilisée pour les maths -->
+		<link rel="icon" 
+			  href="css/images/icon.png"
+			  type="image/png" />
+	</head>
+
+	<body>
+		<header>			
+			<div id="titre-principal">
+				<div id="logo">
+					<img src="css/images/logo-helha.svg" alt="Logo Helha" />
+				</div>
+				<h1>Révision</h1>
+			</div>
+			
+			<!-------------------- BARRE DE NAVIGATION ---------------------->
+			<nav>
+				<ul>
+					<li><a href="index.html">ACCUEIL</a></li>
+					<li><a href="electrotechnique-1.html">ÉLECTROTECHNIQUE</a></li>
+					<li><a href="langage-c.html">LANGAGE C</a></li>
+					<li><a href="logique-binaire.html">LOGIQUE BINAIRE</a></li>					
+					<li><a href="maths.html">MATHS</a></li>
+					<li><a href="reseaux-1.html">RÉSEAUX</a></li>
+					<li><a href="autres.html">AUTRES</a></li>
+				</ul>
+			</nav>
+			<!--------------- FIN DE LA BARRE DE NAVIGATION ----------------->
+		
+			<div id="stuffing"></div>
+		
+		</header>
+		
+			<aside id="side-nav">
+				<h1>Langage C</h1>
+				<ul>
+					<li><a href="#la-base-du-langage-c">1. La base du langage C</a></li>
+					<li><a href="#data-types">2. Types de données</a></li>
+					<li><a href="#format-specifiers">3. Spécificateurs de format</a></li>
+					<li><a href="#opérateurs">4. Opérateurs</a></li>
+					<li><a href="#boucles">5. Boucles</a></li>
+					<li><a href="#conditions">6. Instructions conditionnelles</a></li>
+					<li><a href="#tableaux">7. Les tableaux</a></li>
+					<li><a href="#aléatoire">8. Nombres aléatoires</a></li>
+					<li><a href="#les-fonctions">9. Fonctions</a></li>
+					<li><a href="#outils-c">A. Outils en ligne</a></li>
+				</ul>
+			</aside>
+
+
+		<div id="maincontent">
+
+			<h2>Contenu</h2>
+			<p>Informations tirées du cours de M. Hanotiaux, et des sites geeksforgeeks.org et codeforwin.org.</p>
+			
+			<h3>Évaluations</h3>
+			<p>Pour le cours de Programmation C, 5&nbsp;% des points sont joués en novembre, 15&nbsp;% en janvier, 20&nbsp;% sont joués avec de l'évaluation continue et un travail au Q2 et
+			enfin, l'examen final de juin comptera pour 60&nbsp;% des points.</p>			
+
+			<h3>Examen de janvier (2020)</h3>
+			<p>L'examen a eu lieu en trois parties :</p>
+			<ul>
+				<li>1re partie&nbsp;: Une partie théorique SUR PAPIER, SANS ORDI, avec des questions ouvertes sur le cours (ex&nbsp;: Que peut-on utiliser comme caractère dans une variable ? Quel est le n° du 1er 
+				élément d'un tableau ?...) </li>
+				<li>2e partie&nbsp;: Partie exercice sur ordi, avec de petits exercices similaires en difficulté à ceux du cours (ex&nbsp;: Quelle est l'erreur dans ce programme ? Créez un tableau et 
+				stocker des éléments dedans.&nbsp;...).</li>
+				<li>3e partie&nbsp;: Partie programmation avec un programme à faire similaire en difficulté à ceux fait en cours.</li>
+			</ul>
+
+			
+			<h2 id="la-base-du-langage-c">1. La base du langage C</h2>
+			<p>Le C est un langage procédural à usage généraliste créé en 1972. Successeur du langage B, son utilisation de départ est très liée au développement du système d'exploitation Unix.
+			Au fil des ans, le C a été utilisé pour un nombre grandissant d'applications. Il s'est étoffé avec de nombreuses bibliothèques et il reste en 2020 l'un des langages les plus utilisés 
+			au monde.</p>
+			
+			<h3>1.1. La compilation</h3>
+			<p>Lorsque l'on écrit du code en langage C, la machine ne sait pas le lire tel quel. Pour rappel, un ordinateur ne comprend que le langage binaire (ou langage machine&nbsp;; 101100111000110).
+			Il faut donc convertir le <span class="bold">fichier source</span>&nbsp;: c'est le rôle du <span class="bold">compilateur</span>. Le fichier obtenu après la compilation s'appelle
+			un <span class="bold">fichier objet</span>.</p>
+			<p>Les langages anciens comme le C ont des syntaxes très rigides. À la moindre erreur, le programme ne sera pas compilé est ne fera rien. Heureusement, les éditeurs modernes utilisés 
+			pour écrire du code sont généralement équipés de débugueurs, qui permettent d'indiquer à l'utilisateur s'il y a des erreurs dans le code (par contre, ces messages sont parfois un peu
+			énigmatiques !).</p>
+			
+			<h3>1.2. Syntaxe de base</h3>
+			<p>Tout programme codé en C commence à s'exécuter dans la fonction <span class="code-font">int main()</span>&nbsp;; il s'agit du programme principal. Toutes les instructions du code à
+			exécuter (le <span class="bold">bloc code</span>) sont contenues dans des accolades <span class="code-font">{&nbsp;}</span>. Le C est sensible à la casse, donc
+			<span class="code-font">INT MAIN()</span> n'est pas <span class="code-font">int main()</span>. Chaque instruction écrite en C se termine par un point-virgule <span class="code-font">;</span>.
+			La fin de l'exécution du <span class="code-font">main()</span> s'effectue par l'instruction <span class="code-font">return 0;</span>. En tout début de code (en
+			<span class="bold">entête</span> du fichier source), on inclut des bibliothèques qui permettent d'avoir accès à des fonctions avancées du code.</p>
+			<p>Voici un exemple de programme simple&nbsp;:</p>
+			
+			<p class="code-font">
+				#include&lt;stdio.h&gt; <br />
+				
+				<br />
+				int main() <br />
+				{<br />
+				&emsp;&emsp;printf("Hello World!");<br />
+				&emsp;&emsp;return 0;<br />
+				}
+			</p>
+			
+			<p>Il faut savoir que les compilateurs ignorent les espaces, les tabulations et les retours à la ligne dans la plupart des situations. 
+			Ainsi, le programme suivant fera exactement la même chose&nbsp;:</p>
+			
+			<p class="code-font">
+			#include&lt;stdio.h&gt; <br />
+			int main(){printf("Hello World!");return 0;}</p>
+			
+			<p>C'est évidemment beaucoup moins lisible pour un être humain ! C'est pour cela que les retours à la ligne et l'<span class="bold">indentation</span> (les espaces devant les lignes)
+			sont très importants.</p>
+			<p>La <span class="bold">lisibilité du code</span> est un élément fondamental de la programmation. Si le compilateur n'a pas de mal à digérer un code écrit à la truelle, il n'en sera pas
+			de même pour un	collègue informaticien qui se penchera sur votre code, ou même de vous-même quelques mois après avoir écrit ce code.</p>
+			
+			<h3>1.3. Les commentaires</h3>
+			<p>Pour augmenter la lisibilité du code, on peut y mettre des commentaires. Tout texte contenu entre les caractères <span class="code-font">/* */</span> ne sera pas compilé 
+			et ne figurera donc pas dans l'exécutable.</p>
+			
+			<h3>1.4. La notion de variable</h3>
+			<p>Une <span class="bold">variable</span> est une zone réservée dans la mémoire de la machine pour stocker des valeurs. En C, une variable doit être <span class="bold">déclarée</span>
+			avant d'être utilisée.</p>
+			<p>La déclaration de la variable
+			indique son nom au compilateur et le type de données que l'on pourra y stocker. On peut déclarer plusieurs variables de même type en les séparant par une virgule. Les noms de variables
+			peuvent contenir des lettre minuscules, majuscules, des _ et des chiffres, <span class="bold">mais</span> elles ne peuvent pas commencer par un chiffre ni contenir de lettre accentuées.
+			Par convention, on privilégie les lettres minuscules pour les variables et les majuscules pour les <span class="bold">constantes</span>. Exemples&nbsp;:</p>
+			<p class="code-font">
+			<span class="bold">int</span> nbre, chiffre, numero;<br />
+			<span class="bold">char</span> lttr;<br />
+			<span class="bold">float</span> nbre_virgule;<br />
+			<span class="bold">const float</span> PI = 3.1415;<br />
+			<span class="bold">double</span> plein_de_000_apres_virgule;</p>
+			
+			<h3>1.5. La notion de fonction</h3>
+			<p>Une fonction est une instruction spéciale qui permet de réaliser une série d'instructions pré-établies. On peut créer des fonctions soi-même pour un programme, mais il en existe des
+			milliers qui ont déjà été créées. Elles sont contenues dans les <span class="bold">bibliothèques</span> que l'on inclut en début de code avec <span class="code-font">#include</span>.
+			Par exemple, la fonction <span class="code-font">printf()</span> (que l'on trouve dans <span class="code-font">&lt;stdio.h&gt;</span>) permet d'afficher des choses à l'écran. La fonction <span class="code-font">getch()</span>
+			(que l'on trouve dans <span class="code-font">&lt;myconio.h&gt;</span>) permet d'attendre que l'utilisateur appuie sur une touche.</p>
+			
+			<h3>1.6. Faire du C chez soi</h3>
+			<p>Dans la cadre du cours de M. Hanotiaux, nous utilisons le programme <a href="https://sourceforge.net/projects/codeblocks/">Codeblocks</a> avec le compilateur MinGW.</p>
+			
+			<h2 id="data-types">2. Les données</h2>
+			<p>Pour travailler avec des données, il faut que la machine les stocke. Pour rappel, un ordinateur ne comprend que le binaire,
+			donc il va mémoriser ces données avec des 0 et des 1.</p>
+			
+			<h3>2.1. Types de données</h3>
+			<p>Chaque donnée stockée prend une certaine place dans la mémoire (en octet/byte&nbsp;; voir colonne "Taille")
+			en fonction du type de donnée en question. Le tableau suivant indique les types de données qui existent en C&nbsp;:</p>
+						
+			<table class="bigcellwidth">
+				<caption class="bigcaption">Types de données (Data types)</caption>
+				<thead>
+					<tr>
+						<th class="bigcellwidth bigappearance">Data type</th>
+						<th class="bigcellwidth bigappearance">Taille</th>
+						<th class="bigcellwidth bigappearance">Intervalle</th>
+						<th class="bigcellwidth bigappearance">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="bigcellwidth bigappearance" colspan="4"><span class="bold larger aligned-left">Character type</span></td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">char</td>
+						<td class="bigcellwidth bigappearance" rowspan="2">1 byte</td>
+						<td class="bigcellwidth bigappearance" rowspan="2">-128 à 127</td>
+						<td class="bigcellwidth bigappearance" rowspan="3">Un caractère</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">signed char</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">unsigned char</td>
+						<td class="bigcellwidth bigappearance">1 byte</td>
+						<td class="bigcellwidth bigappearance">0 à 255</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance" colspan="4"><span class="bold larger aligned-left">Interger type</span></td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">short</td>
+						<td class="bigcellwidth bigappearance" rowspan="3">2 bytes</td>
+						<td class="bigcellwidth bigappearance" rowspan="3">-32&nbsp;767 à 32&nbsp;767</td>
+						<td class="bigcellwidth bigappearance" rowspan="3">Nombre entier court signé de min. 2 bytes</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">signed short</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">signed short int</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">unsigned short</td>
+						<td class="bigcellwidth bigappearance" rowspan="2">2 bytes</td>
+						<td class="bigcellwidth bigappearance" rowspan="2">0 à 65&nbsp;535</td>
+						<td class="bigcellwidth bigappearance" rowspan="2">Nombre entier court non signé de min. 2 bytes</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">unsigned short int</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">int</td>
+						<td class="bigcellwidth bigappearance" rowspan="2">2 à 4 bytes</td>
+						<td class="bigcellwidth bigappearance" rowspan="2">-32&nbsp;768 à 32&nbsp;767 <br />ou -2&nbsp;147&nbsp;483&nbsp;648 à 2&nbsp;147&nbsp;483&nbsp;647</td>
+						<td class="bigcellwidth bigappearance" rowspan="2">Nombre entier positif ou négatif</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">signed int</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">unsigned int</td>
+						<td class="bigcellwidth bigappearance">2 à 4 bytes</td>
+						<td class="bigcellwidth bigappearance">0 à 65&nbsp;535 ou 0 à 4&nbsp;294&nbsp;967&nbsp;295</td>
+						<td class="bigcellwidth bigappearance">Nombre entier positif</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">long</td>
+						<td class="bigcellwidth bigappearance" rowspan="3">4 bytes</td>
+						<td class="bigcellwidth bigappearance" rowspan="3">-2&nbsp;147&nbsp;483&nbsp;648 à 2&nbsp;147&nbsp;483&nbsp;647</td>
+						<td class="bigcellwidth bigappearance" rowspan="3">Nombre entier long de min 4 bytes</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">signed long</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">signed long int</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">unsigned long</td>
+						<td class="bigcellwidth bigappearance" rowspan="2">4 bytes</td>
+						<td class="bigcellwidth bigappearance" rowspan="2">0 à 4&nbsp;294&nbsp;967&nbsp;295</td>
+						<td class="bigcellwidth bigappearance" rowspan="2">Nombre entier long positif de min 4 bytes</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">unsigned long int</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">long long</td>
+						<td class="bigcellwidth bigappearance" rowspan="4">8 bytes</td>
+						<td class="bigcellwidth bigappearance" rowspan="4">-9&nbsp;223&nbsp;372&nbsp;036&nbsp;854&nbsp;775&nbsp;808 <br />à 9&nbsp;223&nbsp;372&nbsp;036&nbsp;854&nbsp;775&nbsp;807</td>
+						<td class="bigcellwidth bigappearance" rowspan="4">Entier avec une taille double à celle d'un long</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">long long int</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">signed long long</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">signed long long int</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">unsigned long long</td>
+						<td class="bigcellwidth bigappearance" rowspan="2">8 bytes</td>
+						<td class="bigcellwidth bigappearance" rowspan="2">0 à 18&nbsp;446&nbsp;744&nbsp;073&nbsp;709&nbsp;551&nbsp;615</td>
+						<td class="bigcellwidth bigappearance" rowspan="2">Entier positif avec une taille double<br />à celle d'un long</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">unsigned long long int</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance" colspan="4"><span class="bold larger aligned-left">Floating point type</span></td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">float</td>
+						<td class="bigcellwidth bigappearance">4 bytes</td>
+						<td class="bigcellwidth bigappearance">1,2E-38 à 3,4E+38</td>
+						<td class="bigcellwidth bigappearance">Nombre à virgule à précision simple</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">double</td>
+						<td class="bigcellwidth bigappearance">8 bytes</td>
+						<td class="bigcellwidth bigappearance">2,3E-308 à 1,7E+308</td>
+						<td class="bigcellwidth bigappearance">Nombre à virgule à précision double</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">long double</td>
+						<td class="bigcellwidth bigappearance">12 bytes</td>
+						<td class="bigcellwidth bigappearance">3,4E-4932 à 1,1E+4932</td>
+						<td class="bigcellwidth bigappearance">Long nombre à virgule à précision double</td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<p>Il est important de déclarer le type adapté à ce que l'on veut stocker. Si on indique à la machine que l'on veut stocker un nombre énorme avec <span class="code-font">long double</span>,
+			mais qu'on n'y met que l'âge d'un individu, on utilise beaucoup trop de mémoire pour cette variable ; le type idéal serait donc <span class="code-font">int</span> au maximum.</p>
+			<p>Avec la capacité des disques durs et des processeurs modernes, une différence de 8 octets peut sembler ridicule, mais on ne travaille pas toujours avec des appareils d'une
+			incroyable puissance. De plus, même pour des machines puissantes, s'il y a des milliers de variables déclarées, optimiser chacun d'entre elles permet de faire une différence
+			non négligeable.</p>
+
+			<h4>2.1.1. Conversion de type automatique</h4>
+			<p>Lorsqu'on fait une opération entre deux types de données différentes, il y a un conflit. Techniquement, on ne peut pas additionner un <span class="code-font">short</span> (2 octets)
+			et un <span class="code-font">float</span> (4 octets), car on ne peut faire des opérations qu'entre types de même taille. Heureusement, le compilateur convertit automatiquement les données vers 
+			le type le plus riche. Donc, elle convertira le <span class="code-font">short</span> en <span class="code-font">float</span> pour faire cette addition. 
+			C'est ce qu'on appelle une <span class="bold">conversion de type</span> (<span class="italic">type conversion</span>, en anglais) ou une coercition ascendante.</p>
+			<p>Lorsqu'on fait des calculs entre types de données qui font moins de 4 octets, la machine les convertit aussi automatiquement en <span class="code-font">int</span>. Autrement dit, 
+			si l'on veut additionner un <span class="code-font">short</span> et un <span class="code-font">char</span>, ils seront automatiquement convertis en <span class="code-font">int</span> 
+			pour que l'opération soit faite avec des données de 4 octets. Cela signifie donc qu'il est inutile de déclarer des variables <span class="code-font">short</span> pour faire des calculs
+			entre petits nombres, car de toute façon, ces données seront converties sur 4 octets. On appelle ça la promotion en un entier (<span class="italic">integer promotion</span>, en anglais).</p>
+			<p>Lorsqu'on utilise des nombres entiers ou réels (4 25 9.65 -0.6 ...) dans des opérations, ils ont un type de données, même s'ils ne sont pas des variables. Bien qu'ils ne soient
+			pas stockés dans la mémoire, ils sont tous de même
+			utilisés et ils ont nécessairement aussi un type de données (le temps de l'opération). Les nombres entiers sont toujours des <span class="code-font">int</span> et les nombres à virgules 
+			sont des <span class="code-font">double</span>.</p>
+			
+			<h4>2.1.2. Forcer un type de données</h4>
+			<p>On peut forcer un type précis de donnée pour obtenir des résultats qui nous arrangent mieux. L'intérêt principal est de ne pas perdre en précision quand on traite avec des nombres
+			à virgules.</p>
+			<p>En effet, si l'on fait l'opération <span class="code-font">y = x/8</span> où <span class="code-font">x</span> est un <span class="code-font">int</span> et où <span class="code-font">y</span>
+			est un <span class="code-font">float</span>, on aura malheureusement toujours un nombre entier stocké dans <span class="code-font">y</span>. Comme on l'a vu ci-dessus, les nombres 
+			utilisés tels quels dans un fichier source seront traîtés par le compilateur comme des <span class="code-font">int</span>. Or, si <span class="code-font">x</span> est un entier et que 
+			8 est un entier, on ne peut avoir qu'un entier comme réponse (on perd donc tout ce qui est éventuellement derrière la virgule).</p>
+			<p>Pour pallier ce problème, on peut forcer l'opération à se faire avec des <span class="code-font">float</span> en écrivant ceci&nbsp;:<br />
+			<span class="code-font">y = (float)x/8</span><br />
+			En promulgant <span class="code-font">x</span> en <span class="code-font">float</span>, 8 devient aussi automatiquement un <span class="code-font">float</span> pour l'opération. On
+			obtient bien un nombre à virgule comme réponse, et cette réponse est stockée dans <span class="code-font">y</span> comme on le souhaitait.</p>
+			<p>L'inverse fonctionne également&nbsp;: on peut forcer des opérations entre <span class="code-font">float</span> à se faire en <span class="code-font">int</span> pour laisser tomber les 
+			virgules, mais le plus simples reste en réalité de stocker la réponse de l'opération dans un <span class="code-font">int</span>. Les virgules sont également perdues et on s'est
+			épargné une indication superflue.</p>
+			
+			
+			<h3>2.2. Déclaration et initialisation de variables</h3>
+			<p>Quand on déclare une variable, on réserve une place dans la mémoire de l'ordinateur. On utilise le symbole <span class="code-font">=</span> pour initialiser une variable 
+			(lui donner une valeur initiale) ; on peut changer la valeur d'une variable au fil de l'exécution du programme (ça ne s'appelle pas une "variable" par hasard). </p>
+			
+			<h4>2.2.1. Les variables numériques</h4>
+			<p>Pour déclarer un nombre entier, on écrira&nbsp;:<br />
+			<span class="code-font"><span class="bold">int</span> nbre;</span></p>
+			
+			<p>Pour lui donner dès le départ la valeur 42, c'est-à-dire l'<span class="bold">initialiser</span>, on peut écrire&nbsp;:<br />
+			<span class="code-font"><span class="bold">int</span> nbre; <br />
+			nbre = 42;</span></p>
+			
+			<p>Ou bien on met tout sur une seule ligne&nbsp;:<br />
+			<span class="code-font"><span class="bold">int</span> nbre = 42;</span></p>
+			
+			<p>En faisant comme ça, on peut déclarer et initialiser plusieurs variables de même type en les séparant par des virgules&nbsp;: <br />
+			<span class="code-font"><span class="bold">int</span> nbre = 42, heure = 12, minute = 32, seconde = 55;</span></p>
+			
+			<p>Pour finir, il faut savoir que les nombres "à virgule" doivent être écrit avec un point, et non pas une virgule, puisque celle-ci sert à séparer les variables entre elles. 
+			On écrit donc&nbsp;: <br />
+			<span class="code-font"><span class="bold">float</span> comme_les_ricains = 42.4242;</span></p>
+			
+			<h4>2.2.2. Les variables caractères</h4>
+			<p>Pour déclarer un caractère (une lettre), on procède de la même façon, mais il faut utiliser des guillemets simples&nbsp;:<br />
+			<span class="code-font"><span class="bold">char</span> lettre = 'B';</span></p>
+			<p>On ne peut stocker qu'une seule lettre par variable <span class="code-font">char</span> ! Pour stocker des mots complets, il faudra utiliser des tableaux (arrays), mais
+			on verra ça plus tard.</p>
+			
+			<h4>2.2.3. Les constantes</h4>
+			<p>Parfois, on doit stocker une donnée dont on sait que la valeur ne changera pas. Dans ce cas, on peut utiliser le mot-clé <span class="code-font">const</span> devant 
+			le type de donnée afin d'indiquer à la machine qu'elle a affaire à une constante.<br />
+			<span class="code-font"><span class="bold">const float</span> PI = 3.1415;</span></p>
+			
+			<p>Une autre méthode consiste à définir la valeur d'une constante dans l'entête du code ; c'est-à-dire au même endroit que les <span class="code-font">#include</span>. Pour cela,
+			on doit écrire&nbsp;:<br />
+			<span class="code-font"><span class="bold">#define</span> PI 3.1415</span></p>
+			<p>De cette façon, tous les <span class="code-font">PI</span> qui se trouvent dans le code seront remplacés à la compilation par des 3.1415. Cette méthode a donc l'avantage
+			d'économiser des variables, et donc de la mémoire pour la machine.</p>
+			
+			
+			
+			<h2 id="format-specifiers">3. Spécificateurs de format</h2>
+			<p>Aussi appelés spécificateurs de conversion, ces arguments sont utilisés aussi bien pour l'input que pour l'output. Ils permettent d'indiquer au compilateur le type
+			de donnée auquel il a affaire. Voici une liste de spécificateurs&nbsp;:</p>
+			<table class="bigcellwidth">
+				<caption class="bigcaption">Spécificateurs de format <br />(Format specifiers)</caption>
+				<thead>
+					<tr>
+						<th class="bigcellwidth bigappearance">Format specifier</th>
+						<th class="bigcellwidth bigappearance">Description</th>
+						<th class="bigcellwidth bigappearance">Supported data types</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="bigcellwidth bigappearance" rowspan="2">%c</td>
+						<td class="bigcellwidth bigappearance" rowspan="2">caractère</td>
+						<td class="bigcellwidth bigappearance">char</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">unsigned char</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance" rowspan="4">%d</td>
+						<td class="bigcellwidth bigappearance" rowspan="4">entier signé</td>
+						<td class="bigcellwidth bigappearance">short</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">unsigned short</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">int</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">long</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance" rowspan="2">%e or %E</td>
+						<td class="bigcellwidth bigappearance" rowspan="2">notation scientifique d'un float</td>
+						<td class="bigcellwidth bigappearance">float</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">double</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">%f</td>
+						<td class="bigcellwidth bigappearance">nombre à virgule</td>
+						<td class="bigcellwidth bigappearance">float</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance" rowspan="2">%g or %G</td>
+						<td class="bigcellwidth bigappearance" rowspan="2">à l'output, n'imprime pas<br />les 0 non pertinents</td>
+						<td class="bigcellwidth bigappearance">float</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">double</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">%hi</td>
+						<td class="bigcellwidth bigappearance">entier signé (short)</td>
+						<td class="bigcellwidth bigappearance">short</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">%hu</td>
+						<td class="bigcellwidth bigappearance">entier non signé (short)</td>
+						<td class="bigcellwidth bigappearance">unsigned short</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance" rowspan="4">%i</td>
+						<td class="bigcellwidth bigappearance" rowspan="4">entier signé <br />(variante de %d)</td>
+						<td class="bigcellwidth bigappearance">short</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">unsigned short</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">int</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">long</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">%l or %ld or %li</td>
+						<td class="bigcellwidth bigappearance">entier signé</td>
+						<td class="bigcellwidth bigappearance">long</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">%lf</td>
+						<td class="bigcellwidth bigappearance">long nombre à virgule</td>
+						<td class="bigcellwidth bigappearance">double</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">%Lf</td>
+						<td class="bigcellwidth bigappearance">très long nombre à virgule</td>
+						<td class="bigcellwidth bigappearance">long double</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance" rowspan="2">%lu</td>
+						<td class="bigcellwidth bigappearance" rowspan="2">entier non signé</td>
+						<td class="bigcellwidth bigappearance">unsigned int</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">unsigned long</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">%lli, %lld</td>
+						<td class="bigcellwidth bigappearance">entier long signé</td>
+						<td class="bigcellwidth bigappearance">long long</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">%llu</td>
+						<td class="bigcellwidth bigappearance">entier long non signé</td>
+						<td class="bigcellwidth bigappearance">unsigned long long</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance" rowspan="5">%o</td>
+						<td class="bigcellwidth bigappearance" rowspan="5">représentation en octal <br />d'un entier non signé</td>
+						<td class="bigcellwidth bigappearance">short</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">unsigned short</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">int</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">unsigned int</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">long</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">%p</td>
+						<td class="bigcellwidth bigappearance">Address of pointer to void void *</td>
+						<td class="bigcellwidth bigappearance">void *</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">%s</td>
+						<td class="bigcellwidth bigappearance">mot (string)</td>
+						<td class="bigcellwidth bigappearance">char *</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance" rowspan="2">%u</td>
+						<td class="bigcellwidth bigappearance" rowspan="2">entier non signé</td>
+						<td class="bigcellwidth bigappearance">unsigned int</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">unsigned long</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance" rowspan="5">%x or %X</td>
+						<td class="bigcellwidth bigappearance" rowspan="5">représentation en hexadécimal <br />d'un entier non signé</td>
+						<td class="bigcellwidth bigappearance">short</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">unsigned short</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">int</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">unsigned int</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">long</td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">%n</td>
+						<td class="bigcellwidth bigappearance">n'imprime rien</td>
+						<td class="bigcellwidth bigappearance"> </td>
+					</tr>
+					<tr>
+						<td class="bigcellwidth bigappearance">%%</td>
+						<td class="bigcellwidth bigappearance">imprime le caractère %</td>
+						<td class="bigcellwidth bigappearance"> </td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<h3>3.1. Spécificateurs dans les fonctions</h3>
+			<p>Les spécificateurs sont très utilisés au sein des fonctions.</p>
+			<p>Penchons-nous sur la bibliothèque la plus essentielle en C&nbsp;: <span class="code-font">&lt;stdio.h&gt;</span> 
+			(pour <span class="bold">st</span>andar<span class="bold">d</span> <span class="bold">i</span>nput <span class="bold">o</span>utput ; càd entrées-sorties standard). 
+			<br />Elle contient notamment les fonctions suivantes&nbsp;:</p>
+			
+			<h4>3.1.1. printf()</h4>
+			<p>Permet d'afficher du texte à l'écran. Le texte à indiquer doit être placé entre les parenthèses de la fonction et entre doubles guillemets.<br />
+			<span class="code-font">printf("Hello World!");</span></p>
+			<p>On peut inclure des retours à la lignes, des tabulations et même des " ou \ au sein du texte. Pour cela, il faut utiliser le <span class="bold">caractère d'échappement</span>
+			<span class="code-font">\</span> suivi d'une lettre ou d'un caractère.
+			Ainsi, <span class="code-font">\n</span> fait un retour à la ligne, <span class="code-font">\t</span> fait une tabulation, 
+			<span class="code-font">\\</span> affiche un \ et <span class="code-font">\"</span> affiche un ".<br />
+			INPUT&nbsp;: <span class="code-font">printf("\"Hello\nWorld\"");</span><br />
+			OUTPUT&nbsp;: <span class="code-font">"Hello</span><br />&emsp;&emsp;&emsp;&emsp;&ensp;<span class="code-font">World"</span></p>
+			
+			<h5>Afficher des variables</h5>
+			<p>Il est possible d'inclure des valeurs de variables avec <span class="code-font">printf</span>. Pour cela, on utilise les spécificateurs de format entre les guillemets, à l'endroit
+			où l'on souhaite voir la valeur dans l'output. Après les guillemets, on met une
+			première virgule et on fait la liste des variables que l'on veut afficher. Elles s'afficheront dans l'ordre&nbsp;: le premier spécificateur correspond à la première variable, etc.
+			Par exemple, si on a un <span class="code-font"><span class="bold">int</span> age</span> et un <span class="code-font"><span class="bold">float</span> prix</span>&nbsp;:<br />
+			<span class="code-font">printf("Vous avez %d ans, donc le prix du ticket est de %f euros", age, prix);</span></p>
+			<p>Si on n'utilise pas le bon spécificateur, l'output risque d'être totalement à côté de la plaque !</p>
+			
+			<h5>Afficher des caractères spéciaux</h5>
+			<p>En C, on ne peut pas facilement mettre des caractères spéciaux dans l'input. Et même un "é" ou un "à" est un caractère spécial ! Pour afficher des lettres accentuées
+			il va aussi falloiir utiliser le caractère d'échappement <span class="code-font">\</span>. Ce qui doit suivre est un nombre en octal qui correspond au caractère voulu. Pour savoir quel nombre
+			correspond au caractère qu'on désire, on doit se référer à une <a href="files/ascii_1_6.pdf" target="_blank">table ASCII</a>. Par exemple, on voit que "é" correspond à 202 en octal et que "à" 
+			correspond à 205. Du coup&nbsp;: <span class="code-font">printf("Je vais \205 l'\202cole.");</span> (input) donnera <span class="code-font">Je vais à l'école.</span> (output).
+			On peut aussi utiliser
+			la valeur hexadécimale du caractère, auquel cas il faut utiliser le caractère d'échappement <span class="code-font">\</span> suivi d'un <span class="code-font">x</span> et de la
+			valeur hexadécimale. Par exemple <span class="code-font">\x8a</span> donnera un <span class="code-font">è</span>.</p>
+			
+			<h4>3.1.2. puts()</h4>
+			<p>Cette fonction permet également d'afficher du texte à l'écran, mais à l'inverse de <span class="code-font">printf()</span>, on ne peut pas y inclure des variables.
+			Elle ajoute aussi automatiquement un retour à la ligne après le texte.</p>
+			
+			<h4>3.1.3. scanf()</h4>
+			<p>Permet de lire un input de la part de l'utilisateur. Pour que le compilateur sache de quel type de donnée il va s'agir, on utilise des spécificateurs de format
+			que l'on place entre guillemets. Après les guillemets, on indique les <span class="bold">adresses</span> de stockage pour ces valeurs qui sont fournies. Lorsque l'on déclare une variable,
+			de la mémoire lui est allouée et cette variable obtient une adresse. On va chercher l'adresse d'une variable en utilisant le caractère <span class="code-font">&amp;</span> 
+			devant le nom de la variable. Ainsi <span class="code-font">&amp;age</span> signifie "l'adresse de la variable age".
+			Par exemple&nbsp;:<br />
+			<span class="code-font">scanf("%d%f", &amp;age, &amp;prix);</span></p>
+			<p>Dans ce cas-ci, l'utilisateur va devoir entrer deux nombres (qu'il séparera par des espaces ou des retours à la ligne). Le premier sera attribué à la variable <span class="code-font">age</span>
+			et le second à la variable <span class="code-font">prix</span>.</p>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<h2 id="opérateurs">4. Opérateurs</h2>
+			<p></p>
+			
+			<h3>4.1. Opérateur d'affectation</h3>
+			<p>C'est le symbole <span class="code-font">=</span>. Il permet de donner, d'affecter, une valeur à une variable. <br />
+			<span class="bold">Attention</span>, il ne signifie pas <span class="bold">est égal à</span> !</p>
+			
+			<h3>4.2. Opérateurs arithmétiques</h3>
+			<p>Sans surprise, on trouve les symboles <span class="code-font">+</span>, <span class="code-font">-</span>, <span class="code-font">*</span> et <span class="code-font">/</span>
+			pour, respectivement, les additions, soustractions, multiplications et divisions. On trouve aussi l'opérateur de division modulo, qui est représenté par le symbole
+			<span class="code-font">%</span>.</p>
+			<p>On notera que le langage C suit les priorités d'opérations habituelles. Les opérations <span class="code-font">*</span>, <span class="code-font">/</span> et <span class="code-font">%</span>
+			passent avant <span class="code-font">+</span> et <span class="code-font">-</span>. L'ordinateur résout les calculs de <span class="bold">gauche à droite</span> en respectant cette hiérarchie.
+			Si on regarde cet exemple&nbsp;: <br />
+			<span class="code-font">5 + 9 % 4 * 3 - 2</span> sera égal à 6. L'ordinateur a d'abord effectué <span class="code-font">9 % 4</span>, puis <span class="code-font">1 * 3</span>,
+			puis <span class="code-font">5 + 3 - 2</span>.</p>
+			
+			<p>On peut utiliser des parenthèses pour changer ces priorités.
+			Les seules parenthèses utilisables sont <span class="code-font">( )</span>, on n'utilise pas d'accolades ou de crochets pour améliorer la lisibilité, car ces symboles servent 
+			à d'autres choses.</p>
+			
+			<h3>4.3. Opérateurs d'affectation composés</h3>
+			<p>On peut raccourcir une expression du type <span class="code-font">x&nbsp;=&nbsp;x&nbsp;+&nbsp;y</span> en écrivant <span class="code-font">x&nbsp;+=&nbsp;y</span>. <br />
+			On peut utiliser cette technique avec tous les opérateurs de base. Ainsi&nbsp;: <span class="code-font">a&nbsp;-=&nbsp;b</span>, <span class="code-font">a&nbsp;*=&nbsp;b</span>,
+			<span class="code-font">a&nbsp;/=&nbsp;b</span>, <span class="code-font">a&nbsp;%=&nbsp;b</span>.
+			
+			<h3>4.4. Opérateurs mathématiques unaires</h3>
+			<p>Pour réduire l'expression <span class="code-font">x=x+1</span>, on peut écrire <span class="code-font">x++</span>. De la même façon, <span class="code-font">x=x-1</span>
+			peut être réduit à <span class="code-font">x--</span>.</p>
+			<p>Ces opérateurs <span class="code-font">++</span> et <span class="code-font">--</span> peuvent être utilisés après ou avant la variable. 
+			Leur position va modifier considérablement certains résultats. <br />
+			Si l'on écrit :</p>
+			<p><span class="code-font">int y, x = 3;</span> <br />
+			<span class="code-font">y = x++;</span> <br />
+			<span class="code-font">printf("%d %d", x, y);</span></p>
+			<p>On incrémente la variable <span class="code-font">x</span> <span class="bold">après</span> l'avoir stockée dans le <span class="code-font">y</span>. 
+			Autrement dit, le <span class="code-font">x</span> affiché par le <span class="code-font">printf()</span> sera de 4, et le <span class="code-font">y</span> sera 3.</p>
+			<p>En revanche, si on écrit <span class="code-font">++x</span>, la variable est incrémentée avant d'être utilisée.</p>
+			
+			<h3>4.5. Opérateurs logiques</h3>
+			<p>Aussi appelés <span class="bold">opérateurs booléens</span>, ils permettent de comparer des variables.</p>
+			<table class="smallcellwidth">
+				<thead>
+				<tr>
+					<th class="smallappearance smallcellwidth">Opérateurs</th>
+					<th class="smallappearance smallcellwidth">Symboles</th>
+					<th class="smallappearance smallcellwidth">Exemples</th>
+				</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="smallappearance smallcellwidth">Égal</td>
+						<td class="smallappearance smallcellwidth">==</td>
+						<td class="smallappearance smallcellwidth">x == y</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">Supérieur</td>
+						<td class="smallappearance smallcellwidth">&gt;</td>
+						<td class="smallappearance smallcellwidth">x &gt; y</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">Inférieur</td>
+						<td class="smallappearance smallcellwidth">&lt;</td>
+						<td class="smallappearance smallcellwidth">x &lt; y</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">Supérieur ou égal</td>
+						<td class="smallappearance smallcellwidth">&gt;=</td>
+						<td class="smallappearance smallcellwidth">x &gt;= y</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">Inférieur ou égal</td>
+						<td class="smallappearance smallcellwidth">&lt;=</td>
+						<td class="smallappearance smallcellwidth">x &lt;= y</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">Différent</td>
+						<td class="smallappearance smallcellwidth">!=</td>
+						<td class="smallappearance smallcellwidth">x != y</td>
+					</tr>
+				</tbody>
+			</table>
+			<p>Il existe des priorités d'opération avec ces opérateurs booléens. On effectue d'abord les opérations <span class="code-font">&gt;</span>, <span class="code-font">&lt;</span>, 
+			<span class="code-font">&gt;=</span>, <span class="code-font">&lt;=</span>, puis on effectue les <span class="code-font">==</span> et <span class="code-font">!=</span>. <br />
+			Si on ajoute des opérateurs arithmétiques, les opérations arithmétiques seront toutes effectuées avant les opérations logiques. Comme d'habitude, cette hiérarchie peut être modifiée
+			en utilisant des parenthèses.</p>
+			<p>Le <span class="bold">résultat d'une opération logique</span> est toujours 0 (pour "faux") ou 1 (pour "vrai").</p>
+			
+			<p>On peut effectuer des opérations combinées avec les opérateurs OU (OR) et ET (AND) :</p>
+			
+			<table class="smallcellwidth">
+				<thead>
+					<tr>
+						<th class="smallappearance smallcellwidth">Opérateurs</th>
+						<th class="smallappearance smallcellwidth">Symb.</th>
+						<th class="smallappearance smallcellwidth">Exemples</th>
+						<th class="smallappearance smallcellwidth">Valeurs</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="smallappearance smallcellwidth">&amp;&amp;</td>
+						<td class="smallappearance smallcellwidth">AND</td>
+						<td class="smallappearance smallcellwidth">x &amp;&amp; y</td>
+						<td class="smallappearance smallcellwidth">(1) si x et y vrais, sinon (0)</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">||</td>
+						<td class="smallappearance smallcellwidth">OR</td>
+						<td class="smallappearance smallcellwidth">x || y</td>
+						<td class="smallappearance smallcellwidth">(1) si x vrai ou y vrai, <br /> (0) si les deux sont faux</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">!</td>
+						<td class="smallappearance smallcellwidth">NON</td>
+						<td class="smallappearance smallcellwidth">!x</td>
+						<td class="smallappearance smallcellwidth">(0) si x vrai, (1) si x faux</td>
+					</tr>
+				</tbody>
+			</table>
+			<p>La hiérarchie des opérateurs logiques en C respecte celle qu'on a déjà vu (voir le cours 
+			de <a href="logique-binaire.html#priorités-des-opérateurs-logiques">Logique binaire</a>). Pour rappel, l'opérateur <span class="code-font">!</span> (NON) est prioritaire sur le 
+			<span class="code-font">&amp;&amp;</span> (ET), qui est prioritaire sur <span class="code-font">||</span> (OU).</p>
+			
+			
+			<h4>4.5.1. La machine et les opérateurs logiques</h4>
+			<p>Pour gagner du temps, la machine n'effectuera pas toujours l'intégralité d'une opération logique. Regardons l'exemple suivant : </p>
+			<p class="code-font"> int n = 6, p = 3, q; <br />
+			q = n == 6 || p++ &lt; 4; <br />
+			printf("OUTPUT : n = %d, p = %d, q = %d", n,p,q);</p>
+			<p>Dans ce cas-ci, on commence par la gauche en regardant si <span class="code-font">n</span> est égal à 6. Puisque c'est le cas, la valeur de ce côté du <span class="code-font">||</span>
+			est 1. De ce fait, la machine sait que la valeur affectée à q sera forcément 1. En effet 1 OU 1 ou 1 OU 0 donneront tous les deux 1. La machine n'effectuera donc aucune opération
+			du côté droit du <span class="code-font">||</span>, ce qui aura pour effet de ne pas incrémenter <span class="code-font">p</span> dans l'exemple présent. On aura donc :  <br />
+			<span class="code-font"> OUTPUT : n = 6, p = 3, q = 1</span></p>
+			
+			<p>La même chose est vraie pour l'opérateur logique <span class="code-font">&amp;&amp;</span> (ET) :</p>
+			<p class="code-font"> int n = 5, p = 3, q; <br />
+			q = n == 6 &amp;&amp; p++ &lt; 4; <br />
+			printf("OUTPUT : n = %d, p = %d, q = %d", n,p,q);</p>
+			<p>Dans cet exemple, la partie de gauche de l'expression est égale à 0 (5 n'est pas égal à 6. Or, on sait que 0 ET 0 ou 0 ET 1 feront toujours 0. À nouveau, la machine n'effectuera donc pas 
+			les opérations qui se trouvent à la droite de l'opérateur logique.<br />
+			<span class="code-font">OUTPUT : n = 5, p = 3, q = 0</span></p>
+			
+			
+			<h4>4.5.2. Exemples de conditions composées</h4>
+			<p>On veut un nombre qui n'est ni compris entre 0 et 10, ni compris entre 20 et 30 : <br />
+			<span class="code-font">!(x &gt;= 0 &amp;&amp; x &lt;= 10) &amp;&amp; !(x &gt;= 20 &amp;&amp; x &lt;= 30)</span> <br />
+			Selon <a href="logique-binaire.html#théorème-de-de-morgan">la loi de De Morgan</a>, ça revient au même d'écrire : <br />
+			<span class="code-font">!(x &gt;= 0) || !(x &lt;= 10) &amp;&amp; !(x &gt;= 20) || !(x &lt;= 30)</span> <br />
+			On peut aussi remarquer que <span class="code-font">!(x &gt;= 0)</span> revient à dire <span class="code-font">x &lt; 0</span>. Du coup, on peut même écrire&nbsp;: <br />
+			<span class="code-font">x &lt; 0 || x &gt; 10 &amp;&amp; x &lt; 20 || x &gt; 30</span></p>
+			<p>Avec cet exemple, on aura donc appris que la négation (ou le complément) de <span class="code-font">&gt;=</span> est <span class="code-font">&lt;</span>
+			et que la négation de <span class="code-font">&lt;=</span> est <span class="code-font">&gt;</span>. 
+			Attention donc qu'<span class="rouge">il est faux</span> de simplement penser que 
+			<span class="code-font">&gt;</span> est la négation de <span class="code-font">&lt;</span>.</p>
+			
+			
+			
+			<h3 id="operations-bit-a-bit">4.6. Opérateurs de traitement bit à bit</h3>
+			<p>Avec ces opérateurs, on fait des <span class="bold">opérations avec des bits</span>. Il s'agit d'utiliser des nombres en binaire et de travailler avec chacun de leurs bits plutôt 
+			qu'avec le nombre en lui-même.</p>
+			<h4>4.6.1. Opérateurs bit à bit logiques</h4>
+			<p>Avec ces opérateurs, on compare chaque bit d'un nombre binaire avec ceux d'un autre nombre. Le bit n°1 du premier nombre sera comparé avec le bit n°1 du deuxième nombre,
+			et ainsi de suite pour chaque bit du nombre. Les trois opérations possibles sont ET (<span class="code-font">&amp;</span>), OU (<span class="code-font">|</span>) et OU EXCLUSIF / XOR 
+			(<span class="code-font">^</span>). <br />
+			Attention à ne pas confondre les opérateurs logiques bit à bit (<span class="code-font">&amp;</span>, <span class="code-font">|</span>) et les opérateurs logiques 
+			booléens (<span class="code-font">&amp;&amp;</span>, <span class="code-font">||</span>) !</p>
+			
+			<p>Exemple&nbsp;:</p>
+			<table>
+				<thead>
+					<tr>
+						<th>ET</th>
+						<th></th>
+						<th></th>
+						<th>OU</th>
+						<th></th>
+						<th></th>
+						<th>XOR</th>
+						<td></td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1010 1111</td>
+						<td></td>
+						<td></td>
+						<td>1010 1111</td>
+						<td></td>
+						<td></td>
+						<td>1010 1111</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td class="border-bottom">1000 1001</td>
+						<td>&</td>
+						<td>&ensp;</td>
+						<td class="border-bottom">1000 1001</td>
+						<td>|</td>
+						<td>&ensp;</td>
+						<td class="border-bottom">1000 1001</td>
+						<td>^</td>
+					</tr>
+					<tr>
+						<td>1000 1001</td>
+						<td></td>
+						<td></td>
+						<td>1010 1111</td>
+						<td></td>
+						<td></td>
+						<td>0010 0110</td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+				
+			<h4>4.6.2. L'opérateur bit à bit de complément</h4>
+			<p>L'opérateur <span class="code-font">~</span> permet d'obtenir le complément, ou l'inverse, de tous les bits du nombre binaire avec lequel on travail.</p>
+			
+			<p>Exemple&nbsp;:</p>
+			<table>
+				<thead>
+					<tr>
+						<th>COMP.</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="border-bottom">1010 1111</td>
+						<td>~</td>
+					</tr>
+					<tr>
+						<td>0101 0000</td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<h4>4.6.3. Les opérateurs de décalage</h4>
+			<p>Les opérateurs <span class="code-font">&lt;&lt;</span> et <span class="code-font">&gt;&gt;</span> permettent de décaler les bits d'un nombre binaire.
+			Ces opérations ont pour effet d'ajouter des 0 au début ou à la fin du nombre avec lequel on travaille.</p>
+			<p>Quand on se sert de ces opérateurs, le nombre indiqué à droite est le nombre de fois que le décalage sera réalisé. Le nombre avec lequel on travaille, 
+			ou la variable, est placé à gauche.</p>
+			
+			<h5>Exemples :</h5>
+			
+			<div class="flex">
+				<table>
+					<thead>
+						<tr>
+							<th>&lt;&lt;1</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="border-bottom">0000 1001 1011</td>
+							<td>&lt;&lt;</td>
+						</tr>
+						<tr>
+							<td>0001 0011 0110</td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<div>&emsp;&emsp;</div>
+				
+				<table>
+					<thead>
+						<tr>
+							<th>&gt;&gt;2</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="border-bottom">0000 1001 1011</td>
+							<td>&gt;&gt;</td>
+						</tr>
+						<tr>
+							<td>0000 0010 0110</td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<div>&emsp;&emsp;</div>
+				
+				<table>
+					<thead>
+						<tr>
+							<th>&lt;&lt;4</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="border-bottom">0000 1001 1011</td>
+							<td>&lt;&lt;</td>
+						</tr>
+						<tr>
+							<td>1001 1011 0000</td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			
+			
+			</div>
+			
+			<h3>4.7. Tableau hiérarchique récapitulatif</h3>
+			<p>Le tableau suivant reprend tous les opérateurs que nous avons vu jusqu'à présent. Lorsque plusieurs opérateurs sont utilisés, la priorité des opérations va du haut vers le bas
+			de ce tableau. Si plusieurs opérateurs de même niveau sont utilisés, l'opération est simplement réalisée de gauche à droite.</p>
+			
+			<table class="smallcellwidth">
+				<thead>
+					<tr>
+						<th class="smallappearance smallcellwidth">Niveau</th>
+						<th class="smallappearance smallcellwidth">Opérateurs</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="smallappearance smallcellwidth">1</td>
+						<td class="smallappearance smallcellwidth">( ) [ ] </td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">2</td>
+						<td class="smallappearance smallcellwidth">! ~ ++ --</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">3</td>
+						<td class="smallappearance smallcellwidth">* / %</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">4</td>
+						<td class="smallappearance smallcellwidth">+ -</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">5</td>
+						<td class="smallappearance smallcellwidth">&lt;&lt; &gt;&gt;</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">6</td>
+						<td class="smallappearance smallcellwidth">&lt; &lt;= &gt; &gt;=</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">7</td>
+						<td class="smallappearance smallcellwidth">== !=</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">8</td>
+						<td class="smallappearance smallcellwidth">&amp;</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">9</td>
+						<td class="smallappearance smallcellwidth">^</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">10</td>
+						<td class="smallappearance smallcellwidth">|</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">11</td>
+						<td class="smallappearance smallcellwidth">&amp;&amp;</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">12</td>
+						<td class="smallappearance smallcellwidth">||</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">13</td>
+						<td class="smallappearance smallcellwidth">? :</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">14</td>
+						<td class="smallappearance smallcellwidth">= += -= *= /= %=<br />&amp;= ^= |= &lt;&lt;= &gt;&gt;=</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">15</td>
+						<td class="smallappearance smallcellwidth">,</td>
+					</tr>
+				</tbody>
+			</table>
+			
+			
+			
+			
+			
+			
+			<h2 id="boucles">5. Boucles</h2>
+			<p>Les boucles (ou <span class="italic">loop</span> en anglais) sont des instructions très utiles en programmation. Elles permettent d'effectuer des opérations de nombreuses fois
+			tant qu'une condition n'est pas remplie. On va donc beaucoup s'en servir avec les opérateurs de comparaisons !</p>
+			
+			<h3>5.1. for</h3>
+			<p>On utilise cette boucle <span class="bold">lorsqu'on connaît précisément</span> le nombre de fois qu'on devra effectuer une certaine opération. <span class="italic">For</span>
+			signifie "pendant" en anglais (dans ce contexte-ci), même s'il est traduit par "pour" dans le jargon informatique francophone. La syntaxe est : </p>
+			<p class="code-font">for (initialisation ; condition ; incrémentation) <br />
+			{<br />
+			&emsp;&emsp;instructions;<br />
+			}</p>
+			<p>Exemple :</p>
+			<p class="code-font">for (i=0 ; i&lt;20 ; i++) <br />
+			{<br />
+			&emsp;&emsp;printf("%d", i);<br />
+			}</p>
+			<p>Tant que la condition est vraie, on effectue les instructions qui se trouvent dans les accolades. S'il n'y a qu'une seule instruction, on peut se passer des accolades.</p>
+			<p>Il est possible d'imbriquer des boucles <span class="code-font">for</span> les unes dans les autres.</p>
+			
+			
+			
+			<h3>5.2. while</h3>
+			<p>Cette boucle effectue une opération tant que la condition est vraie ; (<span class="italic">while</span> signifie "tant que" en anglais).</p>
+			<p class="code-font">while (condition) <br />
+			{<br />
+			&emsp;&emsp;instructions;<br />
+			}</p>
+			<p>Il faut veillez à ce que les instructions contiennent une modification à la condition, sinon la boucle va être effectuée à l'infini.</p>
+			<p class="code-font">int count = 1;<br />
+			while (count&lt;20) <br />
+			{<br />
+			&emsp;&emsp;printf("%d", i);<br />
+			&emsp;&emsp;count++;<br />
+			}</p>
+			
+			
+			<h3>5.3. do ... while</h3>
+			<p>La différence entre cette boucle et la précédente est que l'instruction est <span class="bold">au moins réalisée une fois</span>, car on commence avec l'action (le 
+			<span class="code-font">do</span>, qui veut dire <span class="italic">faire</span> en anglais), et on poursuit avec la vérification la condition. 
+			Donc même si la condition renvoie "FAUX", on aura eu une exécution des instructions.</p>
+			
+			<p class="code-font">int count = 1;<br />
+			do<br />
+			{<br />
+			&emsp;&emsp;printf("%d", i);<br />
+			&emsp;&emsp;count++;<br />
+			}<br />
+			while (count&lt;20); </p>
+			
+			
+			
+			
+			
+			<h2 id="conditions">6. Instructions conditionnelles</h2>
+			<p>Le langage C propose différentes instructions conditionnelles : l'instruction <span class="code-font">if</span> (parfois accompagnée de <span class="code-font">else</span>),
+			l'instruction <span class="code-font">switch</span> et l'opérateur ternaire <span class="code-font">?</span>.</p>
+			
+			<h4>À propos des comparaisons et des conditions</h4>
+			<p>Pour rappel, quand on obtient une réponse à une comparaison, on obtient en réalité en nombre : VRAI est égal à 1, et FAUX est égal à 0.</p>
+			<p>Lorsqu'on déclare une condition, on pose en général une question à laquelle on attend une réponse VRAI ou FAUX. Mais techniquement, les conditions n'ont pas besoin d'être des comparaisons.
+			Il peut très bien s'agit d'une variable, ou même d'un nombre entier (pas très intéressant a priori, mais le compilateur ne dire rien !). En réalité, un nombre différent de 0 sera considéré
+			comme VRAI lors de la vérification d'une condition.</p>
+			
+			
+			
+			
+			<h3>6.1. Instruction "if"</h3>
+			<p>L'instruction <span class="code-font">if</span> ("<span class="italic">if</span>" signifie "si" en anglais) permet d'effectuer un bloc de code uniquement si une condition donnée
+			est vraie. On utilise donc beaucoup les opérateurs de comparaison avec <span class="italic">if</span>.</p>
+			
+			<h4>6.1.1. if seul</h4>
+			<p>Dans cet exemple, la variable var2 sera incrémentée de 1 si var1 et var2 sont égaux au moment de la vérification de la condition. Sinon, il ne se passe rien.</p>
+			<p class="code-font">if (var1 == var2) <br />
+            &emsp;&emsp;var2++;</p>
+			<p>Les instructions à effectuer par un <span class="code-font">if</span> sont normalement à placer dans des accolades. Cependant, elles ne sont pas obligatoires s'il n'y a 
+			qu'une seule instruction.</p>
+			
+			<h4>6.1.2. Plusieurs if</h4>
+			<p>On peut mettre plusieurs <span class="code-font">if</span> en cascade pour que plusieurs conditions soient vérifiées.</p>
+			<p class="code-font">if (var1 &gt; var2)<br />
+			{<br />
+			&emsp;if (var1 &gt; var3)<br />
+            &emsp;&emsp;var2++;<br />
+			}</p>
+			<p>Dans cet exemple, la var2 ne sera incrémentée de 1 que si var1 est plus grand que var2 et que var1 est aussi plus grand que var3. Cela revient donc exactement au même d'écrire :
+			<span class="code-font">if (var1 &gt; var2 && var1 &gt; var3)</span>. On utilisera l'un ou l'autre en fonction de ce qui semble le plus lisible pour le code.</p>
+			
+			<h4>6.1.3. if ... else / else if</h4>
+			<p>L'instruction <span class="code-font">if</span> permet d'effectuer des instructions si la réponse à la condition est VRAI. Il est aussi possible de donner une instruction dans le cas
+			ou la réponse à la condition est FAUX avec la claise <span class="code-font">else</span> ("<span class="italic">else</span>" signifie "sinon" en anglais).</p>
+			<p class="code-font">if (var1 == var2) <br />
+            &emsp;&emsp;var2++;<br />
+			else <br />
+			&emsp;&emsp;var1++;</p>
+			<p>Dans cet exemple, la variable var2 sera incrémentée de 1 si var1 et var2 sont égaux au moment de l'évaluation de la condition. Sinon, var1 sera incrémenté de 1.</p>
+			<p>On peut aussi mettre un <span class="code-font">if</span> après une clause else. Une nouvelle condition est alors vérifiée jusqu'à arriver au else suivant. On peut mettre autant
+			de <span class="code-font">else if</span> qu'on veut !</p>
+			
+			<p class="code-font">if (var1 == var2) <br />
+            &emsp;&emsp;var2++;<br />
+			else if (var1 &lt; var2)<br />
+			&emsp;&emsp;var1++;<br />
+			else if (var1 &gt; var3)<br />
+			&emsp;&emsp;var2++;<br />
+			else<br />
+			&emsp;&emsp;var3++;</p>
+			
+			
+			
+			
+			<h3>6.2. L'instruction switch et l'instruction break</h3>
+			<p>Pour éviter de nombreux <span class="code-font">else if</span>, on peut utiliser l'instruction <span class="code-font">switch</span>. Elle ne fonctionne pas tout à fait de la même
+			manière, mais elle est beaucoup plus lisible quand il y a de nombreuses possibilités.</p>
+			<p class="code-font">
+				int num;<br />
+				scanf("%d", &amp;num);<br /><br />
+				switch (num) { <br />
+				&emsp;&emsp;case 1 : printf("Vous avez entré 1.");<br />
+				&emsp;&emsp;&emsp;&emsp; break;<br />
+				&emsp;&emsp;case 2 : printf("Vous avez entré 2.");<br />
+				&emsp;&emsp;&emsp;&emsp; break;<br />
+				&emsp;&emsp;case 3 : printf("Vous avez entré 3.");<br />
+				&emsp;&emsp;&emsp;&emsp; break;<br />
+				&emsp;&emsp;case 4 : printf("Vous avez entré 4.");<br />
+				&emsp;&emsp;&emsp;&emsp; break;<br />
+				&emsp;&emsp;case 5 : printf("Vous avez entré 5.");<br />
+				&emsp;&emsp;&emsp;&emsp; break;<br />
+				&emsp;&emsp;default : printf("Vous avez entré un autre nombre.");<br />
+				&emsp;&emsp;&emsp;&emsp; break;<br />
+				}
+			</p>
+			<p>Dans l'exemple ci-dessus, l'utilisateur va entrer un nombre et ce nombre sera comparé avec chaque <span class="code-font">case</span>. Si une correspondance est trouvée, l'instruction
+			qui suit <span class="code-font">:</span> est effectuée, <span class="bold">ainsi que toutes les suivantes à partir de là</span>. C'est pour cela qu'on trouve l'instruction 
+			<span class="code-font">break</span>, qui permet de mettre fin au <span class="code-font">switch</span> (on notera que <span class="code-font">break</span> peut aussi permettre de
+			mettre fin à une boucle).</p>
+			<p>Si aucune correspondance n'est trouvée, c'est le cas <span class="code-font">default</span> qui est réalisé. Le cas <span class="code-font">default</span> n'est pas obligatoire.
+			S'il est absent et qu'aucune correspondance n'est trouvée, l'instruction <span class="code-font">switch</span> ne fera simplement rien.</p>
+			
+			
+			<h3>6.3. L'opérateur ternaire</h3>
+			<p>Il existe un dernier moyen d'évaluer des conditions en langage C : l'opérateur <span class="code-font">?</span>. Il permet d'attribuer des valeurs en fonction de la réponse obtenue
+			dans la condition. La syntaxe pour l'utiliser est très basique&nbsp;:</p>
+			<p><span class="code-font">condition <span class="bold">?</span> valeur_si_vrai <span class="code-font">:</span> valeur_si_faux</span></p>
+			<p><span class="code-font">z = y == x ? 5 : 15</span></p>
+			<p>L'exemple ci-dessus signifie "<span class="code-font">y</span> est-il est-il égal à <span class="code-font">x</span> ? Si oui, alors la réponse est 5, sinon la réponse est 15", 
+			et cette valeur est attribuée à <span class="code-font">z</span>. Autrement dit, on pose une question avant le <span class="code-font">?</span>, et si la réponse à la question est OUI, on 
+			prend la valeur à gauche du <span class="code-font">:</span>. Si la réponse est NON, on prend la valeur qui est à droite. Si la réponse est OUI, aucune opération présente après le 
+			<span class="code-font">:</span> ne sera effectuée.</p>
+			<p>On réservera l'opérateur ternaire à des choses basiques (qui tiennent sur une seule ligne de code, par exemple), car y mettre des expressions complexes donne une mauvaise lisibilité. 
+			On préfèrera mettre un (ou des) <span class="code-font">if ... else</span> avec des expressions plus complexes.</p>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<h2 id="tableaux">7. Les tableaux</h2>
+			<p>Les tableaux (parfois appelés "vecteurs"&nbsp;; "array" en anglais) permettent de déclarer une série de variables de même type. <br />
+			Au lieu d'avoir : <br />
+			<span class="code-font"><span class="bold">int</span> var1, var2, var3, var4, var5;</span> <br />
+			On peut écrire : <br />
+			<span class="code-font"><span class="bold">int</span> var[5];</span></p>
+
+
+			<h3>7.1. Déclaration et initialisation</h3>
+			<p>La syntaxe est la suivante : <span class="code-font">type nom[nbre_elements] = {valeur1,valeur2,valeur3 ... }</span></p>
+			<p>Il n'est pas obligatoire d'initialiser chaque emplacement d'un tableau. Il peut être rempli ou modifié au fil du programme. 
+			Par contre, une fois qu'un tableau est créé, le programme ne peut plus modifier sa taille (c'est-à-dire lui rajouter de nouveaux emplacements) !
+			Si on a déclaré var[5], il y a 5 emplacements et pas un de plus. Du coup, si on a besoin d'un tableau avec 5 valeurs initialisées, mais qu'on sait qu'il
+			nous faudra 5 places de plus, on va devoir déclarer : <span class="code-font">int var[10] = {5,9,1,7,6}</span></p>
+
+			<p>Si l'on a déclaré des valeurs dans les accolades { }, ce n'est pas nécessaire d'indiquer un nombre dans les crochets [],
+			car le compilateur déduira la taille du tableau en fonction de ce qu'on y a mis. Dans ce cas, si on a besoin d'emplacements vides pour plus tard, il faudra
+			déclarer des 0 (ou toute autres valeur, à vrai dire) pour réserver ces emplacements :<br />
+			int var[] = {5,9,1,7,6,0,0,0,0,0}</p>
+			
+			
+			<h3>7.2. Numéros d'emplacements</h3>
+			<p>Dans un tableau, les emplacements des valeurs sont numérotés à partir de 0. Dans un tableau var[10], on va donc de l'emplacement 0 à 9.
+			Si on veut faire appel à une valeur précise du tableau, ou venir stocker une valeur dedans, on utilise ce numéro d'emplacement entre les crochets :<br />
+			<span class="code-font">var[3] = 6;</span><br />
+			Avec cette instruction, le 4e emplacement du tableau se verra attribuer la valeur 6.</p>
+			<p>On peut mettre des variables dans les crochets [] pour atteindre des emplacements variables du tableau. Par exemple, si on
+			veut afficher toutes les valeurs contenues dans un tableau, on peut utiliser une boucle <span class="code-font">for</span> :</p>
+
+			<p class="code-font">
+				<span class="bold">int</span> tableau[5] = {5,9,1,7,6}, i;<br />
+				for(i = 0; i &lt; 5; i++)<br />
+				&emsp;&emsp;printf("%d ", tableau[i]);
+			</p>
+
+			<p> De la même façon, si on veut mettre la valeur 100 dans tous les emplacements du tableau var[500], c'est beaucoup plus facile d'utiliser
+			une boucle <span class="code-font">for</span> pour remplir chaque emplacement plutôt que d'initialiser 500 fois la même valeur :</p>
+			<p class="code-font">
+				int var[500], i;<br />
+				for(i = 0; i &lt; 500; i++)<br />
+				&emsp;&emsp;tableau[i] = 100;
+			</p>
+			
+			
+			<h3>7.3. Tableaux à plusieurs dimensions</h3>
+			<p>Les tableaux peuvent avoir plus qu'une seule dimension. En rajoutant des crochets avec des nombres, on peut multiplier le nombre de valeurs stockées dans le tableau&nbsp;:</p>
+			<p class="code-font">
+				<span class="bold">int</span> tableau[5][4];      /* 20 valeurs seront stockables dans ce tableau */<br />
+				<span class="bold">char</span> lettres[3][3][3]   /* 27 valeurs seront stockables dans ce tableau */
+			</p>
+			<p>On peut se représenter un tableau à une dimension comme une "ligne" de nombres qui s'enchaînent. Un tableau à deux
+			dimensions peut être vu comme un tableau à double entrée.</p>
+			<p class="centered italic"><img class="small-karnaugh" src="css/images/tableau-2d.jpg" alt="tableau 2 dimensions"/><br />
+			Par convention, le premier nombre est le numéro de la ligne, et le deuxième est le numéro de la colonne.<br />
+			Attention donc que si l'on parle en coordonnées X et Y, le premier nombre représente le Y et le deuxième le X&nbsp;!</p>
+			<p>Suivant la même logique, on peut se représenter un tableau à trois dimensions comme un "cube", ou comme un enchaînement de tableaux à deux dimensions.</p>
+			<p class="centered"><img class="medium-karnaugh" src="css/images/tableau-3d.png" alt="tableau 3 dimensions"/></p>
+			<p>Mais ça ne s'arrête pas là ! Un tableau peut avoir <a href="https://qph.fs.quoracdn.net/main-qimg-c8e735c9f48847229f46b539e3084949" target="_blank">quatre dimensions</a>
+			(on a affaire à deux "cubes", situés dans deux "pièces" différents) ou cinq dimensions... Dans tous les cas, la machine stocke chaque emplacement d'un tableau à une adresse précise
+			dans la mémoire (et ces adresses se suivront)&nbsp;; on ne brise donc pas les lois de la physique quantique en créant des tableaux avec de nombreuses dimensions, pas d'inquiétude&nbsp;!</p>
+			
+			<h4>Initialiser un tableau à plusieurs dimensions</h4>
+			<p>On initialise un tableau à plusieurs dimensions avec la syntaxe suivante&nbsp;:</p>
+			<p class="code-font"><span class="bold">int</span> tableau_2d[2][4] = {<br />
+			&emsp;&emsp;{10, 11, 12, 13},<br />
+			&emsp;&emsp;{14, 15, 16, 17}<br />
+			};</p>
+			<p>Pensez à bien aligner vos déclarations comme ci-dessus pour améliorer la lisibilité.</p>
+			
+			<h4>Remplir un tableau à plusieurs dimensions</h4>
+			<p>On peut remplir des tableaux à plusieurs dimensions avec des boucles imbriquées. Il faut une boucle par dimension, avec un indice différent à chaque fois.</p>
+			<p class="code-font">
+				<span class="bold">int</span> tableau[4][4][4], a = 0, i, j, k;<br />
+				for(i = 0; i &lt; 4; i++)<br />
+				&emsp;&emsp;for(j = 0; j &lt; 4; j++)<br />
+				&emsp;&emsp;&emsp;&emsp;for(k = 0; k &lt; 4; k++)<br />
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;tableau[i][j][k] = a++;
+			</p>
+			<p>On va remplir au fur et à mesure les emplacements [0][0][0], [0][0][1], [0][0][2], [0][0][3], [0][1][0], [0][1][1], ... jusqu'à [3][3][3].</p>
+			
+			
+			
+			<h2 id="aléatoire">8. Nombres aléatoires</h2>
+			<p>Générer des nombres aléatoirement a toute sorte d'intérêt pour la programmation. Nous allons voir comment mettre cela en place en langage C.</p>
+			<p>Il est important de savoir qu'une machine est incapable de générer un nombre purement aléatoire. Aucune instruction que l'on pourrait lui donner ne sera suffisamment satisfaisante
+			pour qu'on puisse dire que le nombre tiré est 100&bnsp;% aléatoire. Sachant cela, notre définition de l'aléatoire en programmation sera <span class="bold">un nombre le moins prévisible
+			possible</span>.</p>
+			
+			<h3>8.1. La fonction rand()</h3>
+			<p>Pour générer un nombre aléatoire, on utilise la fonction <span class="code-font">rand()</span>, issue de la library <span class="code-font">&lt;stdlib.h&gt;</span>.
+			La valeur du nombre aléatoire fourni par cette fonction est un entier qui se situe entre 0 et RAND_MAX ; RAND_MAX vaut 32&nbsp;767 dans le compilateur de MinGW (celui de Codeblocks).</p>
+			<p>Cependant, cette fonction seule n’est pas satisfaisante, car <span class="bold">les nombres sont les mêmes à chaque tirage</span>. En effet, les instructions qui se trouvent dans 
+			la fonction <span class="code-font">rand()</span> ne changent jamais, donc les nombres qu’elle renvoie seront les mêmes à chaque itération du programme, sur toutes les machines.</p>
+			
+			<h4>8.1.1. La fonction srand()</h4>
+			<p>Pour obtenir des nombres différents, il faut intégrer une <span class="bold">graine</span> (<span class="italic">seed</span>, en anglais) qui doit être différente à chaque tirage. 
+			Si on ne mentionne pas de graine, la fonction <span class="code-font">rand()</span> utilise tout le temps la même par défaut (c'est pour ça que les nombres "aléatoires" ne changent pas).</p>
+			<p>Pour choisir la graine qu’on injecte, la fonction à utiliser avant <span class="code-font">rand()</span> dans le code est <span class="code-font">srand()</span>&nbsp;;
+			la graine doit être indiquée dans les parenthèse de <span class="code-font">srand()</span>.</p>
+			<p>Il faudra que la graine soit une variable fiable&nbsp;: on doit être certain qu'elle sera différente à chaque lancement du programme.</p>
+			
+			<h4>8.1.2. La fonction time(NULL)</h4>
+			<p>Pour avoir <span class="bold">une graine qui change en permanence</span>, le plus simple est de prendre <span class="bold">le temps</span>. La 
+			fonction <span class="code-font">time(NULL)</span>, issu de la library <span class="code-font">&lt;time.h&gt;</span> va nous permettre de faire exactement cela.</p>
+			<p>Pour info, le nombre qui est renvoyé par cette fonction est le nombre de secondes qui sont passées depuis le 1er janvier 1970 (UTC+0). En 2020, ce nombre se situe donc dans 
+			les 1&nbsp;600&nbsp;000&nbsp;000. Il peut donc tenir dans un <span class="code-font">int</span> (mais seulement jusqu’en 2106&nbsp;! … on est large ;-)&nbsp;).</p>
+			
+			<h4>8.1.3. Exemple</h4>
+			<p>En mettant tout cela bout à bout, on obtient un programme du genre&nbsp;:</p>
+			
+			<p class="code-font">
+				#include &lt;stdio.h&gt; <br />
+				#include &lt;stdlib.h&gt; <br />
+				#include &lt;time.h&gt; <br />
+				<br />
+				int main() <br />
+				{<br />
+				&emsp;&emsp;int i;<br />
+				&emsp;&emsp;srand (time (NULL));<br />
+				<br />
+				&emsp;&emsp;for (i = 0; i&lt;10; i++)<br />
+				&emsp;&emsp;&emsp;&emsp;printf ("%d\n", rand() );<br />
+				<br />
+				&emsp;&emsp;return 0;<br />
+				}
+			</p>
+			<p>À chaque fois qu'on lancera ce programme, il trouvera des nombres différents compris entre 0 et 32&nbsp;767.</p>
+			
+			<h3>8.2. Choisir une autre plage de nombres</h3>
+			<p>Bien souvent, on aura besoin de sortir une plage de nombre plus réduite que 0 à 32&nbsp;767. Une technique simple pour cela consiste à utiliser l'opérateur
+			modulo&nbsp;<span class="code-font">%</span>. En effet, en cherchant le reste d'une division par <span class="code-font">X</span> (n'importe quel nombre), on est certain 
+			d'obtenir un résultat qui va de <span class="code-font">0</span> à <span class="code-font">X&ndash;1</span>.</p>
+			<p>Sachant cela, si on écrit <span class="code-font">rand()&nbsp;%&nbsp;6</span>, on aura toujours une plage de nombre allant de 0 à 5. En ajoutant 1 au résultat obtenu, on a donc
+			une plage de 1 à 6, et on peut par exemple simuler le lancer d'un dé à 6 faces : <span class="code-font">resultat_aleatoire_du_de&nbsp;=&nbsp;rand()%6+1</span></p>
+			<p>Si l'on veut une plage qui ne commence pas à 0, mais qui commence à <span class="code-font">a</span> (et qui va jusque <span class="code-font">x</span>), il faut ajouter
+			<span class="code-font">a</span> au total, et le soustraire à la valeur maximum de la plage. On a alors la formule suivante : 
+			<span class="code-font">aleatoire&nbsp;=&nbsp;a&nbsp;+&nbsp;rand()&nbsp;%&nbsp;(x-a+1)</span><br />
+			Autrement dit, pour une valeur MIN et MAX, la formule est&nbsp;: <span class="code-font">aleatoire&nbsp;=&nbsp;MIN&nbsp;+&nbsp;rand()&nbsp;%&nbsp;(MAX-MIN+1)</span></p>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<h2 id="les-fonctions">9. Fonctions</h2>
+			<p>Les fonctions constituent un élément incontournable de tout langage de programmation. Elles permettent d'effectuer une série de tâches prédéfinies au sein d'un programme.
+			Ces tâches sont effectuées intégralement à chaque fois qu'on fait appel à la fonction.</p>
+			<p>Nous connaissons déjà quelques fonctions, issues de différentes bibliothèques&nbsp;: <span class="code-font">printf()</span>, <span class="code-font">scanf()</span>,
+			<span class="code-font">getch()</span>, <span class="code-font">rand()</span>... et même main(). On reconnaît facilement les fonctions
+			dans du code, car leur nom est suivi de parenthèses, dans lesquelles on vient souvent placer du contenu que l'on appelle <span class="bold">argument</span>.</p>
+			<p>Les parenthèses qui suivent une fonction sont obligatoires, mais toutes les fonctions ne demandent pas forcément un argument pour fonctionner. On peut alors laisser les 
+			parenthèses	vides ou bien y écrire <span class="code-font">void</span>.</p>
+			
+			<h3>9.1. Créer ses propres fonctions</h3>
+			<p>On trouve des centaines de fonctions très utiles dans les bibliothèques du C, mais il arrive souvent qu'on veuille effectuer des tâches très précises dans un programme,
+			qui ne seront alors pas couvertes par les fonctions existantes. C'est pour cela qu'il est possible de créer des fonctions soi-même. Pour créer et utiliser une fonction,
+			il faut suivre les trois étapes suivantes&nbsp;:</p>
+			
+			<h4>1) Déclaration</h4>
+			<p>Comme pour une variable, il faut déclarer une fonction. La déclaration se fait avant la fonction <span class="code-font">main()</span>. Il faut indiquer dans les parenthèses
+			le type de données que la fonction pourra recevoir&nbsp;; on appelle ça "paramètrer" une fonction, et les types indiqués sont donc des <span class="bold">paramètres</span>. En C,
+			il faut aussi indiquer des noms de variables qui seront utilisés dans le bloc de code.</p>
+			<p><span class="code-font"><span class="bold">int</span> carre(<span class="bold">int</span> nbr);</span></p>
+			
+			
+			<h4>2) Définition</h4>
+			<p>En-dessous de la fonction <span class="code-font">main()</span> (pour plus de lisibilité), il faut créer le bloc de code que la fonction devra effectuer. Si la fonction possède
+			un type de donnée, c'est qu'elle va renvoyer une valeur au programme principal. On utilisera donc le mot-clé <span class="bold code-font">return</span> pour cela.</p>
+			<p class="code-font"><span class="bold">int</span> carre(<span class="bold">int</span> nbr) {<br />
+			&emsp;&emsp;<span class="bold">return</span> nbr*nbr<br />
+			}</p>
+			
+			<h4>3) Appel</h4>
+			<p>Une fois qu'on a déclarer et définit une fonction, on peut l'appeler dans le programme principal (ou dans une autre fonction&nbsp;) en écrivant simplement son nom.
+			Si la fonction demande des arguments, il faut les indiquer dans les parenthèses.</p>
+			
+			<h4>En bref</h4>
+			<p>Quand on crée une fonction, on lui assigne une série d'instructions qu'elle devra effectuer à chaque fois qu'on l'appelle. Si la fonction a des paramètres, il faut indiquer
+			quelles valeurs elle devra utiliser quand on l'appelle.</p>
+			
+			<h4>4) Fonctions <span class="code-font">void</span></h4>
+			<p>Dans l'exemple vu ci-dessus, la fonction <span class="code-font">carre()</span> renvoie un nombre au programme principal. Cependant, ce n'est pas toujours le cas.
+			Une fonction peut très bien servir de "raccourci" pour effectuer une série d'instructions sans pour autant renvoyer un nombre. Dans ce cas-là, le type de la fonction
+			sera <span class="code-font">void</span>.</p>
+			
+			<p class="code-font">
+			#include&lt;stdio.h&gt; <br />
+			#include&lt;myconio.h&gt; <br /><br />
+			<span class="bold">void</span> wait(); <br /><br />
+			<span class="bold">int</span> main() { <br />
+			&emsp;&emsp;printf("Vous allez etre mis en attente.");<br />
+			&emsp;&emsp;getch();<br />
+			&emsp;&emsp;wait();<br />
+			&emsp;&emsp;wait();<br />
+			&emsp;&emsp;wait();<br />
+			&emsp;&emsp;printf("Merci d'avoir patienter !");<br />
+			&emsp;&emsp;getch();<br />
+			&emsp;&emsp;return 0;<br />
+			} <br /><br />
+			<span class="bold">void</span> wait() {<br />
+			&emsp;&emsp;printf("Veuillez patienter...");<br />
+			&emsp;&emsp;getch();<br />
+			}</p>
+			
+			<h3>9.x. Gestion de l'écran</h3>
+			<p>Vous l'avez sans doute remarqué, en exécutant des programmes en C, la fenêtre d'output est franchement moche et basique. Pour l'embellir, on peut utiliser des fonctions
+			contenues dans certaines bibliothèques comme <span class="code-font">&lt;myconio.h&gt;</span>. Je vous renvoie à la page 34 du syllabus de M. Hanotiaux pour plus de détails
+			sur le sujet.</p>
+			
+			
+			
+			
+			
+		
+			<h2 id="outils-c">A. Outils en ligne</h2>
+			<h3>A.1. Algorithmes de tri</h3>
+			<p><a href="http://lwh.free.fr/pages/algo/tri/tri.htm">Ce site</a> présente extrêmement bien les algorithmes de tri, et en présente même directement exprimé en langage C.
+			Méfiez-vous quand même du code présenté, il est souvent loin d'être optimal.</p>
+		
+			
+		</div>
+			
+			<footer><p>&copy; Website built by Nicolas Toffolo (2020-2021)</p></footer>
+	</body>
+
+
+</html>

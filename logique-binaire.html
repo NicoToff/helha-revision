@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<title>HELHa Révison</title>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Les synthèses pour vos études en informatique industrielle à la HELHa.">
+		<script src="css/count.js"></script>
+		<link rel="stylesheet" href="css/main.css" type="text/css">
+		<link href='https://fonts.googleapis.com/css?family=M%20PLUS%201p' rel='stylesheet'> <!-- Police utilisée pour les maths -->
+		<link rel="icon" 
+			  href="css/images/icon.png"
+			  type="image/png" />
+	</head>
+
+	<body>
+		<header>
+			<div id="titre-principal">
+				<div id="logo">
+					<img src="css/images/logo-helha.svg" alt="Logo Helha" />
+				</div>
+				<h1>Révision</h1>
+			</div>
+			
+			<!-------------------- BARRE DE NAVIGATION ---------------------->
+			<nav>
+				<ul>
+					<li><a href="index.html">ACCUEIL</a></li>
+					<li><a href="electrotechnique-1.html">ÉLECTROTECHNIQUE</a></li>
+					<li><a href="langage-c.html">LANGAGE C</a></li>
+					<li><a href="logique-binaire.html">LOGIQUE BINAIRE</a></li>					
+					<li><a href="maths.html">MATHS</a></li>
+					<li><a href="reseaux-1.html">RÉSEAUX</a></li>
+					<li><a href="autres.html">AUTRES</a></li>
+				</ul>
+			</nav>
+			<!--------------- FIN DE LA BARRE DE NAVIGATION ----------------->
+		
+			<div id="stuffing"></div>
+		
+		</header>
+		
+			<aside id="side-nav">
+				<h1>Logique binaire</h1>
+				<ul>
+					<li><a href="#Décimal,_binaire,_octal,_hexadécimal">1. Décimal, binaire, octal, hexadécimal</a></li>
+					<li><a href="#Opérateurs_binaires_de_logique_combinatoire">2. Opérateurs binaires de logique combinatoire</a></li>
+					<li><a href="#karnaugh">3. Tableaux de Karnaugh</a></li>
+					<li><a href="#logique-mixte">4. Schémas en logique mixte</a></li>
+					<li><a href="#outils-logique">5. Outils en ligne</a></li>
+				</ul>
+			</aside>
+			
+		<div id="maincontent">
+			
+				
+			<h2>Contenu</h2>
+			<p>Informations tirées du cours de Mme Gillet.</p>
+			<p>Voici l'<a href="files/ToffoloNicolas-LogiqueBinaire-janv21_CORR.pdf" target="_blank">examen de janvier 2021</a>, avec solutionnaire inclus.</p>
+			
+			<h3>Évaluations</h3>
+			<p>Pour Logique binaire, 100&nbsp;% des points sont joués à quatre reprises dans l'année. D'abord en novembre (mini-session), puis en janvier, puis en juin, et enfin en août (Q3).</p>
+						
+			<h2 id="Décimal,_binaire,_octal,_hexadécimal">1. Décimal, binaire, octal, hexadécimal</h2>
+			<p>Le système décimal utilise 10 symboles différents (0 à 9) pour écrire des nombres. Le système binaire en utilise 2 (0 et 1), l'octal en utilise 8 (0 à 7) et l'hexadécimal 16 (0 à F). <br />
+			La grande particularité de ces trois derniers est qu'ils sont tous des puissances de 2 et se convertissent donc facilement les uns en les autres. <br />
+			<strong>Phénomène intéressant à connaître&nbsp;:</strong> Pour multiplier n'importe quel nombre en binaire par 2, il suffit de lui rajouter un 0. </p>
+
+			<table class="smallcellwidth">
+				<caption class="smallcaption">Systèmes&nbsp;: décimal<sub>(base 10)</sub>, binaire<sub>(base 2)</sub>, octal<sub>(base 8)</sub> et hexadécimal<sub>(base 16)</sub></caption>
+				<thead>
+					<tr>
+						<th class="smallappearance smallcellwidth">Déc<sub>(10)</sub></th>
+						<th class="smallappearance smallcellwidth">Bin<sub>(2)</sub></th>
+						<th class="smallappearance smallcellwidth">Oct<sub>(8)</sub></th>
+						<th class="smallappearance smallcellwidth">Hex<sub>(16)</sub></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="smallappearance smallcellwidth">0</td>
+						<td class="smallappearance smallcellwidth">0</td>
+						<td class="smallappearance smallcellwidth">0</td>
+						<td class="smallappearance smallcellwidth">0</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">1</td>
+						<td class="smallappearance smallcellwidth">1</td>
+						<td class="smallappearance smallcellwidth">1</td>
+						<td class="smallappearance smallcellwidth">1</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">2</td>
+						<td class="smallappearance smallcellwidth">10</td>
+						<td class="smallappearance smallcellwidth">2</td>
+						<td class="smallappearance smallcellwidth">2</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">3</td>
+						<td class="smallappearance smallcellwidth">11</td>
+						<td class="smallappearance smallcellwidth">3</td>
+						<td class="smallappearance smallcellwidth">3</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">4</td>
+						<td class="smallappearance smallcellwidth">100</td>
+						<td class="smallappearance smallcellwidth">4</td>
+						<td class="smallappearance smallcellwidth">4</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">5</td>
+						<td class="smallappearance smallcellwidth">101</td>
+						<td class="smallappearance smallcellwidth">5</td>
+						<td class="smallappearance smallcellwidth">5</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">6</td>
+						<td class="smallappearance smallcellwidth">110</td>
+						<td class="smallappearance smallcellwidth">6</td>
+						<td class="smallappearance smallcellwidth">6</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">7</td>
+						<td class="smallappearance smallcellwidth">111</td>
+						<td class="smallappearance smallcellwidth">7</td>
+						<td class="smallappearance smallcellwidth">7</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">8</td>
+						<td class="smallappearance smallcellwidth">1000</td>
+						<td class="smallappearance smallcellwidth">10</td>
+						<td class="smallappearance smallcellwidth">8</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">9</td>
+						<td class="smallappearance smallcellwidth">1001</td>
+						<td class="smallappearance smallcellwidth">11</td>
+						<td class="smallappearance smallcellwidth">9</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">10</td>
+						<td class="smallappearance smallcellwidth">1010</td>
+						<td class="smallappearance smallcellwidth">12</td>
+						<td class="smallappearance smallcellwidth">A</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">11</td>
+						<td class="smallappearance smallcellwidth">1011</td>
+						<td class="smallappearance smallcellwidth">13</td>
+						<td class="smallappearance smallcellwidth">B</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">12</td>
+						<td class="smallappearance smallcellwidth">1100</td>
+						<td class="smallappearance smallcellwidth">14</td>
+						<td class="smallappearance smallcellwidth">C</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">13</td>
+						<td class="smallappearance smallcellwidth">1101</td>
+						<td class="smallappearance smallcellwidth">15</td>
+						<td class="smallappearance smallcellwidth">D</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">14</td>
+						<td class="smallappearance smallcellwidth">1110</td>
+						<td class="smallappearance smallcellwidth">16</td>
+						<td class="smallappearance smallcellwidth">E</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">15</td>
+						<td class="smallappearance smallcellwidth">1111</td>
+						<td class="smallappearance smallcellwidth">17</td>
+						<td class="smallappearance smallcellwidth">F</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">16</td>
+						<td class="smallappearance smallcellwidth">10000</td>
+						<td class="smallappearance smallcellwidth">20</td>
+						<td class="smallappearance smallcellwidth">10</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">17</td>
+						<td class="smallappearance smallcellwidth">10001</td>
+						<td class="smallappearance smallcellwidth">21</td>
+						<td class="smallappearance smallcellwidth">11</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">…</td>
+						<td class="smallappearance smallcellwidth">…</td>
+						<td class="smallappearance smallcellwidth">…</td>
+						<td class="smallappearance smallcellwidth">…</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<h3>1.1. Puissances utiles à connaître par coeur</h3>
+			<p>En informatique, les puissances de 2 sont absolument partout. Le binaire n'y est pas pour rien ! <br />
+			Il est impératif de reconnaître les puissances de 2 les plus courantes au premier coup d'oeil, et les retenir par coeur ne fait pas de tort. <br />
+			Tout particulièrement 2<sup>8</sup> (1 octet), 2<sup>16</sup> (2 octets) et 2<sup>32</sup> (4 octets). </p>
+				<table class="smallcellwidth">
+						<tr>
+							<th class="smallappearance smallcellwidth">2<sup>0</sup></th>
+							<th class="smallappearance smallcellwidth">2<sup>1</sup></th>
+							<th class="smallappearance smallcellwidth">2<sup>2</sup></th>
+							<th class="smallappearance smallcellwidth">2<sup>3</sup></th>
+							<th class="smallappearance smallcellwidth">2<sup>4</sup></th>
+							<th class="smallappearance smallcellwidth">2<sup>5</sup></th>
+							<th class="smallappearance smallcellwidth">2<sup>6</sup></th>
+							<th class="smallappearance smallcellwidth">2<sup>7</sup></th>
+							<th class="smallappearance smallcellwidth">2<sup>8</sup></th>
+							<th class="smallappearance smallcellwidth">2<sup>9</sup></th>
+							<th class="smallappearance smallcellwidth">2<sup>10</sup></th>
+							<th class="smallappearance smallcellwidth">2<sup>11</sup></th>
+						</tr>
+						<tr>
+							<td class="smallappearance smallcellwidth">1</td>
+							<td class="smallappearance smallcellwidth">2</td>
+							<td class="smallappearance smallcellwidth">4</td>
+							<td class="smallappearance smallcellwidth">8</td>
+							<td class="smallappearance smallcellwidth">16</td>
+							<td class="smallappearance smallcellwidth">32</td>
+							<td class="smallappearance smallcellwidth">64</td>
+							<td class="smallappearance smallcellwidth">128</td>
+							<td class="smallappearance smallcellwidth">256</td>
+							<td class="smallappearance smallcellwidth">512</td>
+							<td class="smallappearance smallcellwidth">1024</td>
+							<td class="smallappearance smallcellwidth">2048</td>
+						</tr>
+				</table>
+				
+				<table class="smallcellwidth">
+						<tr>
+							<th class="smallappearance smallcellwidth">2<sup>12</sup></th>
+							<th class="smallappearance smallcellwidth">2<sup>13</sup></th>
+							<th class="smallappearance smallcellwidth">2<sup>14</sup></th>
+							<th class="smallappearance smallcellwidth">2<sup>15</sup></th>
+							<th class="smallappearance smallcellwidth">2<sup>16</sup></th>
+							<th class="smallappearance smallcellwidth">...</th>
+							<th class="smallappearance smallcellwidth">2<sup>32</sup></th>
+						</tr>
+						<tr>							
+							<td class="smallappearance smallcellwidth">4096</td>
+							<td class="smallappearance smallcellwidth">8192</td>
+							<td class="smallappearance smallcellwidth">16 384</td>
+							<td class="smallappearance smallcellwidth">32 768</td>
+							<td class="smallappearance smallcellwidth">65 536</td>
+							<td class="smallappearance smallcellwidth">...</td>
+							<td class="smallappearance smallcellwidth">4 294 967 296</td>
+						</tr>
+				</table>
+
+			<p>Même principe avec les puissances de 8 et de 16.</p>
+
+				<table class="smallcellwidth">
+				<thead>
+				 <tr>
+					<th class="smallappearance smallcellwidth">8<sup>0</sup></th>
+					<th class="smallappearance smallcellwidth">8<sup>1</sup></th>
+					<th class="smallappearance smallcellwidth">8<sup>2</sup></th>
+					<th class="smallappearance smallcellwidth">8<sup>3</sup></th>
+					<th class="smallappearance smallcellwidth">8<sup>4</sup></th>
+					<th class="smallappearance smallcellwidth">8<sup>5</sup></th>
+				 </tr>
+				</thead>
+				<tbody>
+				 <tr>
+					<td class="smallappearance smallcellwidth">1</td>
+					<td class="smallappearance smallcellwidth">8</td>
+					<td class="smallappearance smallcellwidth">64</td>
+					<td class="smallappearance smallcellwidth">512</td>
+					<td class="smallappearance smallcellwidth">4096</td>
+					<td class="smallappearance smallcellwidth">32 768</td>
+				 </tr>
+				</tbody>
+				</table>
+
+
+				<table class="smallcellwidth">
+				<thead>
+				 <tr>
+					<th class="smallappearance smallcellwidth">16<sup>0</sup></th>
+					<th class="smallappearance smallcellwidth">16<sup>1</sup></th>
+					<th class="smallappearance smallcellwidth">16<sup>2</sup></th>
+					<th class="smallappearance smallcellwidth">16<sup>3</sup></th>
+					<th class="smallappearance smallcellwidth">16<sup>4</sup></th>
+					<th class="smallappearance smallcellwidth">16<sup>5</sup></th>
+					<th class="smallappearance smallcellwidth">...</th>
+					<th class="smallappearance smallcellwidth">16<sup>8</sup></th>
+				 </tr>
+				</thead>
+				<tbody>
+				 <tr>
+					<td class="smallappearance smallcellwidth">1</td>
+					<td class="smallappearance smallcellwidth">16</td>
+					<td class="smallappearance smallcellwidth">256</td>
+					<td class="smallappearance smallcellwidth">4096</td>
+					<td class="smallappearance smallcellwidth">65 536</td>
+					<td class="smallappearance smallcellwidth">1 048 576</td>
+					<td class="smallappearance smallcellwidth">...</td>
+					<td class="smallappearance smallcellwidth">4 294 967 296</td>
+				 </tr>
+				</tbody>
+				</table>	
+
+
+			<h3>1.2. Tableau essentiel</h3>
+
+				<p>Ce tableau minimaliste est utile pour les conversions à la main de binaire vers octal et hexadécimal. Vous n'aurez besoin de rien de plus !
+				Pensez à le refaire rapidement sur une feuille de brouillon lors de l'examen et référez-vous à lui pour éviter toute erreur d'inattention.</p>
+
+				<table class="smallcellwidth">
+					<caption class="bigcaption">Conversions à la main</caption>
+					<thead>
+						<tr>
+							<th class="smallappearance smallcellwidth">Oct</th>
+							<th class="smallappearance smallcellwidth">Bin</th>
+							<th class="smallappearance smallcellwidth">Hex</th>
+						</tr>
+					</thead>
+					<tbody>
+						 <tr>
+							<td class="smallappearance smallcellwidth">0</td>
+							<td class="smallappearance smallcellwidth">0000</td>
+							<td class="smallappearance smallcellwidth"></td>
+						 </tr>
+						 <tr>
+							<td class="smallappearance smallcellwidth">1</td>
+							<td class="smallappearance smallcellwidth">0001</td>
+							<td class="smallappearance smallcellwidth"></td>
+						 </tr>
+						 <tr>
+							<td class="smallappearance smallcellwidth">2</td>
+							<td class="smallappearance smallcellwidth">0010</td>
+							<td class="smallappearance smallcellwidth"></td>
+						 </tr>
+						 <tr>
+							<td class="smallappearance smallcellwidth">3</td>
+							<td class="smallappearance smallcellwidth">0011</td>
+							<td class="smallappearance smallcellwidth"></td>
+						 </tr>
+						 <tr>
+							<td class="smallappearance smallcellwidth">4</td>
+							<td class="smallappearance smallcellwidth">0100</td>
+							<td class="smallappearance smallcellwidth"></td>
+						 </tr>
+						 <tr>
+							<td class="smallappearance smallcellwidth">5</td>
+							<td class="smallappearance smallcellwidth">0101</td>
+							<td class="smallappearance smallcellwidth"></td>
+						 </tr>
+						 <tr>
+							<td class="smallappearance smallcellwidth">6</td>
+							<td class="smallappearance smallcellwidth">0110</td>
+							<td class="smallappearance smallcellwidth"></td>
+						 </tr>
+						 <tr>
+							<td class="smallappearance smallcellwidth">7</td>
+							<td class="smallappearance smallcellwidth">0111</td>
+							<td class="smallappearance smallcellwidth"></td>
+						 </tr>
+						 <tr>
+							<td class="smallappearance smallcellwidth"></td>
+							<td class="smallappearance smallcellwidth">1000</td>
+							<td class="smallappearance smallcellwidth">8</td>
+						 </tr>
+						 <tr>
+							<td class="smallappearance smallcellwidth"></td>
+							<td class="smallappearance smallcellwidth">1001</td>
+							<td class="smallappearance smallcellwidth">9</td>
+						 </tr>
+						 <tr>
+							<td class="smallappearance smallcellwidth"></td>
+							<td class="smallappearance smallcellwidth">1010</td>
+							<td class="smallappearance smallcellwidth">A</td>
+						 </tr>
+						 <tr>
+							<td class="smallappearance smallcellwidth"></td>
+							<td class="smallappearance smallcellwidth">1011</td>
+							<td class="smallappearance smallcellwidth">B</td>
+						 </tr>
+						 <tr>
+							<td class="smallappearance smallcellwidth"></td>
+							<td class="smallappearance smallcellwidth">1100</td>
+							<td class="smallappearance smallcellwidth">C</td>
+						 </tr>
+						 <tr>
+							<td class="smallappearance smallcellwidth"></td>
+							<td class="smallappearance smallcellwidth">1101</td>
+							<td class="smallappearance smallcellwidth">D</td>
+						 </tr>
+						 <tr>
+							<td class="smallappearance smallcellwidth"></td>
+							<td class="smallappearance smallcellwidth">1110</td>
+							<td class="smallappearance smallcellwidth">E</td>
+						 </tr>
+						 <tr>
+							<td class="smallappearance smallcellwidth"></td>
+							<td class="smallappearance smallcellwidth">1111</td>
+							<td class="smallappearance smallcellwidth">F</td>
+						 </tr>
+					</tbody>
+				</table>
+
+
+
+
+
+
+
+
+
+
+				<h2 id="Opérateurs_binaires_de_logique_combinatoire">2. Opérateurs binaires de logique combinatoire</h2>
+
+				<h3>2.1. Opérations de base</h3>
+				<p>Les opérateurs se notent de la façon suivante&nbsp;: <br /> 
+				<span class="bold not">P</span> signifie "non P", c'est-à-dire l'inverse de p (NOT); <br />
+				<span class="bold">P . Q</span> signifie "P et Q" (AND); <br />
+				<span class="bold">P + Q</span> signifie "P ou Q" (OR); et <br />
+				<span class="bold">P &oplus; Q</span> signifie "P ou Q, mais pas les deux simultanément" (XOR).</p>
+
+			<table class="smallcellwidth">
+				<caption class="smallcaption">Table de vérité récapitulative des opérations de base</caption>
+				<thead>
+					<tr>
+						<th class="smallappearance smallcellwidth">P</th>
+						<th class="smallappearance smallcellwidth">Q</th>
+						<th class="smallappearance smallcellwidth"><span class="not">P</span></th>
+						<th class="smallappearance smallcellwidth">P . Q</th>
+						<th class="smallappearance smallcellwidth">P + Q</th>
+						<th class="smallappearance smallcellwidth">P &oplus; Q</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<tr>
+						<td class="smallappearance smallcellwidth">0</td>
+						<td class="smallappearance smallcellwidth">0</td>
+						<td class="smallappearance smallcellwidth">1</td>
+						<td class="smallappearance smallcellwidth">0</td>
+						<td class="smallappearance smallcellwidth">0</td>
+						<td class="smallappearance smallcellwidth">0</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">0</td>
+						<td class="smallappearance smallcellwidth">1</td>
+						<td class="smallappearance smallcellwidth">1</td>
+						<td class="smallappearance smallcellwidth">0</td>
+						<td class="smallappearance smallcellwidth">1</td>
+						<td class="smallappearance smallcellwidth">1</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">1</td>
+						<td class="smallappearance smallcellwidth">0</td>
+						<td class="smallappearance smallcellwidth">0</td>
+						<td class="smallappearance smallcellwidth">0</td>
+						<td class="smallappearance smallcellwidth">1</td>
+						<td class="smallappearance smallcellwidth">1</td>
+					</tr>
+					<tr>
+						<td class="smallappearance smallcellwidth">1</td>
+						<td class="smallappearance smallcellwidth">1</td>
+						<td class="smallappearance smallcellwidth">0</td>
+						<td class="smallappearance smallcellwidth">1</td>
+						<td class="smallappearance smallcellwidth">1</td>
+						<td class="smallappearance smallcellwidth">0</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<p>On notera que les opérations <span class="not">P&nbsp;.&nbsp;Q</span> (non et, NAND) et <span class="not">P&nbsp;+&nbsp;Q</span> (non ou, NOR) 
+			sont simplement l'inverse de leur colonne respective (d'où le fait qu'elle n'apparaissent pas dans ce tableau récapitulatif).</p>
+			
+			<h4 id="priorités-des-opérateurs-logiques">2.1.1. Priorité des opérations</h4>
+			<p>En algèbre booléen, les priorités des opérations sont les suivantes&nbsp;: NOT, puis AND, puis OR. De plus, la présence de parenthèses peut changer cet ordre
+			(comme en algèbre classique).</p>
+			
+			<h4>2.1.2. Notations</h4>
+			<p>Comme en algèbre classique, le symbole "." peut être omis. Ainsi, "A . B . C" peut être écrit "ABC".</p>
+			<p>On remarquera qu'une longue barre de négation a le même effet qu'une parenthèse. Ainsi, <span class="not">A + B + C</span> revient à écrire quelque chose comme
+			NOT(A + B + C) ou &not;(A + B + C) ou encore !(A + B + C).</p>
+			
+			<h3>2.2. Relations fondamentales de l'algèbre de Boole</h3>
+			<p>Tout l'intérêt de l'algèbre booléen est de réduire la complexité d'une équation logique. Connaître les relations entre variables est essentiel pour cela.</p>
+			<h4>2.2.1. Constantes et complémentation</h4>
+			<p>Voici les relations les plus basiques et essentielles qui soient&nbsp;:</p>
+			<div class="flex">
+				<div class="flex-column small-padding">
+					<p class="formula-font larger small-bottom-margin"> a . 0 = 0</p>
+					<p class="formula-font larger small-bottom-margin"> a . 1 = a</p>
+					<p class="formula-font larger small-bottom-margin"> a . a = a</p>
+					<p class="formula-font larger small-bottom-margin"> a . <span class="not">a</span> = 0</p>
+				</div>
+				<div class="flex-column small-padding">
+					<p class="formula-font larger small-bottom-margin"> a + 0 = a</p>
+					<p class="formula-font larger small-bottom-margin"> a + 1 = 1</p>
+					<p class="formula-font larger small-bottom-margin"> a + a = a</p>
+					<p class="formula-font larger small-bottom-margin"> a + <span class="not">a</span> = 1</p>
+				</div>
+			</div>
+			
+			<h4 id="théorème-de-de-morgan">2.2.2. Théorème de De Morgan</h4>
+			<p>Ce théorème est capital, car il permet de séparer les opérateurs NOT qui s'étendent sur plusieurs variables.</p>
+			<div class="flex">
+				<div class="flex-column small-padding">
+					<p>"La négation d'une conjonction de plusieurs propositions <br />est équivalente à la disjonction des négations de ces propositions."</p>
+					<p class="formula-font larger medium-bottom-margin"> <span class="not">a . b</span> = <span class="not">a</span> + <span class="not">b</span></p>
+					<p>Attention donc que&nbsp;:</p>
+					<p class="formula-font larger rouge medium-bottom-margin"> <span class="not">a + b</span> &ne; <span class="not">a</span> + <span class="not">b</span></p>
+					<p>Par contre, sachez que&nbsp;:</p>
+					<p class="formula-font larger no-margin"> <span class="not">a . b . c . d</span></p>
+					<p class="formula-font larger medium-bottom-margin">= <span class="not">a</span> + <span class="not">b</span> + <span class="not">c</span> + <span class="not">d</span></p>
+				</div>
+				<div class="flex-column small-padding">
+					<p>"La négation d'une disjonction de plusieurs propositions <br />est équivalente à la conjonction des négations de ces propositions."</p>
+					<p class="formula-font larger medium-bottom-margin"> <span class="not">a + b</span> = <span class="not">a</span> . <span class="not">b</span></p>
+					<p>Attention donc que&nbsp;:</p>
+					<p class="formula-font larger rouge medium-bottom-margin"> <span class="not">a . b</span> &ne; <span class="not">a</span> . <span class="not">b</span></p>
+					<p>Par contre, sachez que&nbsp;:</p>
+					<p class="formula-font larger no-margin"> <span class="not">a + b + c + d</span> </p>
+					<p class="formula-font larger medium-bottom-margin">= <span class="not">a</span> . <span class="not">b</span> . <span class="not">c</span> . <span class="not">d</span></p>
+				</div>
+			</div>
+			
+			<h4>2.2.3. Distributivité et mise en évidence</h4>
+			<p>Comme en algèbre classique, il est possible de distribuer des variables et de les mettre en évidence.
+			L'énorme particularité de l'algèbre booléen est qu'il est parfaitement possible de distribuer un opérateur "+" (OR) sur un opérateur "." (AND).
+			On dit que "la disjonction est distributive par rapport à la conjonction" et que "la conjonction est distributive par rapport à la disjonction".
+			C'est avec ce genre de choses que l'on comprend qu'il est dangereux de trop comparer l'algèbre classique et le booléen. Les opérateurs utilisés sont parfois les mêmes,
+			mais ils ne signifient pas du tout la même chose.</p>
+					<p class="formula-font larger medium-bottom-margin">a . (b + c) = a . b + a . c</p>
+					<p class="formula-font larger medium-bottom-margin">a + b . c = (a + b) . (a + c)</p>
+			
+			<h4>2.2.4. Absorption, inclusion et propriétés combinées</h4>
+			<p>Ces formules sont extrêmement utiles ! Elles découlent de l'utilisation des précédentes, mais si on reconnaît ces patterns au premier coup d'oeil, cela peut faire gagner
+			beaucoup de temps.</p>
+			<div class="flex">
+				<div class="flex-column small-padding">
+					<h5>Absorption & inclusion</h5>
+					<p class="formula-font larger medium-bottom-margin"> a + a . b = a</p>
+					<p class="formula-font larger medium-bottom-margin"> a . (a + b) = a</p>
+					<p class="formula-font larger medium-bottom-margin"> a . b + a . <span class="not">b</span> = a</p>
+					
+				</div>
+				<div class="flex-column small-padding">
+					<h5>Propriétés combinées</h5>
+					<p class="formula-font larger medium-bottom-margin"> a . <span class="not">b</span> + b = a + b</p>
+					<p class="formula-font larger medium-bottom-margin"> a . b + <span class="not">b</span> = a + <span class="not">b</span></p>
+					<p class="formula-font larger medium-bottom-margin"> <span class="not">a</span> . <span class="not">b</span> + b = <span class="not">a</span> + b</p>
+					<p class="formula-font larger medium-bottom-margin"> <span class="not">a</span> . b + <span class="not">b</span> = <span class="not">a</span> + <span class="not">b</span></p>
+					<p class="formula-font larger medium-bottom-margin"> a + <span class="not">a</span> . b . c = a + b . c</p>
+					<p class="formula-font larger no-margin"> (a + b) . (<span class="not">a</span> + c)</p>
+					<p class="formula-font larger no-margin">= a . c + <span class="not">a</span> . b + b . c</p>
+					<p class="formula-font larger no-margin">= a . c + <span class="not">a</span> . b</p>
+				</div>
+			</div>
+			
+			<h3>2.3. Quelques exemples</h3>
+			<p>Voici des exemples résolus d'exercices figurant sur le document "Exercices récapitulatifs sur l'algèbre de Boole" fourni par Mme Gillet.</p>
+			<p><img class="small-image" src="css/images/boole-ex13.png" alt="Exercice 13" /></p>
+			
+			<p>Cet exemple vient de l'examen de novembre 2018.</p>
+			<p><img class="small-image" src="css/images/boole-nov18-ex-c.png" alt="Exercice c novembre 2018" /><img class="small-image" src="css/images/boole-nov18-ex-c-bis.png" alt="Exercice c novembre 2018" /></p>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<h2 id="karnaugh">3. Tableaux de Karnaugh</h2>
+			<p>Les tableaux de Karnaugh, au même titre que l'algèbre de Boole, permettent de simplifier des équations logiques. Ils se présentent sous la forme de tableaux à double entrée
+			et ils prennent en quelque sorte la forme d'une table de vérité réduite. Leurs nombres de lignes et de colonnes ne peuvent être que des exposants de 2 (1, 2, 4, 8...).
+			Voici trois tableaux de Karnaugh vierges&nbsp;:</p>
+			
+			<div class="flex-space-between">
+			   <div><img class="small-karnaugh" src="css/images/karnaugh-2-2-vierge.png" alt="Tableau de Karnaugh 2 sur 2" /></div>
+			   <div><img class="small-karnaugh" src="css/images/karnaugh-4-2-vierge.png" alt="Tableau de Karnaugh 4 sur 2" /></div>
+			   <div><img class="medium-karnaugh" src="css/images/karnaugh-4-4-vierge.png" alt="Tableau de Karnaugh 4 sur 4" /></div>
+			</div>
+			
+			<p>Pour que ces tableaux soient utilisables, il faut que les valeurs indiquées en colonnes et en lignes ne changent pas de plus d'une variable à la fois. On a donc écrit
+			00, 01, 11, 10 et pas <span class="rouge">00, 01, 10, 11</span>.</p>
+			
+			<h3>3.1. Karnaugh avec des tables de vérité</h3>
+			<p>Dans ce premier exemple, prenons une table de vérité pour remplir un tableau de Karnaugh.</p>
+			<div class="flex-space-between">
+				<div><img class="small-karnaugh" src="css/images/or-truth-table-question.png" alt="Table de vérité" /></div>
+				<p>On regarde la table de vérité ligne par ligne. <br />
+				Quand x et y valent 0, la sortie ? vaut 0 (en haut à gauche dans Karnaugh). <br />
+				Quand x vaut 0 et y vaut 1, la sortie ? vaut 1 (case en bas à gauche).  <br />
+				Quand x vaut 1 et y vaut 0, la sortie ? vaut 1 (cas en haut à droite). <br />
+				Quand x et y valent 1, la sortie ? vaut 1 (case en base à gauche).</p>
+				<div><img class="small-karnaugh" src="css/images/karnaugh-2-2-or-a.png" alt="Tableau de Karnaugh 2 sur 2 rempli" /></div>
+			</div>
+			
+			
+			<h3>3.2. Analyser un tableau de Karnaugh</h3>
+			<p>Maintenant que le tableau de Karnaugh est rempli, on va tenter d'en dégager l'expression booléenne la plus réduite qui soit. Pour cela, on doit faire des groupes de 1 les
+			plus grands possibles, avec quelques règles à respecter&nbsp;:</p>
+				<ul>
+					<li>Ces groupes doivent être des carrés ou des rectangles.</li>
+					<li>On doit faire des groupes avec un total qui est un exposant de 2 (1, 2, 4, 8...).</li>
+					<li>Il faut toujours faire les groupes les plus grands possibles.</li>
+					<li>Il faut entourer chaque 1 au moins une fois.</li>
+					<li>On ne peut pas faire de diagonales.</li>
+					<li>On peut en revanche grouper comme si les côtés droit et gauche étaient adjacents.</li>
+					<li>On peut également grouper comme si les côtés haut et bas étaient adjacents.</li>
+				</ul>
+			<p><span class="bold">NB&nbsp;:</span> Concernant les deux derniers points, il faut vraiment s'imaginer que les tableaux de Karnaugh sont des parchemins qui se replient à la fois de haut en bas
+			et de côté à côté. En somme, les tableaux de Karnaugh sont <a href="https://upload.wikimedia.org/wikipedia/commons/3/3b/Karnaugh6.gif" target="_blank">des sortes de donuts</a> !</p>
+			
+			<h4>Exemple :</h4>
+			
+			<div class="flex-space-between">
+				<p>Pour bien marquer les groupements, <br />on les entoure dans le tableau. <br />Ici, on ne peut faire que des groupes de 2.</p>
+				<div><img class="small-karnaugh" src="css/images/karnaugh-2-2-or-b.png" alt="Tableau de Karnaugh 2 sur 2 rempli" /></div>
+				<p>On regarde pour le groupement magenta ce qui reste commun. <br />
+				On voit que x est toujours égal à 1, indépendamment de y. <br />
+				On regarde pour le groupement orange ce qui reste commun. <br />
+				On voit que y est toujours égal à 1, indépendamment de x. <br />
+				On obtient donc&nbsp;: <span class="formula-font larger">? = x + y</span></p>
+			</div>
+			
+			<h3>3.3. Karnaugh avec des expressions booléennes</h3>
+			<p>Il n'est pas obligatoire d'avoir une table de vérité pour remplir un tableau de Karnaugh. Si on a une expression booléenne qui ne contient que des ET et des OU, sans parenthèses,
+			on peut alors remplir un tableau de Karnaugh pour la simplifier.</p>
+			<p>Prenons cette expression en exemple&nbsp;: <span class="formula-font larger">Y = <span class="not">A</span>.<span class="not">B</span>.C.<span class="not">D</span> +
+			<span class="not">A</span>.B.C.<span class="not">D</span> + A.B.C.D + A.<span class="not">B</span>.<span class="not">C</span>.<span class="not">D</span> + 
+			A.B.<span class="not">C</span>.D</span></p>
+			<p>Pour remplir un tableau de Karnaugh avec cette expression, il faut se demander à quelle(s) case(s) correspond(ent) chaque terme séparé par des OU. On commence donc par
+			<span class="not">A</span>.<span class="not">B</span>.C.<span class="not">D</span>. Il y a 4 variables dedans, donc cela ne concernera qu'une seule case&nbsp;: celle où A, B et D
+			valent 0 et où C vaut 1. On continue pour chaque terme et on obtient&nbsp;:	</p>
+			
+			<div class="flex-space-between">
+				<div><img class="medium-karnaugh" src="css/images/karnaugh-4-4-y-a.png" alt="Tableau de Karnaugh 4 sur 4 rempli" /></div>
+				<p>Si l'on veut en tirer l'expression <br />la plus courte, on groupe les 1.</p>
+				<div><img class="medium-karnaugh" src="css/images/karnaugh-4-4-y-b.png" alt="Tableau de Karnaugh 4 sur 4 rempli" /></div>
+			</div>
+			<p>Une fois les 1 entourés correctement groupés, on lit les groupes pour voir ce qu'ils ont en commun. Si l'on regarde le rectangle <span class="bold cyan">cyan</span>, on voit qu'il
+			s'étend sur les colonnes 00 et 01. Les colonnes représentent A et B. Cela signifie que, dans ce groupement, A est égal à 0 indépendamment de l'état de B. Mais ce groupement est aussi
+			sur la ligne 10. Les lignes représentent C et D. Cela signifie que ce groupement a toujours C qui vaut 1 et D qui vaut 0. On tire donc <span class="not">A</span>.C.<span class="not">D</span>
+			de ce rectangle. On continue jusqu'à avoir tiré l'expression de chaque rectangle.</p>
+			<p>On obtient donc&nbsp;: <span class="formula-font larger">Y = <span class="not">A</span>.C.<span class="not">D</span> + A.B.D + A.<span class="not">B</span>.<span class="not">C</span>.<span class="not">D</span></span></p>
+			
+			
+			
+			<h3>3.4. Quelques autres exemples</h3>
+			<p>Sur base de ce qu'on a appris, voici quelques analyses de tableaux.</p>
+			
+			<h4>Exemple 1</h4>
+			<div class="flex-space-between">
+				<div><img class="medium-karnaugh" src="css/images/karnaugh-4-4-simple-a.png" alt="Tableau de Karnaugh 4 sur 4 rempli" /></div>
+				<p>On groupe les 1 en faisant<br /> à chaque fois des groupes <br />les plus grands possibles.</p>
+				<div><img class="medium-karnaugh" src="css/images/karnaugh-4-4-simple-b.png" alt="Tableau de Karnaugh 4 sur 4 rempli" /></div>
+			</div>
+			<p>On obtient donc&nbsp;: <span class="formula-font larger">S = B + C.<span class="not">D</span> + A.C</p>
+			
+			<h4>Exemple 2</h4>
+			<div class="flex-space-between">
+				<div><img class="medium-karnaugh" src="css/images/karnaugh-4-4-corners-a.png" alt="Tableau de Karnaugh 4 sur 4 rempli" /></div>
+				<p>On groupe les 1 <br />en oubliant pas que les côtés<br /> se replient comme un donut.</p>
+				<div><img class="medium-karnaugh" src="css/images/karnaugh-4-4-corners-b.png" alt="Tableau de Karnaugh 4 sur 4 rempli" /></div>
+			</div>
+			
+			<p>On obtient donc&nbsp;: <span class="formula-font larger">T = <span class="not">B</span>.<span class="not">D</span> + <span class="not">C</span>.D</p>
+			
+			<h3>3.5. Exemples de tableaux avec impossibilités</h3>
+			<p>Dans certains problèmes de logique, on aura des impossibilités dans les tables de vérité. Nous les notons <span class="rouge bold">X</span>. Il faut également les reporter
+			dans le tableau de Karnaugh.</p>
+			
+			<h4>Exemple 3</h4>
+			<div class="flex-space-between">
+				<div><img class="medium-karnaugh" src="css/images/karnaugh-4-4-impossible-a.png" alt="Tableau de Karnaugh 4 sur 4 rempli" /></div>
+				<p>Tant qu'il reste des 1 à entourer,<br />on peut entourer des <span class="rouge bold">X</span> avec<br />comme s'ils étaient des 1.</p>
+				<div><img class="medium-karnaugh" src="css/images/karnaugh-4-4-impossible-b.png" alt="Tableau de Karnaugh 4 sur 4 rempli" /></div>
+			</div>
+			<p>On obtient donc&nbsp;: <span class="formula-font larger">IMP = A + <span class="not">B</span>.C + <span class="not">B</span>.<span class="not">D</span> + C.<span class="not">D</span> + B.<span class="not">C</span>.D </p>
+			
+			
+			
+			
+			
+			
+			
+			
+			<h2 id="logique-mixte">4. Schémas en logique mixte</h2>
+			<p>Les schémas en logique mixte consistent à représenter des expressions avec des portes logiques.</p>
+			
+			<h3>4.1. Symboles internationaux</h3>
+			<p>Les deux pins à gauche représentent deux inputs qui traversent une porte logique pour finir en un output. On aura remarqué que la présence d'une boule sur une pin signifie NOT.</p>
+			<p class="centered"><img class="small-image" src="css/images/logic-gates-yes-not-eu.png" alt="Logo Truth Table Generator" /></p>
+			<p class="centered"><img class="medium-image" src="css/images/logic-gates-eu.png" alt="Logo Truth Table Generator" /></p>
+			<p>Ce sont ces symboles que nous utiliserons.</p>
+			
+			<h3>4.2. Symboles américains</h3>
+			<p>Les deux pins à gauche représentent deux inputs qui traversent une porte logique pour finir en un output. On aura remarqué que la présence d'une boule sur une pin signifie NOT.</p>
+			<p class="centered"><img class="small-image" src="css/images/logic-gates-yes-not-us.png" alt="Logo Truth Table Generator" /></p>
+			<p class="centered"><img class="medium-image" src="css/images/logic-gates-us.png" alt="Logo Truth Table Generator" /></p>
+			<p>Nous n'utiliserons pas ces symboles, mais il est bon de savoir les reconnaître. Ils sont tout de même très utilisés.</p>
+			
+			<h3>4.3. Exemples de schémas</h3>
+			<p>Reprenons l'expression suivante pour en faire un schéma&nbsp;: 
+			<span class="formula-font larger">T = <span class="not">B</span>.<span class="not">D</span> + <span class="not">C</span>.D</p>
+			<p class="centered"><img class="medium-image" src="css/images/logic-gates-corners.png" alt="schéma logique mixte" /></p>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<h2 id="outils-logique">5. Outils en ligne</h2>
+			<h3>5.1. Truth Table Generator</h3>
+			<p><a href="https://web.stanford.edu/class/cs103/tools/truth-table-tool/"><img src="css/images/ttg.png" alt="Logo Truth Table Generator"/></a></p>
+			<p><a href="https://web.stanford.edu/class/cs103/tools/truth-table-tool/">Ce site</a> permet de générer des tables de vérité, aussi complexes soient-elles, en quelques instants. Il faut cependant apprendre à jouer
+			avec des opérateurs	logiques notés de façon moins intuitives&nbsp;: &not; est le <span class="not">&nbsp;</span> (NOT), &and; est le . (AND), &or; est le + (OR), &top; 
+			fait office de 1 (TRUE) et &perp; fait office de 0 (FALSE). Il y a aussi moyen de les représenter avec des symboles disponibles sur nos claviers&nbsp;: \/ /\ ~ ! etc.
+			N'oubliez pas les parenthèses !</p>
+			
+			<h3>5.2. Calculateur d'Expressions Booléennes</h3>
+			<p><a href="https://www.dcode.fr/calcul-expressions-booleennes"><img src="https://www.dcode.fr/images/dcode.png" /></a></p>
+			<p><a href="https://www.dcode.fr/calcul-expressions-booleennes">Ce site</a> permet de simplifier des équations logiques aussi complexes soient-elles.
+			Super pratique pour trouver une réponse finale et gagner un temps précieux. À nouveau ici, les notations utilisées sont différentes, mais en prenant
+			le mode ALGEBRAIC, on peut utiliser ! pour NOT, * pour OR et + pour AND. N'oubliez pas les parenthèses !</p>
+			
+			<h3>5.3. Les tableaux de Karnaugh</h3>
+			<p>Si vous avez des difficultés à comprendre les tableaux de Karnaugh, mais que vous galérez moins en anglais, je recommande ces vidéos&nbsp;:</p>
+			
+			<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/3vkMgTmieZI" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/UfZKvPQku8w" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		
+		
+		</div>
+		
+			
+
+		<footer><p>&copy; Website built by Nicolas Toffolo (2020-2021)</p></footer>
+	</body>
+
+
+</html>

@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<title>HELHa Révison</title>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Les synthèses pour vos études en informatique industrielle à la HELHa.">
+		<script src="css/count.js"></script>
+		<link rel="stylesheet" href="css/main.css" type="text/css">
+		<link href='https://fonts.googleapis.com/css?family=M%20PLUS%201p' rel='stylesheet'> <!-- Police utilisée pour les maths -->
+		<link rel="icon" 
+			  href="css/images/icon.png"
+			  type="image/png" />
+	</head>
+
+	<body>
+		<header>
+			<div id="titre-principal">
+				<div id="logo">
+					<img src="css/images/logo-helha.svg" alt="Logo Helha" />
+				</div>
+				<h1>Révision</h1>
+			</div>
+			
+			<!-------------------- BARRE DE NAVIGATION ---------------------->
+			<nav>
+				<ul>
+					<li><a href="index.html">ACCUEIL</a></li>
+					<li><a href="electrotechnique-1.html">ÉLECTROTECHNIQUE</a></li>
+					<li><a href="langage-c.html">LANGAGE C</a></li>
+					<li><a href="logique-binaire.html">LOGIQUE BINAIRE</a></li>					
+					<li><a href="maths.html">MATHS</a></li>
+					<li><a href="reseaux-1.html">RÉSEAUX</a></li>
+					<li><a href="autres.html">AUTRES</a></li>
+				</ul>
+			</nav>
+			<!--------------- FIN DE LA BARRE DE NAVIGATION ----------------->
+			
+			<div id="stuffing"></div>			
+		</header>	
+
+		<aside id="side-nav">
+			<h1>Mathématiques appliquées</h1>
+			<ul>
+				<li><a href="#notions-essentielles">1. Notions essentielles</a></li>
+				<li><a href="#Règle-de-3">2. La règle de 3</a></li>
+				<li><a href="#équation-1-degré">3. Équations du premier degré</a></li>
+				<li><a href="#équation-2-degré">4. Équations du second degré</a></li>
+				<li><a href="#trigono">5. Trigonométrie dans le triangle rectangle</a></li>
+				<li><a href="#systèmes-équations">6. Résolution de systèmes d'équations</a></li>
+				<li><a href="#complexes">7. Nombres complexes</a></li>
+				<li><a href="#alternatif">8. Calculs dans le courant alternatif</a></li>
+				<li><a href="#outils-maths">A. Outils en ligne et références</a></li>
+			</ul>
+		</aside>
+
+		<div id="maincontent">
+
+			<h2>Contenu</h2>
+			<p>Informations sur les maths de base enseignées par Mme Depaille.</p>
+			<p>La page de ce site ne fait que reprendre les règles et formules essentielles pour les maths de base. La clé de la réussite, c'est de faire du bon vieux drill&nbsp;: des exercices,
+			des exercices, encore des exercices.</p>
+			<p>Pour cela, je vous renvoie vers le syllabus de Mme Depaille pour les exercices principaux du cours, ainsi qu'au document des erreurs courantes.</p>
+				
+			<h3>Évaluations</h3>
+			<p>En principe, pour le cours de Mathématiques Appliquées 1, 70&nbsp;% des points sont joués en janvier. L'évaluation de novembre permet d'être dispensé de 30&nbsp;%
+			des points de l'examen (cette note est dispensatoire jusqu'en seconde session). Les 30&nbsp;% représentent la partie Maths de base qui doit absolument être réussie pour valider le cours.</p>
+						
+			
+			<h2 id="notions-essentielles">1. Notions essentielles</h2>
+			
+			<h3>1.1. Factorisation et distributivité</h3>
+			<p>La multiplication est distributive par rapport à l'addition.</p>
+			<p class="formula-font larger small-bottom-margin">x . (y + z) = x . y + x . z</p>
+			<p>On <span class="bold">distribue</span> en passant de la gauche vers la droite et on <span class="bold">factorise</span> (ou on <span class="bold">met en évidence</span>)
+			en passant de la droite vers la gauche.</p>
+			
+			<h4>1.1.1. Distributivité de la négation</h4>
+			<p>Une négation, ou un nombre négatif, placée devant une parenthèse porte sur <span class="bold">toute la parenthèse</span>.</p>
+			<p class="formula-font larger small-bottom-margin"> x - (y + z) = x - y <span class="bold rouge">-</span> z</p>
+			
+			<p>Quand il y a un moins devant une parenthèse, c'est <span class="bold">comme si on distribuait un -1</span>. Cela revient donc à écrire&nbsp;:</p>
+			<p class="formula-font larger small-bottom-margin"> x + (-1).(y + z) = x - y <span class="bold rouge">-</span> z</p>
+
+			<h3>1.2. Les fractions</h3>
+			<p>Voici les règles essentielles concernant les fractions.</p>
+			
+			<h4>1.2.1. Mise au même dénominateur</h4>
+			<p>Si on multiplie (ou si on divise) le numérateur et le dénominateur d'une fraction par un même nombre <span class="bold">non nul</span>, alors on obtient une fraction égale.</p>
+			<table class="small-bottom-margin">
+				<tbody>
+					<tr>
+						<td class="mathallcells">x</td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells">x . z</td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells">x</td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells">x / z</td>
+					</tr>
+					<tr>
+						<td class="mathallcells">&#x2e3a;</td>
+						<td class="mathallcells">=</td>
+						<td class="mathallcells">&#x2e3a;</td>
+						<td class="mathallcells">&emsp;</td>
+						<td class="mathallcells">&#x2e3a;</td>
+						<td class="mathallcells">=</td>
+						<td class="mathallcells">&#x2e3a;</td>
+					</tr>
+					<tr>
+						<td class="mathallcells">y</td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells">y . z</td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells">y</td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells">y / z</td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<h4>1.2.2. Mise au même dénominateur</h4>
+			<p>Réduire au même dénominateur permet de réduire la complexité d'une expression.</p>
+			
+			<table class="small-bottom-margin">
+				<tbody>
+					<tr>
+						<td class="mathallcells">x</td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells">a</td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells">bx + ay</td>
+					</tr>
+					<tr>
+						<td class="mathallcells">&#x2e3a;</td>
+						<td class="mathallcells">+</td>
+						<td class="mathallcells">&#x2e3a;</td>
+						<td class="mathallcells">=</td>
+						<td class="mathallcells">&#x2e3a;&#x2e3a;</td>
+					</tr>
+					<tr>
+						<td class="mathallcells">y</td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells">b</td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells">by</td>
+					</tr>
+				</tbody>
+			</table>
+			
+				
+			
+			<h4>1.2.3. Division de deux fractions</h4>
+			<p>Diviser par un nombre non nul revient à multiplier par son inverse.</p>
+			<table class="small-bottom-margin">
+				<tbody>
+					<tr>
+						<td class="mathallcells">a</td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+					</tr>
+					<tr>
+						<td class="mathallcells">&mdash;</td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+					</tr>
+					<tr>
+						<td class="mathallcells">b</td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells">a</td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells">d</td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells">ad</td>
+					</tr>
+					<tr>
+						<td class="mathallcells">&#x2e3a;</td>
+						<td class="mathallcells">=</td>
+						<td class="mathallcells">&mdash;</td>
+						<td class="mathallcells">.</td>
+						<td class="mathallcells">&mdash;</td>
+						<td class="mathallcells">=</td>
+						<td class="mathallcells">&#x2e3a;</td>
+					</tr>
+					<tr>
+						<td class="mathallcells">c</td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells">b</td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells">c</td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells">bc</td>
+					</tr>
+					<tr>
+						<td class="mathallcells">&mdash;</td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+					</tr>
+					<tr>
+						<td class="mathallcells">d</td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<h4>1.2.4. Place du signe dans les fractions</h4>
+			<p>Le symbole de la négation peut indifféremment être placé au nominateur, au dénominateur ou devant la fraction, pour autant que les deux éléments soient simples.
+			N'oubliez pas la distributivité de la négation&nbsp;!</p>
+			
+			<table class="small-bottom-margin">
+				<tbody>
+					<tr>
+						<td class="mathallcells">- x</td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells">x</td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells">x</td>
+					</tr>
+					<tr>
+						<td class="mathallcells">&#x2e3a;</td>
+						<td class="mathallcells">=</td>
+						<td class="mathallcells">&#x2e3a;</td>
+						<td class="mathallcells">=</td>
+						<td class="mathallcells">-</td>
+						<td class="mathallcells">&#x2e3a;</td>
+					</tr>
+					<tr>
+						<td class="mathallcells">y</td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells">- y</td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells">y</td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<h3>1.3. Règles des puissances</h3>
+			<p>Voici une liste des règles qui régissent les puissances.</p>
+			<div class="flex-space-between">
+				<div class="flex-column">
+					<h4 class="small-bottom-margin">1.3.1. Les exposants</h4>
+					<p class="formula-font larger small-bottom-margin"> x<sup>n</sup> . x<sup>m</sup> = x<sup>n+m</sup></p>
+					<table class="small-bottom-margin">
+						<tbody>
+							<tr>
+								<td class="mathallcells">x<sup>n</sup></td>
+								<td></td>
+								<td class="mathallcells"></td>
+							</tr>
+							<tr>
+								<td class="mathallcells">&#x2e3a;</td>
+								<td class="mathallcells">=</td>
+								<td class="mathallcells">x<sup>n-m</sup></td>
+							</tr>
+							<tr>
+								<td class="mathallcells">x<sup>m</sup></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+					<p class="formula-font larger small-bottom-margin">(x<sup>n</sup>)<sup><sup>m</sup></sup> = x<sup>n.m</sup></p>
+					<p class="formula-font larger small-bottom-margin">(x . y)<sup>n</sup> = x<sup>n</sup> . y<sup>n</sup></p>
+					<table class="small-bottom-margin">
+						<tbody>
+							<tr>
+								<td rowspan="3"><span class="much-larger">(</span></td>
+								<td class="mathallcells">x</td>
+								<td rowspan="3"><span class="much-larger">)</span></td>
+								<td class="mathallcells"><sup>n</sup></td>
+								<td class="mathallcells"></td>
+								<td class="mathallcells">x<sup>n</sup></td>
+								<td class="mathallcells"></td>
+								<td class="mathallcells"></td>
+							</tr>
+							<tr>
+								<td class="mathallcells">&#x2e3a;</td>
+								<td class="mathallcells"></td>
+								<td class="mathallcells">=</td>
+								<td class="mathallcells">&#x2e3a;</td>
+								<td class="mathallcells">=</td>
+								<td class="mathallcells">x<sup>n</sup> . y<sup>-n</sup></td>
+							</tr>
+							<tr>
+								<td class="mathallcells">y</td>
+								<td class="mathallcells"></td>
+								<td class="mathallcells"></td>
+								<td class="mathallcells">y<sup>n</sup></td>
+								<td class="mathallcells"></td>
+								<td class="mathallcells"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				
+				<div class="flex-column">
+					<h4 class="small-bottom-margin">1.3.2. Les racines</h4>
+					<p class="formula-font larger small-bottom-margin"> &Sqrt;x . &Sqrt;y = &Sqrt;xy</p>
+					<table class="small-bottom-margin">
+						<tbody>
+							<tr>
+								<td rowspan="3"><span class="much-larger">&Sqrt;(</span></td>
+								<td class="mathallcells">x</td>
+								<td rowspan="3"><span class="much-larger">)</span></td>
+								<td class="mathallcells"></td>
+								<td class="mathallcells">&Sqrt;x</td>
+							</tr>
+							<tr>
+								<td class="mathallcells">&#x2e3a;</td>
+								<td class="mathallcells">=</td>
+								<td class="mathallcells">&#x2e3a;</td>
+							</tr>
+							<tr>
+								<td class="mathallcells">y</td>
+								<td class="mathallcells"></td>
+								<td class="mathallcells">&Sqrt;y</td>
+							</tr>
+						</tbody>
+					</table>
+					<p class="formula-font larger small-bottom-margin"> &Sqrt;(x<sup>2</sup>) = x <span class="gris-foncé">ou</span> -x</p>
+					<p class="formula-font larger small-bottom-margin"> <sup>m</sup>&Sqrt;(x<sup>n</sup>) = x<sup>n/m</sup></p>
+					<p class="formula-font larger small-bottom-margin"> &Sqrt;(-x) = &#x2204;</p>
+				</div>
+
+				<div class="flex-column">
+					<h4 class="small-bottom-margin">1.3.3. Puissances paires<br />et règle d'écriture</h4>
+					<p class="formula-font larger small-bottom-margin"> (-x)<sup>2</sup> = x<sup>2</sup> &ne; -x<sup>2</sup></p>
+					<p class="small-bottom-margin">Exemple&nbsp;:</p>
+					<p class="formula-font larger small-bottom-margin"> (-4)<sup>2</sup> = 16 &ne; -4<sup>2</sup> = -16</p>
+				</div>	
+			</div>
+			<p><span class="bold">Attention&nbsp;:</span> Un nombre élevé à une puissance paire est toujours positif (même si la puissance est négative&nbsp;!).
+			Par exemple (-2)<sup>-2</sup> = 0,25</p>
+			
+			
+			
+			<h3>1.4. Produits remarquables</h3>
+			<p>Aussi appelées "identités remarquables", ces relations sont à connaître sur le bout des doigts. Il faut pouvoir les repérer même dans des expressions complexes.
+			Cela peut simplifier énormément la tâche.</p>
+			<p class="formula-font larger small-bottom-margin">(a + b)<sup>2</sup> = a<sup>2</sup> + 2ab + b<sup>2</sup></p>
+			<p class="formula-font larger small-bottom-margin">(a - b)<sup>2</sup> = a<sup>2</sup> - 2ab + b<sup>2</sup></p>
+			<p class="formula-font larger small-bottom-margin">(a + b)(a - b) = a<sup>2</sup> - b<sup>2</sup></p>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<h2 id="Règle-de-3">2. La règle de 3</h2>
+			<p>La règle de trois est une histoire de relation proportionnelle, ou inversement proportionnelle, entre deux éléments.</p>
+			<h3>2.1. Procédé</h3>
+			<p>Voici une méthode pratique&nbsp;: on prend le nombre qui va augmenter ou diminuer (n) et on le multiplie par la fraction des deux éléments donnés 
+			qui vont la modifier, c'est-à-dire la valeur de départ (v<sub>D</sub>) et la valeur d'arrivée (v<sub>A</sub>). Si n doit augmenter, la fraction doit être supérieure à 1. 
+			Si n doit diminuer, la fraction doit être inférieure à 1.</p>
+			<table class="small-bottom-margin">
+				<tbody>
+					<tr>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells">v<sub>A</sub></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells">v<sub>D</sub></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+					</tr>
+					<tr>
+						<td class="mathallcells">n</td>
+						<td class="mathallcells">.</td>
+						<td class="mathallcells">&#x2e3a;</td>
+						<td class="mathallcells">=</td>
+						<td class="mathallcells">x</td>
+						<td class="mathallcells">&emsp;OU&emsp;</td>
+						<td class="mathallcells">n</td>
+						<td class="mathallcells">.</td>
+						<td class="mathallcells">&#x2e3a;</td>
+						<td class="mathallcells">=</td>
+						<td class="mathallcells">x</td>
+					</tr>
+					<tr>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells">v<sub>D</sub></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells">v<sub>A</sub></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+					</tr>
+				</tbody>
+			</table>
+			<p><span class="bold">Attention&nbsp;:</span> Dans le cas de la recherche d'un pourcentage, c'est n qui est égal à 100.</p>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<h2 id="équation-1-degré">3. Équations du premier degré</h2>
+			<p>Une équation est avant tout une égalité. On y trouve une inconnue (souvent x) dont il faut déterminer la valeur en l'isolant dans un des deux membres de l'équation.</p>
+			
+			<h3>3.1. Permutation des membres</h3>
+			<p>Il faut voir les deux membres d'une équation comme deux plateaux d'une vieille balance. Elle doit toujours rester en équilibre. Autrement dit, si l'on ajoute ou retire
+			quelque chose dans l'un des deux membres, il faut faire de même dans l'autre.</p>
+			<p class="formula-font larger small-bottom-margin">7 + 5x = 7x - 13</p>
+			<p>Si j'ajoute 13 d'un côté, je dois ajouter 13 de l'autre.</p>
+			<p class="formula-font larger small-bottom-margin">7 + 5x <span class="vert">+ 13</span> = 7x - 13 <span class="vert">+ 13</span> &hArr; 20 + 5x = 7x</p>
+			<p>Cela revient à dire que lorsqu'un élément change de membre, il change de signe.</p>
+			<p class="formula-font larger small-bottom-margin">7 + 5x <span class="vert">+ 13</span> = 7x</p>
+			
+			<h3>3.2. Le produit en croix</h3>
+			<p>Dans le cas de fractions, on serait tenté de mettre les deux membres au même dénominateur pour pouvoir les simplifier. En effet, une fois que deux les deux membres d'une
+			équation présentent le même dénominateur, on peut supprimer ce dénominateur (car on peut multiplier les deux membres par l'inverse).</p>
+			<p>Bien que cette méthode soit parfaitement valable, il est bon de mentionner la technique du produit en croix (ou double produit), car elle est parfois plus rapide.
+			Pour faire un produit en croix, on multiplie le dénominateur de chaque membre par le numérateur de l'autre.</p>
+			<table class="small-bottom-margin">
+				<tr>
+					<td class="mathallcells">x</td>
+					<td class="mathallcells"></td>
+					<td class="mathallcells">a</td>
+					<td class="mathallcells"></td>
+					<td class="mathallcells"></td>
+					<td class="mathallcells"></td>
+					<td class="mathallcells">y</td>
+					<td class="mathallcells"></td>
+					<td class="mathallcells">b</td>
+				</tr>
+				<tr>
+					<td class="mathallcells">&mdash;</td>
+					<td class="mathallcells">=</td>
+					<td class="mathallcells">&mdash;</td>
+					<td class="mathallcells">&hArr;</td>
+					<td class="mathallcells">bx = ay</td>
+					<td class="mathallcells">&hArr;</td>
+					<td class="mathallcells">&mdash;</td>
+					<td class="mathallcells">=</td>
+					<td class="mathallcells">&mdash;</td>
+				</tr>
+				<tr>
+					<td class="mathallcells">y</td>
+					<td class="mathallcells"></td>
+					<td class="mathallcells">b</td>
+					<td class="mathallcells"></td>
+					<td class="mathallcells"></td>
+					<td class="mathallcells"></td>
+					<td class="mathallcells">x</td>
+					<td class="mathallcells"></td>
+					<td class="mathallcells">a</td>
+				</tr>
+			</table>
+			<p>Autrement dit, on a multiplié ou divisé chaque membre par les deux dénominateurs.</p>
+			
+			
+			<h3 id="fonction-polynomiale">3.4. Fonction polynomiale</h3>
+			<p>Une équation du premier degré peut également représenter une fonction polynomiale. La forme qui nous intéresse pour tracer des droites dans un repère orthonormé sera la suivante&nbsp;:</p>
+			<p class="formula-font larger small-bottom-margin">y = mx + p</p>
+			<p>m représente la pente de la droite (aussi appelé coefficient angulaire). p représente l'ordonnée à l'origine.</p>
+			<p>Regardons la droite d'équation <span class="formula-font">y = x/3 - 1</span></p>
+			<p><img class ="small-image" src="css/images/fonction-1er-degre.png" alt="Droite repère orthonormé" /></p>
+			<p>La pente de cette droite est de 1/3. Autrement dit, quand on monte de 1 sur l'axe des ordonnées (l'axe vertical), elle avance d'un tiers sur l'axe des abscisses (l'axe horizontal).</p>
+			<p>L'ordonnée à l'origine est de -1. Cela signifie que lorsque x est égal à 0, y est égal à -1.</p>
+			
+			<h4>3.4.1. Calculer la pente</h4>
+			<p>Si la pente d'une fonction polynomiale ne nous est pas donnée, il est possible de la calculer si l'on a au moins deux points de la droite.</p>
+			<p>Deux points de la droite se notent (x<sub>1</sub>&nbsp;;&nbsp;y<sub>1</sub>) et (x<sub>2</sub>&nbsp;;&nbsp;y<sub>2</sub>).</p>
+			<table class="small-bottom-margin">
+				<tbody>
+					<tr>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells">y<sub>2</sub> - y<sub>1</sub></td>
+					</tr>
+					<tr>
+						<td class="mathallcells">m</td>
+						<td class="mathallcells">=</td>
+						<td class="mathallcells">&#x2e3a;&#x2e3a;</td>
+					</tr>
+					<tr>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells">x<sub>2</sub> - x<sub>1</sub></td>
+					</tr>
+				</tbody>
+			</table>
+			<p>Dans la droite <span class="formula-font">y = x/3 - 1</span> vue plus haut, si on ne nous donnait que les points (-3&nbsp;;&nbsp;-2) et (0&nbsp;;&nbsp;-1), on pourrait donc calculer la pente.</p>
+			
+			<h4>3.4.2. Cas particuliers</h4>
+			<p>Si deux droites non verticales ont <span class="bold">la même pente</span>, elles sont donc <span class="bold">parallèles entre elles</span>.<br />
+			En effet, si elles ont la
+			même pente, cela signifie qu'elles ont la même amplitude dans un repère orthonormé.</p>
+			<p>Deux droites non parallèles aux axes sont <span class="bold">perpendiculaires</span> si le <span class="bold">produit de leurs pentes vaut -1</span>. <br />
+			Si l'on reprend la droite <span class="formula-font">y = x/3 - 1</span>, cela signifie que ses perpendiculaires doivent avoir une pente de -3.</p>
+			
+			<h4>3.4.3. Trouver p avec un point donné</h4>
+			<p>Si l'on doit trouver la valeur du terme indépendant (p) et que l'on connaît un point par lequel passe par la droite, il suffit de résoudre l'équation de la droite
+			en remplaçant x et y par les valeurs du point qui est donné. On isole p, et le tour est joué... pour autant qu'on connaisse la pente.</p>
+			<p>Si m (la pente) n'est pas donné, il peut être déduit sur base d'équation d'une autre droite qui est en relation avec celle qu'on cherche. 
+			À cet effet, je vous invite à relire le point 3.4.2. pour les cas particuliers. </p>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<h2 id="équation-2-degré">4. Équations du second degré</h2>
+			<p>Une équation est avant tout une égalité. Une équation du second degré peut se ramener sous la forme suivante&nbsp;:</p>
+			<p class="formula-font larger small-bottom-margin">a . x<sup>2</sup> + b . x + c = 0</p>
+			<p>Où a doit être différent de 0 (sinon, c'est une équation du premier degré).</p>
+			<p>C'est cette forme que l'on recherche pour pouvoir résoudre l'équation.</p>
+			<h3>4.1. Les conditions d'existence</h3>
+			<p>Sachant que l'on ne peut pas diviser par 0, les équations où l'on trouve x au dénominateur ont ce qu'on appelle des conditions d'existence. <br />Observons la suivante&nbsp;:</p>
+			<table class="small-bottom-margin">
+				<tbody>
+					<tr>
+						<td class="mathallcells">2x+7</td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells">-6</td>
+					</tr>
+					<tr>
+						<td class="mathallcells">&#x2e3a;</td>
+						<td class="mathallcells">=</td>
+						<td class="mathallcells">&#x2e3a;</td>
+					</tr>
+					<tr>
+						<td class="mathallcells">x-1</td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells">x+2</td>
+					</tr>
+				</tbody>
+			</table>
+			<p>Les conditions d'existence de cette équation sont que x soit différent de 1 et -2.</p>
+			
+			<h3>4.2. Trouver les valeurs de x</h3>
+			<p>Pour savoir quelles sont les valeurs de x, on doit appliquer la formule suivante&nbsp;:</p>
+			<table class="small-bottom-margin">
+				<tbody>
+					<tr>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells">-b - &Sqrt;&#916;</td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells">-b + &Sqrt;&#916;</td>
+						<td class="mathallcells"></td>
+					</tr>
+					<tr>
+						<td class="mathallcells">x<sub>1</sub></td>
+						<td class="mathallcells">=</td>
+						<td class="mathallcells">&#x2e3a;&#x2e3a;</td>
+						<td class="mathallcells">&emsp;ET&emsp;</td>
+						<td class="mathallcells">x<sub>2</sub></td>
+						<td class="mathallcells">=</td>
+						<td class="mathallcells">&#x2e3a;&#x2e3a;</td>
+						<td class="mathallcells"></td>
+					</tr>
+					<tr>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells">2a</td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells"></td>
+						<td class="mathallcells">2a</td>
+						<td class="mathallcells"></td>
+					</tr>
+				</tbody>
+			</table>
+			<p>Pour trouver le &#916; ("delta" ou "discriminant")&nbsp;:</p>
+			<p class="formula-font larger small-bottom-margin">&#916; = b<sup>2</sup> - 4ac</p>
+			<p>Il y a deux valeurs de x, car pour rappel&nbsp;: &Sqrt;(a<sup>2</sup>) = +/- a</p>
+			<p>Si cela vous intéresse, voici la démonstration de la formule&nbsp;:</p>
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/hFd3dBKTr8w" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			
+			<h3>4.3. Les paraboles dans un axe</h3>
+			<p>Une équation du second degré peut également représenter une fonction polynomiale. La forme qui nous intéresse pour tracer les paraboles dans un repère orthonormé sera la suivante&nbsp;:</p>
+			<p class="formula-font larger small-bottom-margin">y = ax<sup>2</sup> + bx + c</p>
+			<p>Le signe de a permet de savoir si la parabole est tournée vers le haut ou le bas.</p>
+			
+			<h4>4.3.1. Nombres de racines</h4>
+			<p>Pour savoir combien de racines a la parabole (combien de fois elle croise l'axe des x), on doit calculer le &#916;, donc faire b<sup>2</sup> - 4ac. Si le &#916; est négatif,
+			la parabole ne croise pas du tout l'axe des x. S'il est égal à 0, la parabole le croise en un point. S'il est supérieur à 0, la parabole le croise en deux points.</p>
+			
+			<h4>4.3.2. Coordonnées du sommet de la parabole</h4>
+			<p>Toute parabole à pour sommet les coordonnées suivantes&nbsp;:</p>
+				<table class="small-bottom-margin">
+					<tbody>
+						<tr>
+							<td rowspan="3"><span class="much-larger">(</span></td>
+							<td class="mathallcells">-b</td>
+							<td class="mathallcells"></td>
+							<td class="mathallcells">-&#916;</td>
+							<td rowspan="3"><span class="much-larger">)</span></td>
+						</tr>
+						<tr>
+							<td class="mathallcells">&#x2e3a;</td>
+							<td class="mathallcells">;</td>
+							<td class="mathallcells">&#x2e3a;</td>
+						</tr>
+						<tr>
+							<td class="mathallcells">2a</td>
+							<td class="mathallcells"></td>
+							<td class="mathallcells">4a</td>
+						</tr>
+					</tbody>
+				</table>
+				
+			<h4>4.3.3. Trouver a, b ou c avec un point donné</h4>
+			<p>Si l'on doit trouver la valeur de a, b ou de c et que l'on connaît un point par lequel passe par la parabole, il suffit de résoudre l'équation de la parabole
+			en remplaçant x et y par les valeurs du point qui nous est donné. Si on cherche c, c'est c qu'il faudra isoler&nbsp;; si on cherche b, isoler b, etc... <br />
+			Dans ce genre d'exercices, nous n'aurons qu'une seule inconnue à chercher, les autres nous serons données.</p>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<h2 id="trigono">5. Trigonométrie dans le triangle rectangle</h2>
+			<p>Un triangle rectangle est un triangle qui possède un angle droit (c'est-à-dire un angle de 90°). Voici un triangle DEF, de côtés abc, avec son angle droit en D&nbsp;:</p>
+			<p class="centered"><img class ="small-image" src="css/images/triangle-rectangle.png" alt="Triangle rectangle" /></p>
+			<p>Dans ce triangle, le côté c'est le côté opposé à l'angle droit. On appelle ce côté l'hypoténuse.</p>
+			<p>Ce triangle nous servira de base pour les points qui vont suivre.</p>
+			
+			<h3 id="théo-pytha">5.1. Théorème de Pythagore</h3>
+			<p>Selon le théorème de Pythagore, le carré de l'hypoténuse est égal à la somme des carrés des deux autres côtés.</p>
+			<p class="formula-font larger small-bottom-margin">c<sup>2</sup> = a<sup>2</sup> + b<sup>2</sup>&emsp;&hArr;&emsp;c = &Sqrt;(a<sup>2</sup> + b<sup>2</sup>)</p>
+			
+			<h3>5.2. Cosinus, sinus et tangente</h3>
+			<p>Dans un triangle rectangle, il y a des relations directes entre l'amplitude des angles et la longueur des côtés. Ces rapports sont appelés cosinus, sinus et tangente.</p>
+			<p>Le sinus de l'angle est le rapport des longueurs du côté opposé à cet angle et de l'hypoténuse. Le cosinus de l'angle est le rapport des longueurs du côté adjacent à cet angle 
+			et de l'hypoténuse. La tangente de l'angle est le rapport des longueurs du côtés opposé et adjacent à cet angle et de l'hypoténuse.</p>
+			
+			<div class="flex">
+				<table class="small-bottom-margin">
+					<tbody>
+						<tr>
+							<td class="mathallcells"></td>
+							<td class="mathallcells"></td>
+							<td class="mathallcells">côté adjacent</td>
+							<td class="mathallcells"></td>
+						</tr>
+						<tr>
+							<td class="mathallcells">cos</td>
+							<td class="mathallcells">=</td>
+							<td class="mathallcells">&#x2e3a;&#x2e3a;&#x2e3a;</td>
+							<td class="mathallcells">&emsp;</td>
+						</tr>
+						<tr>
+							<td class="mathallcells"></td>
+							<td class="mathallcells"></td>
+							<td class="mathallcells">hypoténuse</td>
+							<td class="mathallcells"></td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<table class="small-bottom-margin">
+					<tbody>
+						<tr>
+							<td class="mathallcells"></td>
+							<td class="mathallcells"></td>
+							<td class="mathallcells">côté opposé</td>
+							<td class="mathallcells"></td>
+						</tr>
+						<tr>
+							<td class="mathallcells">sin</td>
+							<td class="mathallcells">=</td>
+							<td class="mathallcells">&#x2e3a;&#x2e3a;&#x2e3a;</td>
+							<td class="mathallcells">&emsp;</td>
+						</tr>
+						<tr>
+							<td class="mathallcells"></td>
+							<td class="mathallcells"></td>
+							<td class="mathallcells">hypoténuse</td>
+							<td class="mathallcells"></td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<table class="small-bottom-margin">
+					<tbody>
+						<tr>
+							<td class="mathallcells"></td>
+							<td class="mathallcells"></td>
+							<td class="mathallcells">côté opposé</td>
+							<td class="mathallcells"></td>
+						</tr>
+						<tr>
+							<td class="mathallcells">tan</td>
+							<td class="mathallcells">=</td>
+							<td class="mathallcells">&#x2e3a;&#x2e3a;&#x2e3a;</td>
+							<td class="mathallcells"></td>
+						</tr>
+						<tr>
+							<td class="mathallcells"></td>
+							<td class="mathallcells"></td>
+							<td class="mathallcells">côté adjacent</td>
+							<td class="mathallcells"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			
+			<p>Autrement dit, si l'on prend l'angle Ê en exemple&nbsp;:</p>
+			<div class="flex">
+				<table class="small-bottom-margin">
+					<tbody>
+						<tr>
+							<td class="mathallcells"></td>
+							<td class="mathallcells"></td>
+							<td class="mathallcells">b</td>
+							<td class="mathallcells"></td>
+						</tr>
+						<tr>
+							<td class="mathallcells">cos Ê</td>
+							<td class="mathallcells">=</td>
+							<td class="mathallcells">&#x2e3a;</td>
+							<td class="mathallcells">&emsp;</td>
+						</tr>
+						<tr>
+							<td class="mathallcells"></td>
+							<td class="mathallcells"></td>
+							<td class="mathallcells">a</td>
+							<td class="mathallcells"></td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<table class="small-bottom-margin">
+					<tbody>
+						<tr>
+							<td class="mathallcells"></td>
+							<td class="mathallcells"></td>
+							<td class="mathallcells">a</td>
+							<td class="mathallcells"></td>
+						</tr>
+						<tr>
+							<td class="mathallcells">sin Ê</td>
+							<td class="mathallcells">=</td>
+							<td class="mathallcells">&#x2e3a;</td>
+							<td class="mathallcells">&emsp;</td>
+						</tr>
+						<tr>
+							<td class="mathallcells"></td>
+							<td class="mathallcells"></td>
+							<td class="mathallcells">c</td>
+							<td class="mathallcells"></td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<table class="small-bottom-margin">
+					<tbody>
+						<tr>
+							<td class="mathallcells"></td>
+							<td class="mathallcells"></td>
+							<td class="mathallcells">a</td>
+							<td class="mathallcells"></td>
+						</tr>
+						<tr>
+							<td class="mathallcells">tan Ê</td>
+							<td class="mathallcells">=</td>
+							<td class="mathallcells">&#x2e3a;</td>
+							<td class="mathallcells"></td>
+						</tr>
+						<tr>
+							<td class="mathallcells"></td>
+							<td class="mathallcells"></td>
+							<td class="mathallcells">b</td>
+							<td class="mathallcells"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<p>Un petit moyen mnémotechnique&nbsp;: <span class="bold">CAH SOH TOA</span> <br />
+			<span class="bold">C</span>osinus, c'est côté <span class="bold">A</span>djacent sur <span class="bold">H</span>ypoténuse&nbsp;; <br />
+			<span class="bold">S</span>inus, c'est côté <span class="bold">O</span>pposé sur <span class="bold">H</span>ypoténuse&nbsp;; <br />
+			<span class="bold">T</span>angente, c'est côté <span class="bold">O</span>pposé sur côté <span class="bold">A</span>djacent.<br />
+			Retenez "casse-toi", et c'est bon&nbsp;!</p>
+			
+			
+			
+			
+			
+			<h2 id="systèmes-équations">6. Résolution de systèmes d'équations</h2>
+			<p>Un système d'équations est constitué de plusieurs équations qui portent sur les mêmes inconnues. Pouvoir résoudre des systèmes d'équations est très pratique lorsqu'on
+			utilise les lois des mailles et des noeuds en électricité.</p>			
+			
+			<h3>6.1. Méthode par substitution</h3>
+			<p>Cette méthode fonctionne très bien pour les systèmes de deux équations à deux inconnues. Elle consiste à isoler une inconnue dans une des deux équations et à venir la replacer
+			dans l'autre pour obtenir une équation à une seule inconnue&nbsp;:</p>
+			
+			<figure class="centered"><img class="large-image" src="css/images/systeme-equation-substitution.png" /></figure>
+			
+			
+			<p>Bien qu'assez rapide et "facile" pour des systèmes avec deux inconnues, cette méthode peut s'avérer (très) longue quand il y en a davantage. On privilégiera la méthode par combinaison 
+			linéaire à partir de trois inconnues.</p>
+			
+			<h3>6.2. Méthode par combinaison linéaire</h3>
+			<p>La méthode par combinaison consiste à manipuler les différentes lignes du système, en les ajoutant, les multipliant, les soustrayant, pour éliminer des termes et
+			aboutir à la résolution du système. Prenons le système suivant en exemple&nbsp;:</p>
+			
+			<figure class="centered"><img class="small-karnaugh" src="css/images/systeme-equations-1.png" /></figure>
+			
+			<p>Une fois que nous avons un système exprimé sous cette forme, nous allons en réalité travailler uniquement avec <span class="bold">les coefficients des inconnues et les termes indépendants</span>.
+			Ainsi, pour davantage de lisibilité, il est très pratique de placer ces nombres dans une <span class="bold">matrice</span> pour les traiter&nbsp;:</p>
+			
+			<figure class="centered"><img class="small-karnaugh" src="css/images/systeme-equations-2.png" /></figure>
+			
+			<p>À partir de cette matrice, notre objectif est de combiner les lignes entre elles pour obtenir des 0, car une inconnue avec un coefficient de 0 disparaît donc de l'équation.
+			Une fois qu'on obtient <span class="bold">deux zéros sur une même ligne</span>, cela signifie qu'on n'a plus qu'une seule inconnue dans une équation et on obtient facilement sa valeur.
+			Ensuite, les deux autres inconnues peuvent rapidement déduites.</p>
+			<p>Commençons par soustraire deux fois la ligne 1 à la ligne 3 pour obtenir <span class="bold">un premier 0</span>&nbsp;:</p>
+			
+			<figure class="centered"><img class="medium-karnaugh" src="css/images/systeme-equations-3.png" /></figure>
+						
+			<p>On peut bien sûr combiner de nombreuses façons différentes&nbsp;! L'exemple ci-dessus n'est pas le seul valable. Au bout du compte, tant qu'on effectue bien les opérations, on aboutira
+			à la même solution.</p>
+			<p>L'étape suivante consiste à obtenir <span class="bold">un 0 à la même inconnue, mais sur une autre ligne</span>. Faisons ça en ajoutant trois fois la ligne 1 dans la ligne 2&nbsp;:</p>
+			
+			<figure class="centered"><img class="medium-karnaugh" src="css/images/systeme-equations-4.png" /></figure>
+			
+			<p>Plus qu'une étape&nbsp;! Ajoutons huit fois la ligne 2' dans la ligne 3' afin d'obtenir <span class="bold">un deuxième 0</span>&nbsp;:</p>
+			
+			<figure class="centered"><img class="medium-karnaugh" src="css/images/systeme-equations-5.png" /></figure>
+			
+			<p>Si on réécrit notre troisième ligne, on sait donc à présent que&nbsp;: <span class="formula-font larger">41x&nbsp;=&nbsp;164 &rArr; <span class="vert bold">x&nbsp;=&nbsp;4</span></span></p>
+			<p>Maintenant qu'on a <span class="formula-font larger">x</span>, on peut obtenir <span class="formula-font larger">y</span> en reprenant la deuxième ligne&nbsp;: <span class="formula-font larger">5&nbsp;.&nbsp;4 &ndash; y&nbsp;=&nbsp;22 &rArr; &ndash;y = 2 &rArr; <span class="vert bold">y&nbsp;=&nbsp;&ndash;2</span></span></p>
+			<p>L'inconnue <span class="formula-font larger">z</span> n'est plus qu'une formalité. Reprenons la ligne 1&nbsp;: <span class="formula-font larger">4 &ndash; 2 . (&ndash;2) + z = 13 &rArr; 4&nbsp;+&nbsp;4&nbsp;+&nbsp;z&nbsp;=&nbsp;13 &rArr; <span class="vert bold">z&nbsp;=&nbsp;5</span></span></p>
+			<p>Cette méthode fonctionne pour des systèmes à n'importe quel nombre d'inconnues&nbsp;!</p>
+			
+			
+			
+			
+			
+			
+			
+			<h2 id="complexes">7. Nombres complexes</h2>
+			<p>Un nombre complexe peut être exprimé sous la forme <span class="formula-font slightly-larger">a + bj</span>, où <span class="formula-font slightly-larger">a</span> et 
+			<span class="formula-font slightly-larger">b</span> sont des nombres réels et où <span class="formula-font slightly-larger">j</span> est une unité imaginaire qui satisfait
+			l'égalité <span class="formula-font slightly-larger">j<sup>2</sup> = &ndash;1</span>, c'est-à-dire <span class="formula-font slightly-larger">j = &radic;&ndash;1</span>. Les nombres imaginaires 
+			permettent de résoudre des équations du second degré dont le delta (&delta;) est négatif.</p>
+			<p>Ces nombres nous serviront pour les calculs d'électricité en courant alternatif.</p>
+			<p>L'ensemble des réels peut être noté <span class="larger">&#8477;</span> et l'ensemble des imaginaires peut être noté <span class="larger">&image;</span>.</p>
+			
+			
+			<h3 id="plan-complexe">7.1. Représentation dans le plan complexe</h3>
+			<p>Les nombres réels et imaginaires peuvent être représentés dans un plan à deux axes qu'on appelle <span class="bold">plan complexe</span>. La représentation d'un nombre imaginaire est un
+			point dans ce plan, et il est l'extrémité d'un <span class="bold">vecteur</span> (<span class="formula-font slightly-larger">z</span>) de notation cartésienne (ou "rectangulaire") 
+			<span class="formula-font slightly-larger">z = a + bj</span>. Le point d'origine de ce vecteur est le croisement des axes.</p>
+			<p>Pour représenter ce plan, on met les nombres réels sur l'axe horizontal et les nombres imaginaires sur l'axe vertical&nbsp;:</p>
+			
+			<div class="flex-space-between">
+				<p><img class="height-550" src="css/images/plan-complexe.png" /></p>
+				<p><img class="height-350" src="css/images/formules-complexes.png" /></p>
+			</div>
+			
+			<p>L'opérateur <span class="formula-font slightly-larger">j</span> permet de faire subir au vecteur une rotation de +90° (ou +&pi;/2 rad). Si on multiplie par <span class="formula-font slightly-larger">j<sup>2</sup></span>, le vecteur 
+			subit à nouveau une rotation de 90°. Et puisque <span class="formula-font slightly-larger">j<sup>2</sup> = &ndash;1</span>, on obtient graphiquement <span class="formula-font slightly-larger">&ndash;b</span>.</p>
+			<p>Le vecteur et l'axe des réels forment un triangle rectangle. On va pouvoir utiliser le théorème de Pythagore pour obtenir de nombreuses valeurs&nbsp;: (1) l'hypoténuse de ce triangle est 
+			appelée <span class="formula-font slightly-larger">r</span> et se calcule <a href="#théo-pytha">de façon habituelle</a>&nbsp;; (2) l'angle entre le vecteur et l'axe des réels est l'angle <span class="formula-font slightly-larger">&theta;</span>, 
+			dont on peut trouver l'amplitude en calculant <span class="formula-font slightly-larger">arctan(b/a)</span>.</p>
+			<p>Toutefois, ce calcul de l'arc tangente à la calculatrice donnera toujours un angle compris entre -90° et 90° (ou -&pi;/2 et &pi;/2)&nbsp;; on se situe donc dans 
+			<a href="https://cms.alloprof.qc.ca/sites/default/files/styles/1200w/public/2020-06/m1309i13.JPG">le 1er ou le 4e cadran du plan</a>. Les vecteurs peuvent pourtant pointer vers les 
+			2e et 3e cadrans si <span class="formula-font slightly-larger">a est inférieur à 0</span>. Si c'est le cas, on doit ajouter 180° (ou &pi;) à la réponse donnée par la calculatrice.</p>
+
+			<h3>7.2. Notations des nombres complexes</h3>
+			<p>Plusieurs représentations des nombres complexes sont possibles. Les deux plus utilisées sont les formes <span class="bold">cartésienne et polaire</span>, car elles permettent 
+			d'effectuer facilement les opérations (voir 7.3.). La forme <span class="bold">trigonométrique</span> est également utile pour retrouver l'une des deux formes précédentes. Enfin, la forme
+			<span class="bold">exponentielle</span> est moins utilisée, mais il faut la reconnaître et pouvoir en tirer les trois autres formes.</p>
+			
+			<p class="centered"><img class="medium-image" src="css/images/notations-complexes.png" /></p>
+			
+			<h3>7.3. Opérations dans les nombres complexes</h3>
+			<p>En fonction de l'opération qu'on veut effectuer, on utilisera soit la forme cartésienne (ou "rectangulaire"), soit la forme polaire.</p>
+			
+			<h4>Conjugué d'un nombre complexe</h3>
+			<p>Le <span class="not">conjugué</span> d'un nombre complexe consiste à prendre <span class="bold">l'opposé de la partie imaginaire</span> (càd, changer son signe). Cela revient aussi à dire 
+			qu'on prend <span class="bold">l'opposé de son angle <span class="formula-font slightly-larger">&theta;</span></span>.</p>
+			<p>Autrement dit, sous forme rectangulaire, on a <span class="formula-font larger">z = a + bj</span> 
+			qui devient <span class="entouré"><span class="formula-font larger"><span class="not">z</span> = a &ndash; bj</span></span> </p>
+			<p>Sous forme polaire, on a <span class="formula-font larger">z = r &angle; &theta;</span> 
+			qui devient <span class="entouré"><span class="formula-font larger"><span class="not">z</span> = r &angle; &ndash;&theta;</span></span> 
+			<p>Sous forme trigonométrique, on a <span class="formula-font larger">z = r(cos &theta; + j.sin &theta;)</span> 
+			qui devient <span class="formula-font larger"><span class="not">z</span> = r(cos (&ndash;&theta;) + j.sin (&ndash;&theta;))</span> <br />
+			et qui peut en fait aussi se noter <span class="entouré"><span class="formula-font larger"><span class="not">z</span> = r(cos &theta; &ndash; j.sin &theta;)</span>
+			
+			
+			<h4>Addition et soustraction de nombres complexes</h4>
+			<p>Ces opérations se font toujours sous forme cartésienne (= "rectangulaire"). Il faut simplement faire la somme (ou la différence) des parties réelles entre elles 
+			et la somme (ou la différence) des parties imaginaires entre elles.</p>
+			
+			<p>Prenons ces deux vecteurs à additionner&nbsp;: <span class="formula-font larger">z<sub>1</sub> = a<sub>1</sub> + b<sub>1</sub>j</span> &emsp;&emsp;&emsp; <span class="formula-font larger">z<sub>2</sub> = a<sub>2</sub> + b<sub>2</sub>j</span> </p>
+			<p class="centered"><span class="formula-font larger">z = z<sub>1</sub> + z<sub>2</sub> = a<sub>1</sub> + b<sub>1</sub>j + a<sub>2</sub> + b<sub>2</sub>j </span> </p>
+			<p class="centered"><span class="entouré"><span class="formula-font larger">z = (a<sub>1</sub> + a<sub>2</sub>) + j(b<sub>1</sub> + b<sub>2</sub>) </span> </span></p>
+			<p>Et pour la soustraction, on aura&nbsp;:</p>
+			<p class="centered"><span class="entouré"><span class="formula-font larger">z = (a<sub>1</sub> &ndash; a<sub>2</sub>) + j(b<sub>1</sub> &ndash; b<sub>2</sub>) </span> </span></p>
+			
+			<h4 id="scalaire">Multiplication par un scalaire</h4>
+			<p>En algèbre linéaire, les nombres réels qui multiplient les vecteurs sont appelés des <span class="bold">scalaires</span>, noté ici <span class="formula-font slightly-larger">C</span>.
+			Quand on multiplie un vecteur, <a href="css/images/vecteur-scalaire.jpg" target="_blank">on l'amplifie (il va plus loin)</a>&nbsp;; <span class="bold">son angle ne change 
+			donc pas</span>&nbsp;!</p>
+			<p>Multiplier un vecteur revient à multiplier sa partie réelle et sa partie imaginaire.</p>
+			<p>Sous forme cartésienne&nbsp;: <span class="entouré"><span class="formula-font larger">z.C = a.C + b.j.C </span> </span></p>
+			<p>Sous forme polaire&nbsp;: <span class="entouré"><span class="formula-font larger">z.C = r.C &angle; &theta; </span> </span></p>
+			
+			<h4>Multiplication de deux nombres complexes</h4>
+			<p>Il s'agit ici de multiplier deux vecteurs. Cette opération est plus facile sous forme polaire, mais elle peut aussi s'effectuer sous forme cartésienne.</p>
+			<p>Sous forme cartésienne&nbsp;: <span class="formula-font larger">z<sub>1</sub>.z<sub>2</sub> = (a<sub>1</sub>a<sub>2</sub> &ndash; b<sub>1</sub>b<sub>2</sub>) + j(a<sub>1</sub>b<sub>2</sub> + b<sub>1</sub>a<sub>2</sub>)</span></p>
+			<p>Sous forme polaire, on multiplie les r entre eux et on additionne les angles&nbsp;: <span class="entouré"><span class="formula-font larger">z<sub>1</sub>.z<sub>2</sub> = r<sub>1</sub>.r<sub>2</sub> &angle; (&theta;<sub>1</sub> + &theta;<sub>2</sub>) </span> </span></p>
+			
+			<p>On notera la particularité suivante&nbsp;: <a href="css/images/complexe-produit-conjugue-demo.jpg" target="_blank">le produit d'un nombre complexe et de son conjugué est égal 
+			à</a> <span class="formula-font slightly-larger">r<sup>2</sup></span>&nbsp;; l'angle <span class="formula-font slightly-larger">&theta;</span>  est donc réduit à 0&nbsp;: 
+			<span class="entouré"><span class="formula-font larger">z.<span class="not">z</span> = r<sup>2</sup></span></span></p>
+			
+			<h4>Division de nombres complexes</h4>
+			<p>Également préférable sous forme polaire, <a href="css/images/complexe-division-demo.jpg" target="_blank">car les opérations sous forme cartésienne deviennent vite longues</a>.
+			Sous forme polaire, on divise les <span class="formula-font slightly-larger">r</span> entre eux et on soustrait les angles <span class="formula-font slightly-larger">&theta;</span> entre eux&nbsp;:</p>
+			
+			<p class="centered"><span class="entouré"><span class="formula-font larger">z<sub>1</sub>&#8725;z<sub>2</sub> = r<sub>1</sub>&#8725;r<sub>2</sub> &angle; (&theta;<sub>1</sub> &ndash; &theta;<sub>2</sub>) </span> </span></p>
+			
+			
+			<h4>Puissance de nombres complexes</h4>
+			<p>Se fait toujours sous forme polaire. Si le vecteur est mis à la puissance <span class="formula-font slightly-larger">n</span>, on met <span class="formula-font slightly-larger">r</span>
+			à cette puissance et on multiplie l'angle par ce nombre.</p>
+			
+			<p class="centered"><span class="entouré"><span class="formula-font larger">z<sup>n</sup> = r<sup>n</sup> &angle; (n.&theta;) </span> </span></p>
+			
+			
+			
+			
+			
+			<h2 id="alternatif">8. Calculs dans le courant alternatif</h2>
+			
+			<h3>8.1. Cercle trigonométrique et projection d'un vecteur</h3>
+			
+			<p>Le cercle trigonométrique est un cercle de rayon 1 représenté dans un plan orthonormé et centré en son origine.</p>
+			<p>Un vecteur d'angle <span class="formula-font slightly-larger">&theta;</span> et de module 1 (c'est-à-dire <span class="formula-font slightly-larger">1&nbsp;&angle;&nbsp;&theta;</span>)
+			forme deux triangles rectangles si l'on projette (verticalement et horizontalement) son point d'intersection avec le cercle sur les axes.</p>
+			<p>Dans le courant alternatif, c'est le <span class="bold">sinus</span> de <span class="formula-font slightly-larger">&theta;</span> qui nous intéressera le plus, c'est-à-dire
+			la projection du vecteur sur l'axe vertical.<br />(<a href="#plan-complexe">Pour rappel, c'est en effet en calculant <span class="formula-font slightly-larger">r&nbsp;.&nbsp;sin&theta;</span> 
+			que l'on obtient la longueur de <span class="formula-font slightly-larger">b</span></a>.)</p>
+			<p>Si on multiplie le vecteur par un scalaire <span class="formula-font slightly-larger">A</span>, comme nous l'avons vu <a href="#scalaire">dans le point précédent</a>,
+			le vecteur ne change pas d'angle, mais il devient plus "long" (si A&nbsp;&gt;&nbsp;1) ou plus "court" (si 0&nbsp;&lt;&nbsp;A&nbsp;&lt;&nbsp;1).</p>
+			
+			<p class="centered"><img class="medium-image" src="css/images/cercle-trigo.png" /></p>
+
+			<p>Il y a donc deux éléments qui modifient la projection du vecteur sur l'axe vertical&nbsp;: le <span class="bold">scalaire</span> 
+			et l'<span class="bold">angle <span class="formula-font slightly-larger">&theta;</span></span> . On peut donc
+			noter&nbsp;:</p>
+			<p class="centered"><span class="formula-font larger"><span class="italic">&fnof; </span>(&theta;) = A . sin &theta;</span></p>
+			
+			<p>Prenons en exemple quelques fonctions dans lesquelles seul le scalaire change&nbsp;:</p>
+			<p class="centered"><img class="large-image" src="css/images/fonctions-sinus-basiques.png" alt="fonction basique theta" /></p>
+			
+			<h3>8.2. Modèle sinusoïdal</h3>
+			<p>Si l'angle <span class="formula-font slightly-larger">&theta;</span> augmente de façon linéaire <span class="bold">en fonction du temps</span> (noté 
+			<span class="formula-font slightly-larger">t</span>), on peut alors noter l'angle variable <span class="formula-font slightly-larger">&theta;</span> comme ceci&nbsp;:
+			<span class="formula-font slightly-larger">&theta;(t)&nbsp;=&nbsp;&omega;.t</span> (voir 8.2.1.). Il faut aussi prendre en compte le décalage de départ 
+			qu'on appelle <span class="bold">phase initiale</span>&nbsp;;
+			on note alors <span class="formula-font slightly-larger">&theta;(t)&nbsp;=&nbsp;&omega;.t&nbsp;+&nbsp;&phi;</span> (voir 8.2.2.). 
+			La notation complète de la <span class="bold">fonction sinusoïdale</span> s'écrit comme ceci&nbsp;:</p>
+			
+			<p class="centered"><span class="entouré"><span class="formula-font larger"><span class="italic">&fnof; </span>(t) = A . sin (&omega;.t&nbsp;+&nbsp;&phi;)</span></span> 
+			<span class="formula-font larger">&equiv; <span class="italic">&fnof; </span>(t) = A . sin (&theta;(t))</span></p>
+			<p>NB : la deuxième notation est équivalente, mais on utilisera la première pour faciliter nos calculs avec <span class="formula-font slightly-larger">&omega;</span> 
+			et <span class="formula-font slightly-larger">&phi;</span>.</p>
+			
+			<p>La fonction sinusoïdale présentée ci-dessus a pour <span class="bold">vecteur générateur</span> :
+			<span class="entouré"><span class="formula-font larger"> A &angle; (&omega;.t&nbsp;+&nbsp;&phi;)</span></span></p>
+			<p>On voit que l'on peut facilement trouver le vecteur sur base d'une fonction sinusoïdale et vice versa.</p>
+			
+			<h4>8.2.1. Pulsation <span class="formula-font slightly-larger">&omega;</span></h4>
+			<p>La lettre grecque <span class="formula-font slightly-larger">&omega;</span> (oméga en minuscule) est le coefficient qui modifie le temps&nbsp;; il s'agit d'une 
+			<span class="bold">pulsation</span>, ou d'une <span class="bold">vitesse angulaire</span> (qui s'exprimera en radians/sec). Plus <span class="formula-font slightly-larger">&omega;</span> 
+			est élevé, plus la vitesse est rapide (il y a donc plus de pulsations en un temps donné).</p>
+			<p>Si on la regarde seule, l'expression <span class="formula-font slightly-larger">&theta;(t)&nbsp;= &omega;.t</span> n'est autre 
+			qu'<a href="#fonction-polynomiale">une fonction polynomiale sous la forme f(x)&nbsp;=&nbsp;mx&nbsp;+&nbsp;p</a>&nbsp;! Elle peut donc être représentée sous forme de droite dans un plan orthonormé. 
+			L'<span class="formula-font slightly-larger">&omega;</span> est alors le coefficient angulaire (ou la pente) de la droite et <span class="formula-font slightly-larger">t</span> est
+			la variable qui est modifiée (l'inconnue, si on parle d'équation).</p>
+			<p>Représentons trois fonctions en les accompagnant de leurs droites respectives pour mieux visualiser ce que signifie une variation
+			d'<span class="formula-font slightly-larger">&omega;</span>&nbsp;:</p>
+			
+			<p class="centered"><img class="large-image" src="css/images/fonctions-et-droites.png" /></p>
+			
+			<p>On constate bien que l'augmentation d'<span class="formula-font slightly-larger">&omega;</span> augmente la pente de la droite et rapproche les cycles de la fonction sinusoïdale.</p>
+			
+			
+			
+			<h4>8.2.2. La phase initiale <span class="formula-font slightly-larger">&phi;</span></h4>
+			<p>Sur les représentations des schémas du point 8.2.1., on peut remarquer que toutes les fonctions et les droites passent par le point <span class="formula-font slightly-larger">(0;0)</span>.
+			Dans une fonction polynomiale, cela se produit lorsque <span class="formula-font slightly-larger">p</span> (le terme indépendant) est égal à 0. Dans le cas des sinusoïdales, on
+			appelle cela la <span class="bold">phase initiale</span> et on la note avec la lettre grecque <span class="formula-font slightly-larger">&phi;</span> (phi en minuscule). Elle s'exprimera
+			en radians.</p>
+			<p>La valeur de <span class="formula-font slightly-larger">&phi;</span> change donc le point de départ de la sinusoïdale. Puisque <span class="formula-font slightly-larger">&phi;</span>
+			ajoute (ou qu'elle retire) une valeur à la pulsation <span class="formula-font slightly-larger">&omega;</span>, qui s'exprime en radians/sec, on dira qu'une sinusoïdale
+			est en retard ou en avance sur une autre si sa phase initiale est inférieure ou supérieur à l'autre. Voici un exemple pour illustrer ce principe&nbsp;:</p>
+			
+			<p class="centered"><img class="large-image" src="css/images/fonction-phases.png" /></p>
+			
+			<p>On peut constater que la <span class="bold orange">fonction orange</span> est en retard de <span class="formula-font slightly-larger">&pi;</span>/2 radians par rapport 
+			à la <span class="bold vert">fonction verte</span> ; autrement dit, elle est <span class="bold">déphasée</span> de <span class="formula-font slightly-larger">&ndash;&pi;</span>/2. 
+			De la même façon, la <span class="bold rouge">fonction rouge</span> est en avance de 
+			<span class="formula-font slightly-larger">&pi;</span>/2 radians par rapport à la <span class="bold vert">verte</span>. On pourrait aussi dire que 
+			l'<span class="bold orange">orange</span> est en retard de <span class="formula-font slightly-larger">&pi;</span> radians sur la <span class="bold rouge">rouge</span>.</p>
+			
+			<p class="centered"><span class="entouré">La valeur de <span class="formula-font slightly-larger">&phi;</span> est toujours comprise entre <span class="formula-font slightly-larger">&pi;</span>
+			et <span class="formula-font slightly-larger">&ndash;&pi;</span> (180° et &ndash;180°).</span></p>
+			
+			<p>La phase initiale peut aussi être exprimée sous forme vectorielle. Pour les fonctions ci-dessus, on aurait donc les <span class="bold">vecteurs de phases</span> suivant : <br />
+			<span class="formula-font larger">
+				<span class="orange">v<sub>0</sub>&nbsp;=&nbsp;1&nbsp;&angle;&nbsp;(&ndash;&pi;/2)</span>&emsp;
+				<span class="vert">v<sub>0</sub>&nbsp;=&nbsp;1&nbsp;&angle;&nbsp;0</span>&emsp;
+				<span class="rouge">v<sub>0</sub>&nbsp;=&nbsp;1&nbsp;&angle;&nbsp;(&pi;/2)</span>
+			</span></p>
+			
+			
+			
+			
+			<h4>8.2.3. Le temps <span class="formula-font slightly-larger">t</span>, la période <span class="formula-font slightly-larger">T</span> et la fréquence <span class="formula-font slightly-larger">f</span> </h4>
+			<p>Si un vecteur trace des courbes sinusoïdales, c'est parce qu'il effectue une rotation dans le sens trigonométrique à une vitesse angulaire 
+			d'<span class="formula-font slightly-larger">&omega;</span>, et qu'on rapporte sa projection verticale dans un axe <span class="bold">en fonction du temps</span>.</p>
+			
+			<p class="centered"><img class="medium-image" src="css/images/vecteur-rotation.gif" /></p>
+			
+			<p>Un vecteur a terminé un cycle (fait un tour complet) lorsque qu'il a parcouru 2<span class="formula-font slightly-larger">&pi;</span> radians (càd 360°). Le temps que
+			2<span class="formula-font slightly-larger">&pi;</span> représentent peut être noté <span class="formula-font slightly-larger">T</span> qu'on appelle alors 
+			une <span class="bold">période</span> (= le temps que prend un cycle complet). La période s'exprime en secondes.</p>
+			
+			<p class="centered"><img class="large-image" src="css/images/fonction-temps-b.png" /></p>
+			
+			<p>Un cycle de <span class="formula-font slightly-larger">sin(&omega;t+&phi;)</span> (ou <span class="formula-font slightly-larger">sin&theta;</span>) débute lorsque
+			<span class="formula-font slightly-larger">&omega;t+&phi; = 0</span> (l'angle <span class="formula-font slightly-larger">&theta;</span> est égal à 0). Autrement dit :</p>
+			
+			<table class="small-bottom-margin entouré-tableau">
+				<tr>
+					<td class="mathallcells"></td>
+					<td class="mathallcells"></td>
+					<td class="mathallcells"></td>
+					<td class="mathallcells"></td>
+					<td class="mathallcells"></td>
+					<td class="mathallcells"><span class="formula-font slightly-larger">&ndash;&phi;</span></th>
+				</tr>
+				<tr>
+					<td class="mathallcells"><span class="formula-font slightly-larger">&omega;&nbsp;t&nbsp;+&nbsp;&phi;&nbsp;=&nbsp;0</span></td>
+					<td class="mathallcells">&emsp;<span class="formula-font slightly-larger">&hArr;</span>&emsp;</td>
+					<td class="mathallcells"><span class="formula-font slightly-larger">&omega;&nbsp;t&nbsp;=&nbsp;&ndash;&phi;</span></td>
+					<td class="mathallcells">&emsp;<span class="formula-font slightly-larger">&hArr;</span>&emsp;</td>
+					<td class="mathallcells"><span class="formula-font slightly-larger">t&nbsp;=</span></td>
+					<td class="mathallcells">&#x2e3a;</td>
+				</tr>
+				<tr>
+					<td class="mathallcells"></td>
+					<td class="mathallcells"></td>
+					<td class="mathallcells"></td>
+					<td class="mathallcells"></td>
+					<td class="mathallcells"></td>
+					<td class="mathallcells"><span class="formula-font slightly-larger">&omega;</span></td>
+				</tr>
+			</table>
+			
+			<p>Pour certains développements, il est aussi bon de savoir que <span class="entouré formula-font larger">T = 2&pi;/&omega;</span> <span class="bold slightly-larger">sec</span></p>
+			
+			<p>La <span class="bold">fréquence</span> est égale à l'inverse de la période et s'exprime en hertz (Hz). Autrement dit : <span class="entouré formula-font larger">f = 1/T</span> <span class="bold slightly-larger">Hz</span></p>
+			
+			<p><span class="slightly-larger bold">ATTENTION</span> à ne pas confondre <span class="formula-font slightly-larger">t</span> (le temps&nbsp;; l'inconnue de notre fonction, qui se trouve sur l'axe des 
+			<span class="formula-font slightly-larger">x</span>) et <span class="formula-font slightly-larger">T</span> (la période = le temps d'un cycle complet).</p>
+			
+			<h3>8.3. Calculs de courants</h3>
+			<p>Le modèle sinusoïdal est très utile pour effectuer des opérations sur des sinusoïdes de même pulsation <span class="formula-font slightly-larger">&omega;</span>.
+			Et justement, l'électricité en Europe fonctionne sur un modèle triphasé d'une fréquence de 50&nbsp;Hz. Il y a donc trois tensions, déphasée chacune de 120°
+			(2<span class="formula-font slightly-larger">&pi;</span>/3 radians), ce qui va permettre des calculs de nombres complexes assez "simples".</p>
+			
+			<h4>8.3.1. Angle de déphasage</h4>
+			<p>L'angle de déphasage entre deux sinusoïdes se calcule en faisant : <span class="entouré formula-font larger">&phi;&nbsp;=&nbsp;&phi;<sub>1</sub>&nbsp;&ndash;&nbsp;&phi;<sub>2</sub></span></p>
+			<p>Si <span class="formula-font slightly-larger">&phi;</span> est supérieur à 0, alors la sinusoïde 1 est en avance sur l'autre. Sinon, elle est en retard.</p>
+			<p>Dans nos calculs en courant alternatif, on comparera les sinusoïdes de la tension avec celle du courant, donc on prendra les angles
+			<span class="formula-font larger">&phi;<sub>i</sub>&nbsp;&ndash;&nbsp;&phi;<sub>u</sub></span> pour trouver l'angle de déphasage. C'est aussi l'opposé de l'angle de l'impédance.</p>
+			
+			<h4>8.3.2. Temps de phase</h4>
+			<p>Lorsqu'on connaît l'<span class="bold">angle de déphasage</span> de deux courbes sinusoïdales de même pulsation, on peut calculer le temps exact qui les sépare&nbsp;; on appelle
+			aussi cela le <span class="bold">temps de phase</span>. Pour ce calcul, on reprend la formule suivante&nbsp;:</p>
+			<table class="small-bottom-margin entouré-tableau">
+				<tr>
+					<td class="mathallcells"></td>
+					<td class="mathallcells"><span class="formula-font slightly-larger">&ndash;&phi;</span></th>
+				</tr>
+				<tr>
+					<td class="mathallcells"><span class="formula-font slightly-larger">t&nbsp;=</span></td>
+					<td class="mathallcells">&#x2e3a;</td>
+				</tr>
+				<tr>
+					<td class="mathallcells"></td>
+					<td class="mathallcells"><span class="formula-font slightly-larger">&omega;</span></td>
+				</tr>
+			</table>
+			<p>Pensez bien à prendre <span class="rouge"><span class="formula-font slightly-larger">&phi;</span> exprimé en <span class="formula-font slightly-larger">&pi;rad</span>
+			pour que le calcul fonctionne</span>.<br />
+			Prenons un exemple&nbsp;: Nous avons l'angle <span class="formula-font slightly-larger">&phi;</span>&nbsp;=&nbsp;&ndash;45° 
+			et un <span class="formula-font slightly-larger">&omega;</span>&nbsp;=&nbsp;60<span class="formula-font slightly-larger">&pi;</span>. Cela donne le calcul suivant&nbsp;:</p>
+			<table class="small-bottom-margin">
+				<tr>
+					<td class="mathallcells"></td>
+					<td class="mathallcells"><span class="formula-font">&ndash;(&ndash;&pi;/4)</span></th>
+					<td class="mathallcells"></td>
+					<td class="mathallcells"><span class="formula-font">1</span></td>
+					<td class="mathallcells"></td>
+					<td class="mathallcells"></td>
+					<td class="mathallcells"></td>
+					<td class="mathallcells"></td>
+				</tr>
+				<tr>
+					<td class="mathallcells"><span class="formula-font slightly-larger">t&nbsp;=</span></td>
+					<td class="mathallcells">&#x2e3a;&#x2e3a;</td>
+					<td class="mathallcells"><span class="formula-font">=</span></td>
+					<td class="mathallcells">&#x2e3a;</td>
+					<td class="mathallcells"><span class="formula-font">=</span></td>
+					<td class="mathallcells"><span class="formula-font">&nbsp;0,004167&nbsp;s</span></td>
+					<td class="mathallcells"><span class="formula-font">=</span></td>
+					<td class="mathallcells"><span class="formula-font">&nbsp;4,167&nbsp;ms</span></td>
+				</tr>
+				<tr>
+					<td class="mathallcells"></td>
+					<td class="mathallcells"><span class="formula-font">60&pi;</span></td>
+					<td class="mathallcells"></td>
+					<td class="mathallcells"><span class="formula-font">240</span></td>
+					<td class="mathallcells"></td>
+					<td class="mathallcells"></td>
+					<td class="mathallcells"></td>
+					<td class="mathallcells"></td>
+				</tr>
+			</table>
+			
+			
+			<p>Le résultat de ce calcul est un temps en secondes, mais on l'exprimera plutôt en millisecondes, car ce nombre sera assez petit.</p>
+			<p>NB&nbsp;: Il y a évidemment moyen de convertir les <span class="formula-font slightly-larger">&pi;</span> en degrés pour avoir (180/4)/(60*180)&nbsp;; et cela donnera bien la
+			même réponse. Si vous n'aimez vraiment pas les radians, sachez-le&nbsp;!</p>
+			
+			<h4>8.3.3. Déphasage par les dipôles élémentaires</h4>
+			<p>Dans le cadre de ce cours, nous nous intéressons aux effets des <span class="bold">résistances</span>, des <span class="bold">bobines</span> (self) et 
+			des <span class="bold">condensateurs</span> sur le courant. Dans les formules présentées ci-dessous, les lettres R, L et C représentent la valeur en ohms
+			(<span class="formula-font slightly-larger">&Omega;</span>) du composant. </p>
+			<p>&ndash;&nbsp;Une <span class="bold gris-foncé">résistance</span> (notée R) ne déphase pas le courant, l'angle est donc de 0°. Autrement dit : </p>
+			<p><span class="entouré formula-font larger">Z<sub>R</sub>&nbsp;=&nbsp;R&nbsp;&angle;&nbsp;0&nbsp;&nbsp;&nbsp;=&nbsp;&nbsp;&nbsp;R&nbsp;+&nbsp;0.j</span><br /></p>
+			<p>&ndash;&nbsp;Une <span class="bold mauve-foncé">bobine</span> (notée L) déphase le courant de 90° (<span class="formula-font slightly-larger">&pi;</span>/2 rad). Autrement dit :</p>
+			<p><span class="entouré formula-font larger">Z<sub>L</sub>&nbsp;=&nbsp;L&nbsp;&angle;&nbsp;&pi;/2&nbsp;&nbsp;&nbsp;=&nbsp;&nbsp;&nbsp;0&nbsp;+&nbsp;L.j&nbsp;&nbsp;=&nbsp;&nbsp;&omega;.L.j</span><br /></p>
+			<p>&ndash;&nbsp;Un <span class="bold bleu-clair">condensateur</span> (noté C) déphase le courant de &ndash;90° (<span class="formula-font slightly-larger">&ndash;&pi;</span>/2 rad). Autrement dit :</p>
+			<p><span class="entouré formula-font larger">Z<sub>C</sub>&nbsp;=&nbsp;C&nbsp;&angle;&nbsp;&ndash;&pi;/2&nbsp;&nbsp;&nbsp;=&nbsp;&nbsp;&nbsp;0&nbsp;&ndash;&nbsp;C.j&nbsp;&nbsp;=&nbsp;&nbsp;-j/&omega;.C</span><br /></p>
+			
+			<h4>8.3.4. Impédance équivalente (circuits RLC)</h4>
+			<p>L'impédance est la résistance quand on travaille en courant alternatif (elle se note <span class="formula-font slightly-larger">Z</span> et son unité est aussi 
+			l'ohm noté <span class="formula-font slightly-larger">&Omega;</span>).</p>
+			<p>Selon la loi d'Ohm, on a donc la relation&nbsp;:
+			<span class="entouré formula-font larger">Z&nbsp;=&nbsp;U/I</span><span class="formula-font larger">&nbsp;=&nbsp;|Z|&nbsp;&angle;&nbsp;&phi;</span></p>
+			<p>L'impédance peut également être représentée par un vecteur, et donc un nombre complexe. Elle se combine <a href="electrotechnique-1.html#res-para">en série et 
+			en parallèle comme les résistances que nous avons vue en cours d'Électrotechnique</a>.</p>
+			
+			<p>La formule pour trois impédances en parallèle peut être exprimée comme ceci&nbsp;:</p>
+			<p><img class="medium-karnaugh" src="css/images/impedance-totale.png" alt="formule impédance parallèle"/></p>
+			
+			<h4>8.3.5. Exemples d'exercices</h4>
+			<p><span class="bold">Ex 2) slide 60 :</span> Vous trouverez <a href="files/slide60-ex-resolu.pdf" target="_blank">à ce lien l'exercice 2 de la dia 60 résolu</a>.</p>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<h2 id="outils-maths">A. Outils en ligne et références</h2>
+			<h3>A.1. GeoGebra</h3>
+			<p><a href="https://www.geogebra.org/calculator" target="_blank"><img class="very-small-image" src="css/images/geogebra.svg" alt="logo geogebra" /></a></p>
+			<p><a href="https://www.geogebra.org/calculator" target="_blank">Ce site</a> permet de tracer facilement des équations de droite. N'hésitez pas à y mettre n'importe quelle équation 
+			pour avoir des représentations visuelles des exercices que vous faites.</p>
+			<h3>A.2. Calculateurs d'équations ou de nombres complexes</h3>
+			<p>Il existe de nombreux sites qui permettent de résoudre des équations ou des calculs complexes. <br /> En voici deux que je vous conseille&nbsp;:
+			<a href="https://www.symbolab.com/solver" target="_blank">Symbolab</a> et <a href="https://www.mathpapa.com/equation-solver/" target="_blank">MathPapa</a>.</p>
+			<h3>A.3. Calculateur de matrice</h3>
+			<p>Votre calculatrice le fait peut-être déjà, mais voici un site qui permet de résoudre des matrices jusqu'à 4x4 (quatre équations, 
+			quatres inconnues)&nbsp;: <a href="https://matrixcalc.org/en/slu.html">MatrixCalc.org</a>. Cliquez sur n'importe quelle méthode, elles amèneront toutes forcément au même résultat.</p>
+			<h3>A.4. Calculateur de systèmes d'équations</h3>
+			<p>Dans la même veine que le précédent, <a href="https://handymath.com/cgi-bin/matrix8b.cgi">Handymath</a> propose un calculateur de systèmes d'équations avec jusqu'à huit variables.
+			Cela peut s'avérer très utile pour des calculs en électricité lorsqu'on applique les lois des mailles et des noeuds.</p>
+			<h3>A.5. Angles remarquables</h3>
+			<p>Voici une représentation du cercle trigonométrique avec la mention de tous les angles remarquables et les coordonnées des points sur le cercle (issu de Wikipédia).</p>
+			<p class="centered"><img class="x-medium-image" src="css/images/angle-remarquables-cercle-trigo.png" alt="angles remarquables" /></p>
+			<h3>A.6. Conversion degrés/radians</h3>
+			<p>La formule pour la conversion est la suivante&nbsp;:</p>
+			<p><img class="small-image" src="css/images/conversion-rad.png" alt="conversion radians" /></p>
+			<p>Il est conseillé de garder la notation en <span class="formula-font slightly-larger">&pi;</span>&nbsp;radians, même s'il est tentant de simplement multiplier le nombre par 
+			<span class="formula-font slightly-larger">&pi;</span> pour obtenir un nombre "pur" en radians.</p>
+			<p>Un exemple de conversion&nbsp;:</p> 
+			<p><img class="large-image" src="css/images/conversion-rad-exemple.png" alt="conversion radians exemple" /></p>
+		</div>
+
+			
+
+		<footer><p>&copy; Website built by Nicolas Toffolo (2020-2021)</p></footer>
+	</body>
+
+</html>

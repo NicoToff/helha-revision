@@ -1,0 +1,557 @@
+@font-face {
+	font-family: Cambria;
+	src: url("fonts/Cambria.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: Cambria;
+	src: url("fonts/Cambriai.ttf") format("truetype");
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: Cambria;
+	src: url("fonts/Cambriab.ttf") format("truetype");
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: Cambria;
+	src: url("fonts/Cambriaz.ttf") format("truetype");
+	font-weight: bold;
+	font-style: italic;
+}
+
+::selection {
+    background: rgba(50, 50, 50, 0.5);
+    color: #1afff7;
+}
+
+a:link {
+	color: #00958f;
+}
+
+a:visited {
+	color: #cc958f;
+}
+
+a:active {
+	color: cyan;
+}
+
+body {
+	background-color: #fafafa;
+	font-family: "Century Gothic", Arial, sans-serif;
+	padding-bottom: 5%;
+	font-size: 1em;
+}
+
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	border-bottom: 4px solid #00958f;
+}
+
+header h1 {
+	font-size: 2.8em;
+	margin: 0 0 0 0;
+}
+
+#titre-principal {
+	display: flex;
+	flex-direction: column;
+}
+
+#logo {
+	display: flex;
+	flex-direction: row;
+	align-items: baseline;
+}
+
+#logo img {
+	width: 200px;
+}
+
+#stuffing {
+	width: 250px;
+}
+
+/* Début de la barre de navigation */
+
+nav ul {
+	list-style-type: none;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+nav a {
+	display: flex;
+	color: white;
+	text-align: center;
+	white-space: nowrap;
+	margin: 1px;
+	padding: 10px 15px;
+	text-decoration: none;
+	background-color: #00958f;
+	font-size: 1.1em;
+}
+
+nav a:link {color: white;}
+nav a:visited {color: white;}
+nav a:active {color: white;}
+
+nav a:hover {
+	background-color: #3daca7;
+}
+
+/* Fin de la barre de navigation */
+
+#side-nav {
+	max-width: 15%;
+	float: left;
+	position: sticky;
+	top: 0;
+	overflow: hidden;
+}
+
+aside h1 {
+	font-size: 2.3em;
+}
+
+#maincontent {
+	width: 65%;
+	margin: auto;
+}
+
+h1 {
+	font-size: 3.4em;
+}
+
+h2 {
+	margin-top: 50px;
+	font-size: 2.3em;
+	border-bottom: 2px solid #4db6b2;
+}
+
+h3 {
+	font-size: 1.7em;
+	text-decoration: underline;
+	text-decoration-color: #4db6b2;
+}
+
+h4 {
+	font-size: 1.4em;
+}
+
+h5 {
+	font-size: 1.2em;
+	margin: 0 0 8px 0;
+}
+
+h2, h3, h4 {
+	margin-bottom: 0px;
+}
+
+figcaption {
+	font-family: Arial, sans-serif;
+	font-style: italic;
+	text-align: right;
+	color: gray;
+}
+
+sub {
+	font-size: 0.55em; /* Réduit la taille de tous les 'sub' sur le site en fonction de leur élément parent; question d'esthétisme */
+}
+
+sup {
+	font-size: 0.7em; /* Réduit légèrement la taille de tous les 'sup' sur le site en fonction de leur élément parent; question d'esthétisme */
+	margin-left: 1px; /* éloigne légèrement les puissances de leurs bases*/
+}
+
+
+.bold {font-weight: bold;}
+.italic{font-style: italic;}
+.underline{text-decoration: underline;}
+
+.border-bottom {border-bottom: 1px solid #006B69;}
+
+.smaller {font-size: 0.6em;}
+.slightly-smaller {font-size: 0.9em;}
+.slightly-larger {font-size: 1.3em;}
+.larger {font-size: 1.8em;}
+
+.much-larger {
+	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+	font-size: 3.5em;
+	font-weight: 100;
+}
+
+.not {
+	text-decoration-line: overline;
+}
+
+.formula-font {
+	font-family: "Cambria Math", Cambria, "Times New Roman", serif;
+}
+
+.code-font {
+	font-family: "Lucida Console", Courier, "Courier New", Monaco, monospace;
+	background-color: lightgrey;
+	border-radius: 5px;
+	font-size: 1.1em;
+}
+
+.small-bottom-margin {
+	margin: 0 0 10px 0;
+}
+
+.medium-bottom-margin {
+	margin: 0 0 20px 0;
+}
+
+.no-margin {
+	margin: 0 0 0 0;
+}
+
+.small-padding {
+	padding: 10px;
+}
+
+.inline-block {
+	display: inline-block;
+	margin-right: 25px;
+}
+
+.flex {
+	display: flex;
+}
+
+.flex-space-between {
+	display: flex;
+	justify-content: space-between;
+}
+
+.flex-column {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-left: 20px;
+}
+
+.definitions-block {
+	background-color: #cbf5f0;
+	border-radius: 15px;
+	padding: 10px;
+}
+
+.definitions-block > article {
+	padding-right: 5px;
+}
+
+.definitions-block > article > p {
+	margin: 0 0 0 0;
+}
+
+.definitions-block > article > p > span {
+	font-family: "Cambria Math", Cambria, "Times New Roman", serif;
+	font-size: 1.25em;
+	display: inline-block;
+	width: 75px;
+}
+
+
+.very-small-image {width: 25%;}
+.small-image {width: 49%;}
+.medium-image {width: 60%;}
+.x-medium-image {width: 70%;}
+.large-image {width: 90%;}
+
+.small-karnaugh {height: 180px;} /* Taille de départ des tableaux de Karnaugh = 360px */
+.medium-karnaugh {height: 275px;} /* Taille de départ des tableaux de Karnaugh = 550px */
+
+.height-350 {height:350px;}
+.height-550 {height:550px;}
+
+.float-right {
+	float: right;
+}
+
+/***************************/
+/**********COULEURS*********/
+.mauve {color:#e40ee8}
+.mauve-foncé {color:#7030a0}
+.vert {color:#54c944}
+.vert-foncé {color:#20821e}
+.rouge {color:#e82c2c}
+.cyan {color:#2fe0e0}
+.bleu-clair{color:#4472c4}
+.orange {color:#fcba03}
+.gris-foncé {color:#6e6e6e}
+/******FIN COULEURS*********/
+/***************************/
+
+.entouré {
+	display: inline;
+	padding: 10px;
+	border: 2px solid #4db6b2;
+}
+
+.entouré-tableau {
+	border: 2px solid #4db6b2;
+}
+
+
+.bottom {
+	vertical-align: bottom;
+}
+
+.middle {
+	vertical-align:middle;
+}
+
+.alignerfractionpasfraction {
+	height: 65px;
+}
+	
+.centered {
+	text-align: center;
+}
+.centered-table {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+
+/* Début du design utilisé sur tous les types de tableaux */
+table {
+	border-collapse: collapse;
+	margin-top: 20px;
+}
+
+
+th {
+	font-size: larger;
+	border-bottom: 1px solid #006B69;
+}
+
+	
+/* Fin du design utilisé sur tous les types de tableaux */
+
+
+
+/* Début du design utilisé pour les petits tableaux */
+
+.smallcaption {
+	font-size: larger;
+}
+
+.smallcellwidth { /* table TH TD */
+	width: 350px;
+}
+
+.smallcellwidth td:nth-child(odd) {
+	background-color: #4db6b2; /* Tableau zébré, colonnes impaires */
+	}
+	
+.smallcellwidth th:nth-child(odd) {
+	background-color: #4db6b2; /* idem, inclus en-tête */
+	}
+
+.smallcellwidth td:nth-child(even) {
+	background-color: #3daca7; /* Tableau zébré, colonnes paires */
+	}
+	
+.smallcellwidth th:nth-child(even) {
+	background-color: #3daca7; /* idem, inclus en-tête */
+	}
+
+.smallappearance {
+	font-family: "Cambria Math", Cambria, "Times New Roman", serif;
+	padding: 8px;
+	text-align: center;
+	white-space: nowrap;
+}
+/* Fin du design utilisé pour les petits tableaux */
+
+/* Début du design utilisé pour les grands tableaux */
+.bigcaption {
+	font-size: xx-large;
+}
+
+.bigcellwidth {
+	width: 250px;
+	border: 1px solid #006B69;
+}
+
+.bigappearance {
+	font-family: "Cambria Math", Cambria, "Times New Roman", serif;
+	padding: 1px;
+	text-align: center;
+	white-space: nowrap;
+}
+
+.bigcellwidth td:nth-child(odd) {
+	background-color: #4db6b2; /* Tableau zébré, colonnes impaires */
+	}
+	
+.bigcellwidth th:nth-child(odd) {
+	background-color: #4db6b2; /* idem, inclus en-tête */
+	}
+
+.bigcellwidth td:nth-child(even) {
+	background-color: #3daca7; /* Tableau zébré, colonnes paires */
+	}
+	
+.bigcellwidth th:nth-child(even) {
+	background-color: #3daca7; /* idem, inclus en-tête */
+	}
+/* Fin du design utilisé pour les grands tableaux */
+
+/* Début du design utilisé pour les formules */
+
+td.formulaallcells {
+	font-family: "Cambria Math", Cambria, "Times New Roman", serif;
+	padding: 5px;
+	text-align: center;
+	font-size: 1.9em;
+	line-height: 12px;
+}
+
+td.formulaallcells-tighter {
+	font-family: "Cambria Math", Cambria, "Times New Roman", serif;
+	padding: 5px;
+	text-align: center;
+	font-size: 1.9em;
+	line-height: 5px;
+}
+
+td.mathallcells { /* Même chose que le précédent MAIS ces cellules-ci ne sont pas agrandies dans "media" */
+	font-family: "Cambria Math", Cambria, "Times New Roman", serif;
+	padding: 5px;
+	text-align: center;
+	font-size: 1.9em;
+	line-height: 12px;
+}
+
+td.formulafirstchar {
+	font-size: 2.8em;
+	font-weight: 650;
+}
+
+.tableauinline {
+	display: inline-block;
+	vertical-align: center;
+	margin-right: 25px;
+}
+
+/* Fin du design utilisé pour les formules */
+
+footer {
+	position: fixed;
+	bottom: 10px;
+	left: 10px;
+	font-size: small;
+	max-width: 15%;
+}
+
+@media all and (max-width: 1024px) {
+	
+	#maincontent {
+		width: auto;
+	}
+	
+	header {
+		align-items: center;
+		justify-content: center;
+	}
+
+	nav a {
+		margin: 4px;
+		font-size: 2em;
+	}
+
+	td, th {
+		font-size: 2em;
+	}
+	
+	.smallcaption {
+		font-size: xx-large;
+	}
+	
+	td.formulaallcells  {
+		font-size: 3.8em;
+		line-height: 35px;
+	}
+
+	td.formulafirstchar {
+		font-size: 4.5em;
+	}
+	
+	div.alignerfractionpasfraction {
+		height: 111px;
+	}
+	
+	#side-nav {
+		max-width: 100%;
+		float: none;
+		position: static;
+	}
+	
+	#side-nav h2 {
+		font-size: 3.1em;
+	}
+	
+	#stuffing {
+		display: none;
+	}
+	
+	.bigappearance {
+		white-space: normal;
+	}
+	
+	.flex {
+		flex-direction: column;
+	}
+	
+	.flex-space-between {
+		flex-direction: column;
+		justify-content: flex-start;
+		flex-wrap: nowrap;
+	}
+	
+	.flex-column {
+		align-items: flex-start;
+	}
+
+	.very-small-image {width: 50%;}
+	.small-image {width: 99%;}
+	.medium-image {width: 99%;}
+	.x-medium-image {width: 99%;}
+	.large-image {width: 99%;}
+	
+	.smaller-on-phones {
+		font-size: 0.7em;
+	}
+	
+	.definitions-block > article > p > span {
+		font-size: 2em;
+		font-weight: 800;
+		text-align: center;
+		width: 110px;
+	}
+	
+	.hide {
+		display: none;
+		
+	}
+	footer {
+		display: none;
+	}
+
+}

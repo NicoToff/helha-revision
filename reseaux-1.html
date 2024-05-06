@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<title>HELHa Révison</title>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Les synthèses pour vos études en informatique industrielle à la HELHa.">
+		<script src="css/count.js"></script>
+		<link rel="stylesheet" href="css/main.css" type="text/css">
+		<link href='https://fonts.googleapis.com/css?family=M%20PLUS%201p' rel='stylesheet'> <!-- Police utilisée pour les maths -->
+		<link rel="icon" 
+			  href="css/images/icon.png"
+			  type="image/png" />
+	</head>
+
+	<body>
+		<header>			
+			<div id="titre-principal">
+				<div id="logo">
+					<img src="css/images/logo-helha.svg" alt="Logo Helha" />
+				</div>
+				<h1>Révision</h1>
+			</div>
+			
+			<!-------------------- BARRE DE NAVIGATION ---------------------->
+			<nav>
+				<ul>
+					<li><a href="index.html">ACCUEIL</a></li>
+					<li><a href="electrotechnique-1.html">ÉLECTROTECHNIQUE</a></li>
+					<li><a href="langage-c.html">LANGAGE C</a></li>
+					<li><a href="logique-binaire.html">LOGIQUE BINAIRE</a></li>					
+					<li><a href="maths.html">MATHS</a></li>
+					<li><a href="reseaux-1.html">RÉSEAUX</a></li>
+					<li><a href="autres.html">AUTRES</a></li>
+				</ul>
+			</nav>
+			<!--------------- FIN DE LA BARRE DE NAVIGATION ----------------->
+		
+			<div id="stuffing"></div>
+		
+		</header>
+		
+			<aside id="side-nav">
+				<h1>Réseaux 1</h1>
+				<ul>
+					<li><a href="#introduction">1. Introduction</a></li>
+					<li><a href="#modele-osi">2. Modèle OSI</a></li>
+					<li><a href="#calcul-ip">3. Sous-réseaux et calcul d'IPv4</a></li>
+					<li><a href="#matériel-réseau">4. Matériel réseau</a></li>
+					<li><a href="#internet">5. Internet</a></li>
+					<li><a href="#fracture">6. Fracture numérique</a></li>
+					<li><a href="#lexique-réseaux">A. Annexes</a></li>
+				</ul>
+			</aside>
+
+
+		<div id="maincontent">
+
+
+
+			<h2>Contenu</h2>
+			<p>Informations tirées du cours de Réseaux&nbsp;1 de M. Michaux, d'OpenClassrooms et de Wikipédia.</p>
+			<p>Certaines informations et acronymes mentionnés dans cette synthèse proviennent également du cours d'Installation et maintenance des ordinateurs.</p>
+			
+			
+			
+			<h2 id="introduction">1. Introduction</h2>
+			<p class="slightly-larger centered">&laquo;&nbsp;Dès qu'il y a une forme de communication, il y a un réseau.&nbsp;&raquo;</p>
+			<h3>1.1. Omniprésence des réseaux</h3>
+			<p>À l'époque actuelle, les réseaux sont partout. Chez nous (réseaux <span class="bold">domestiques</span>), dans notre travail (réseaux <span class="bold">professionnels</span>)
+			et ils nous suivent même quand nous nous déplaçons (réseaux <span class="bold">nomades</span>). Que ça soit pour communiquer, pour obtenir des informations,
+			pour le divertissement, le partage de fichiers, le shopping, etc, on voit que les réseaux ne se limitent pas qu'à l'informatique.</p>
+			
+			<h3>1.2. Topologies : physique et logique</h3>
+			<p>En réseau informatique, une topologie est un arrangement des éléments qui composent le réseau. Lorsqu'on parle des caractéristiques <span class="bold">physiques</span> d'un réseau 
+			informatique, il s'agit de son organisation spatiale, c'est-à-dire de la façon dont les différents équipements sont interconnectés (avec différents câbles, par exemple). 
+			L'aspect <span class="bold">logique</span>, c'est la façon dont les données transitent entre les lignes de communication. Voici <span class="bold">quelques exemples</span> 
+			de topologies de réseaux&nbsp;:</p>
+			<div class="flex">
+				<div><p class="slightly-larger bold centered" id="bus">Bus<br /><img class="small-karnaugh" src="css/images/reseau-bus.png" /></p></div>
+				<div><p class="slightly-larger bold centered" id="étoile">Étoile (star)<br /><img class="small-karnaugh" src="css/images/reseau-etoile.png" /></p></div>
+				<div><p class="slightly-larger bold centered">Anneau (ring)<br /><img class="small-karnaugh" src="css/images/reseau-ring.png" /></p></div>
+				<div><p class="slightly-larger bold centered">Maillé (mesh)<br /><img class="small-karnaugh" src="css/images/reseau-mesh.png" /></p></div>
+				<div><p class="slightly-larger bold centered">Arbre (tree)<br /><img class="small-karnaugh" src="css/images/reseau-tree.png" /></p></div>
+			</div>
+			<p>Les topologies physiques et logiques ne correspondent pas forcément sur un même réseau. <br />
+			Par exemple, si on relie des ordinateurs à un <a href="https://fr.wikipedia.org/wiki/Hub_Ethernet" target="_blank">hub</a>, la topologie physique est une <span class="bold">étoile</span>. 
+			Mais la topologie logique est un <span class="bold">bus</span>. En effet, sur un hub, seule une machine peut émettre à la fois. Les autres doivent écouter le réseau pour savoir 
+			si elles peuvent émettre (voir <a href="#hub-et-switch">4.2. Hub et switch</a>).</p>
+			
+			<h3>1.3. Échelle des réseaux informatiques</h3>
+			<p>On distinguera quatre grands types de réseaux informatiques, en fonction de l'échelle spatiale à laquelle ils fonctionnent&nbsp;:</p>
+			<p>Le <span class="bold">PAN</span> ("Personal Area Network", réseau personnel)&nbsp;: niveau personnel. Technologies : Bluetooth, Wireless USB...&nbsp;; distance = ~1&nbsp;m. <br />
+			Le <span class="bold">LAN</span> ("Local Area Network", réseau local)&nbsp;: niveau local. Technologies : Wi-Fi, Ethernet...&nbsp;; distance = ~10&nbsp;m. à ~1&nbsp;km. <br />
+			Le <span class="bold">MAN</span> ("Metropolitan Area Network", réseau métropolitain)&nbsp;: niveau d'une ville. Technologies : Réseaux TV, WIMAX, Metro Ethernet...&nbsp;; distance = ~10&nbsp;km.<br />
+			Le <span class="bold">WAN</span> ("Wide Area Network", réseau étendu)&nbsp;: niveau mondial. Technologies : Internet (TCP/IP), GSM...&nbsp;; au niveau planétaire.</p>
+						
+			<h3>1.4. Modèle client-serveur</h3>
+			<figure class="float-right"><img class="small-karnaugh" src="css/images/modele-client-serveur.png"/><figcaption>Des clients font des requêtes à un serveur via internet.</figcaption></figure>
+			<p>L'environnement client-serveur désigne un mode de communication entre plusieurs programmes à travers un réseau&nbsp;: le <span class="bold">client</span> envoie des requêtes,
+			le <span class="bold">serveur</span> attend les requêtes du client, puis il y répond. La requête peut se faire à différents niveaux. Par exemple, au niveau <span class="bold">local</span>,
+			si on communique avec un appareil qui se trouve dans le même bâtiment, ou au niveau "<span class="bold">wide</span>" si on passe par internet pour contacter un serveur.</p>
+			<p>Ce modèle est très utilisé. Il est décliné pour de nombreux services&nbsp;: navigation web, messagerie instantanée, gaming en multijoueurs, utilisation d'un Chromecast...</p>
+			<p>Le serveur fournit un service au client. Ce n'est jamais le serveur qui prend l'initiative de parler au client.</p>
+
+			<h3>1.5. Distinction entre <span class="italic">deep web</span> et <span class="italic">dark web</span></h3>
+			<p>Le <span class="bold">deep web</span> est la partie du world wide web qui n'est pas indexables par les moteurs de recherche. On parle souvent de la "face
+			cachée de l'iceberg" en parlant du deep web, car il y a en effet énormément de données qui ne sont pas trouvables en faisant des recherches sur Google. Nous utilisons en permanence
+			le contenu du deep web sans nous en rendre compte. Dès qu'un site demande de se logger pour accéder à un contenu, ce contenu se trouve dans le deep web. Les services d'e-mails sont
+			dans le deep web, au même titre que les transactions bancaires, les pages des réseaux sociaux (quand on ne met pas tout en mode "public" :-P), etc.</p>
+			<p>Le <span class="bold">dark web</span>, bien que souvent confondu avec le deep web, est traduit en français par "internet clandestin". Il utilise l'internet public pour 
+			héberger son contenu, mais son accès est restreint, car uniquement accessible via certains logiciels et/ou avec des protocoles spécifiques. À ce titre, il se trouve donc 
+			<span class="bold">dans le deep web</span>, puisqu'il n'est pas indexé non plus par les moteurs de recherche. En revanche, il ne constitue qu'une toute petite partie du deep web.
+			Bref, le dark web n'est aucunement "plus vaste que le web visible", contrairement à ce qu'on entend parfois.</p>
+			
+			
+			
+			
+			
+			
+			
+			<h2 id="modele-osi">2. Modèle OSI</h2>
+			<p>Le <span class="bold">modèle OSI</span>, pour <span class="italic">Open System Interconnection</span>, est un modèle de communication qui est devenu une norme ISO. 
+			Développé dans les années 70, il a permis de créer un environnement mondial avec une interopérabilité des réseaux et des programmes. Bien qu'il ait été pensé pour les réseaux informatiques, 
+			le modèle OSI est tout de même capable de modéliser l'intégralité des systèmes de communication.</p>
+			<p>Le modèle OSI décompose <span class="bold">en 7 couches</span> le flux des données dans un système de communication. Les couches partent du plus petit niveau de représentation de 
+			l'information (les bits qui sont transmis via des câbles par signaux électriques) jusqu'au plus haut niveau (l'application qui est utilisée pour profiter de cette information). Chaque couche
+			intermédiaire remplit différents rôles et communique avec les couches qui lui sont adjacentes. Toutes les couches ne sont pas toujours nécessaires pour communiquer.</p>
+			<p>Il est essentiel de comprendre que <span class="bold">l'information circule entre les couches</span>&nbsp;:</p>
+			
+			<ul>
+				<li>Pour <span class="bold">envoyer une information</span> sur un réseau, on passe de la couche application à la couche physique. Les données sont 
+				<a href="http://www.firewall.cx/images/stories/osi-encap-decap-1.gif" target="_blank" title="Vers : schéma d'encapsulation"><span class="bold">encapsulées</span></a> à chaque passage à
+				la couche suivante.</li>
+				<li>Pour <span class="bold">recevoir l'information</span> de réponse, on passe de la couche physique à la couche application. Les données sont alors 
+				<a href="http://www.firewall.cx/images/stories/osi-encap-decap-2.gif" target="_blank" title="Vers : schéma d'désencapsulation"><span class="bold">désencapsulées</span></a>,
+				c'est-à-dire "extraites", après chaque couche (on parle parfois de <span class="italic">demultiplexing</span>).</li>
+			</ul>
+			
+			<p>Avec ce concept d'encapsulation/désencapsulation, le modèle OSI est du coup parfois comparé à
+			<a href="https://i.pinimg.com/564x/9a/02/ff/9a02ff4924828a654c5209b14a5b4c26.jpg" target="_blank">un oignon</a>.</p>
+			<p>En termes techniques, cette encapsulation se fait en rajoutant un entête (<span class="italic">header</span> en anglais) aux données reçues des couches supérieures. Cet entête contient
+			toutes sortes d'informations pour que le transfert des données s'opère correctement. Ainsi, la couche 4 rajoute un entête, puis la couche 3 fait de même, puis la couche 2 et le tout est
+			converti en bits par la couche 1. Un entête n'est jamais gros (quelques octets) et il n'est décodable que par la couche qui l'a émis&nbsp;; un entête de la couche 4 (TCP) n'est
+			pas utilisable par la couche 3 (IP), elle ne voit ça que comme des données à envoyer plus bas. C'est pour cela qu'on observera des redondances dans le contenu des entêtes
+			(des CRC à plusieurs niveaux, des checksums, etc...).</p>
+			<p>Les entêtes pour chaque protocole seront détaillés plus loin dans cette synthèse.</p>
+			
+			<figure class="centered">
+				<img class="large-image" src="css/images/paquet-ip-dans-trame-ethernet.png" alt="paquet ip dans trame ethernet" />
+				<figcaption>Un paquet IP encapsulé dans une trame Ethernet</figcaption>
+			</figure>
+			
+			
+			<figure class="float-right"><a href="css/images/osi-model.jpg" target="_blank"><img class="height-550" src="css/images/osi-model.png"/></a>
+				<figcaption>
+					Moyen mnémotechnique pour retenir les 7 couches&nbsp;:<br />
+					<span class="bold">P</span>our <span class="bold">L</span>e <span class="bold">R</span>éseau, <span class="bold">T</span>out 
+					<span class="bold">S</span>e <span class="bold">P</span>asse <span class="bold">A</span>dmirablement
+				</figcaption>
+			</figure>
+			
+			
+			<h3>Couche 1 : Physique (PHY)</h3>
+			<p>La couche physique est responsable de la transmission et de la réception des données "brutes". Elle convertit les bits (signaux logiques, càd des suites de 0 et de 1) en signal électrique,
+			radio ou optique pour être transportés entre médias de communication.</p>
+			<p>Voici une liste non exhaustive des <a href="https://en.wikipedia.org/wiki/Physical_layer#Technologies" title="Vers: Wikipédia 'Physical layer technologies'">technologies qui spécifient 
+			des protocoles</a> pour la couche 1.</p>
+			
+			
+			<h3>Couche 2 : Liaison de données (MAC, LLC)</h3>
+			<p>La couche liaison fournit un lien entre les <a href="#noeud" title="Vers : définition 'noeud'"><span class="bold">noeuds</span></a> (les différents appareils)
+			sur un <span class="bold">même réseau</span>. 
+			Les protocoles mis en oeuvre en couche 2 peuvent détecter (et corriger au besoin) les erreurs qui auraient pu survenir à la couche physique. C'est la couche 2 qui ouvre et ferme la liaison
+			entre deux appareils connectés physiquement. Dans le cas d'envoi de données, la couche 2 encapsule les paquets envoyés par la couche 3 pour en faire des <span class="bold">trames</span>
+			(ou "frames", en anglais), puis elle passe ces trames à la couche 1.</p>
+			
+			<h4>Ethernet</h4>
+			<p>Le <span class="bold">protocole Ethernet</span> est le plus utilisé au sein des réseaux locaux. Pour qu'il fonctionne, il faut que tous les utilisateurs aient du matériel compatible
+			(même signal, même tension...).
+			Ethernet a pris le monopole, car il a su s'adapter au fil des années et qu'il répond très bien aux besoins des utilisateurs. De nos jours, même des systèmes d'acquisition de données
+			professionnels utilisent Ethernet.</p>
+			
+			<h4>MTU</h4>
+			<p>Une trame Ethernet a une taille maximale de 1500&nbsp;octets&nbsp;; ce nombre est ce qu'on appelle sa <span class="bold italic">maximum transmission unit</span> (MTU).</p>
+			
+			<h4>Adresse MAC et ARP</h4>
+			<p>Pour communiquer entre deux équipements, on utilise des adresses IP (voir couche 3), mais aussi des <span class="bold">adresses MAC</span> (<span class="italic">Media Access Control</span>),
+			parfois appelées "adresses physiques". C'est la <a href="#matériel-réseau">carte réseau</a> d'un appareil qui lui fournit cette adresse. Elle est codée sur 48 bits (6&nbsp;octets)
+			et est souvent notée comme ceci&nbsp;: 04:d4:e6:f9:56:1b.</p>
+			<p>Pour communiquer entre appareils situés sur un même réseau, on utilise principalement les adresses MAC et pas les adresses IP. C'est l'<span class="bold">Address Resolution 
+			Protocol</span> (ARP) qui est utilisé pour découvrir les adresses MAC des appareils voisins. En faisant une <span class="italic bold">ARP request</span>, on envoie une trame à chaque
+			occupant du réseau (broadcast). Cette trame contient l'IP de l'émetteur, son adresse MAC et l'IP de destination. Celui qui a l'IP correspondante à l'IP de destination renvoie
+			une <span class="italic bold">ARP reply</span> uniquement à l'émetteur (unicast). Tous les hôtes qui ont reçu l'<span class="italic bold">ARP request</span> conservent l'adresse MAC
+			de l'émetteur dans leur cache (car ça peut servir pour plus tard). Ce cache ARP, ou table ARP, est une table de correspondance que l'on peut voir avec la 
+			commande <span class="code-font">arp -a</span> sous Windows.</p>
+			
+			<h4>Entête des trames Ethernet</h4>
+			<p>L'encapsulation d'une trame Ethernet se fait par l'ajout d'un entête (header). Une trame et son entête seront souvent appelés <span class="bold">paquet Ethernet</span>.
+			Dans le header, on retrouve dans l'ordre :</p>
+			<ul>
+				<li>un <span class="bold">préambule</span> de 7 octets (56&nbsp;bits qui permettent la synchronisation des horloges entre émetteur et recepteur);</li>
+				<li>une marque de "<span class="bold">début de trame</span>" d'1&nbsp;octet, qui indique en gros "salut, les données commencent ici";</li>
+				<li>les <span class="bold">adresses MAC</span> de destination et d'émission (6&nbsp;octets chacune);</li>
+				<ul>
+					<li>Unicast&nbsp;: il n'y a qu'une hôte destinataire</li>
+					<li>Multicast&nbsp;: on trouve plusieurs adresses de destination</li>
+					<li>Broadcast&nbsp;: l'adresse indiquée est ff:ff:ff:ff:ff:ff pour que tout le monde reçoive la trame</li>
+				</ul>
+				<li>un champ "EtherType" qui ne nous intéressera pas pour l'instant;</li>
+				<li>ensuite, on retrouve <span class="bold">la trame</span>, qui constitue le corps des données à envoyer, allant de 46 à 1500 octets (si les données font moins de 46 octets,
+				il y aura du rembourrage avec des bits à 0, du "padding", pour arriver au minimum requis);</li>
+				<li>enfin, après la trame, on retrouve un champ pour le <span class="bold">Cyclic Redundancy Check</span> (CRC) qui fait 4&nbsp;octets et permet la détection de
+				données corrompues.</li>
+			</ul>
+			<p>Avec tout cela, un paquet Ethernet doit avoir une taille minimale de 64&nbsp;octets.</p>
+			<figure class="centered"><img class="large-image" src="css/images/couche-1-2-size.jpg" /><figcaption>Schémas récapitulatifs du transport sur les couches 1 et 2</figcaption></figure>
+			
+			<h4>CSMA/CD</h4>
+			<p>Dans les réseaux câblés, il est possible que des paquets entrent en collision et soient ainsi perdus.
+			Pour pallier ce problème, on a mis en place le protocole <span class="bold">Carrier-Sense Multiple Access/Collision Detection</span> (CSMA/CD) dans les premières années de la
+			technologie Ethernet. Il consiste à écouter ce qu'il se passe sur le réseau et de n'envoyer que si personne n'émet de trame. En plus de cela, il prévoit de détecter d'éventuelles collisions
+			qui pourraient tout de même se produire. Si une collision est détectée, chaque émetteur concerné par la collision attend un temps aléatoire avant de renvoyer sa trame.</p> 
+			<p>Avec la popularisation des switchs, les problèmes de collisions sont beaucoup moins fréquents et le CSMA/CD est devenu beaucoup moins important.</p>
+			
+			<h4>Protocole WiFi</h4>
+			<p>Le protocole WiFi fait circuler les informations de façon similaire à Ethernet, même s'il ne s'agit plus de trames. Ethernet et WiFi sont compatibles en entre eux&nbsp;; Ethernet 
+			(norme 802.3) s'occupe du câblé et WiFi (norme 802.11) s'occupe du sans fil.</p>
+			<p>Depuis sa création, la norme WiFi a reçu de nombreuses modifications. Nous en sommes aujourd'hui aux normes 802.11ac (Wi-Fi 5) et 802.11ax (Wi-Fi 6) qui coexistent.</p>
+			
+			<h3>Couche 3 : Réseau (IP, ICMP)</h3>
+			
+			<p>La couche réseau (parfois appelée "la couche internet") permet le transfert de <span class="bold">paquets</span> entre des noeuds situés 
+			sur <span class="bold">des réseaux différents</span>. Un paquet ne peut pas transiter directement sur un réseau&nbsp;! S'il est envoyé, il est encapsulé dans des trames par le protocole
+			Ehternet (en couche 2), qui elles-mêmes finissent en un enchaînement de bits pour circuler sur le support physique (couche 1). S'il est reçu, il est désencapsulé dans l'ordre inverse.</p>
+			<p>Sur un réseau informatique, chaque noeud a une adresse. Pour envoyer une information à un noeud précis, il suffit de connaître l'adresse du noeud de destination. Pour arriver à
+			cette destination, il est possible (mais pas systématique) que l'information transite par des noeuds intermédiaires via un mécanisme de 
+			<a href="#routage" title="Vers : définition 'routage'">routage</a>.</p>
+			<p>Dans les réseaux informatiques, c'est le protocole IP qui se charge de fournir des adresses aux noeuds. Il existe deux versions du protocole IP&nbsp;: l'IPv4 et l'IPv6. L'IPv4 est le 
+			protocole utilisé actuellement.</p>
+			
+			<h4>IPv4</h4>
+			<p>Ce protocole existe depuis 1981. Il a été établi sur le document <a href="https://tools.ietf.org/html/rfc791" title="Lien vers la RFC">RFC791</a>.</p>
+			<p>Les adresses fournies par ce protocole sont codées en 32 bits (4 octets) et ne permettent donc que 4&nbsp;294&nbsp;967&nbsp;296 possibilités. Pensé à l'origine pour que chaque machine
+			possède une adresse unique au monde, nous sommes arrivés au bout du système depuis 2011. Cependant, si elles ne quittent pas un réseau donné, il n'y a aucun problème pour que
+			des adresses identiques coexistent dans des environnements complètement séparés. Ce n'est qu'en arrivant sur internet que cela pose problème. Grâce à un processus appelé
+			network address translation (NAT), on obtient une IP dite "publique" qui est différente de celle qu'on a sur un réseau local.</p>
+			
+			<aside>
+				<figure class="float-right"><img src="css/images/ipconfig.jpg"/></figure>
+				<p>Pour savoir quelle est l'adresse IP d'un ordinateur, sur Windows, il faut utiliser l'invite de commandes (cmd.exe ou Powershell) et taper la 
+				commande <span class="code-font">ipconfig</span>. 
+				Cette commande permet au minimum d'afficher l'<span class="bold">adresse IPv4</span>, le <span class="bold">masque de sous-réseau</span> et la <span class="bold">passerelle par défaut</span>. 
+				Il ne s'agit que de l'adresse IP du réseau sur lequel on se trouve. Pour connaître son adresse IP publique (celle qui va sur internet), on peut tout simplement 
+				<a href="https://www.google.com/search?q=my+ip" title="Recherche Google" target="_blank">demander à Google</a>.</p>
+			</aside>
+			
+			<h4>Datagramme IP</h4>
+			<p>Un datagramme est une unité de transfert composée de deux éléments&nbsp;: un entête (ou header) et une charge utile (payload). Le header contient toutes les informations nécessaires 
+			au routage (IP de l'émetteur, IP du destinataire, la version du protocole, le time to live, etc.), tandis que le payload constitue le corps des données qui doivent être transportées.
+			C'est de cette façon que le protocole IP encapsule les données venues des couches supérieures.
+			Pour tous les détails contenus dans l'entête d'un datagramme IP, je vous renvoie vers la 
+			<a href="https://fr.wikipedia.org/wiki/IPv4#En-t%C3%AAte_IPv4" title="Vers : Wikipédia 'En-tête IPv4'">page Wikipédia dédiée à ce sujet</a>.</p>
+			
+			<h4>Fragmentation</h4>
+			<p>Si un datagramme IP est trop volumineux pour être pris en charge par l'hôte suivant (c'est-à-dire que la MTU de l'hôte suivant est plus petite que la taille du paquet), il est alors
+			<span class="bold">fragmenté</span>. Chacun des fragments ainsi créé est marqué pour que
+			le destinaire sache qu'il doit les réassembler pour obtenir le datagramme d'origine. Tous les fragments doivent parvenir à l'hôte pour que le datagramme arrive à destination : si un
+			seul fragment est perdu, tout le datagramme est droppé (dans ce genre de cas, si le protocole TCP est utilisé [voir couche 4], il renverra généralement le paquet en entier).</p>
+			<p>Sachant que la MTU du protocole Ethernet v2 est de 1500&nbsp;octets, la couche 3 a pour rôle de fragmenter ses datagrammes pour qu'ils puissent être pris en charge par la couche 2,
+			car Ethernet n'est pas capable de faire la fragmentation lui-même.</p>
+			
+			<h4>ICMP</h4>
+			<p>L'IP ne gère pas les messages d'erreurs, mais l'<span class="bold">Internet Control Message Protocol</span> (ICMP) est un protocole qui en est capable. Il fait lui aussi
+			partie intégrante de la <a href="https://fr.wikipedia.org/wiki/Suite_des_protocoles_Internet" title="Vers: Wikipédia 'Suite des protocoles Internet'">suite 
+			des protocoles Internet</a> et il est défini dans la RFC792. Ce protocole est utilisé par les équipements réseaux (comme les routeurs) pour envoyer des informations concernant la
+			réussite ou l'échec d'envoi de données vers une autre adresse IP. La structure du datagramme ICMP est pratiquement la même que celui de l'IP.</p>
+			<p>L'ICMP utilise un <span class="bold">Cyclic Redundancy Check</span>, comme le protocole Ethernet, pour détecter les erreurs. En 4 octets dans son header, il véhicule un message
+			de contrôle (avec un <a href="https://fr.wikipedia.org/wiki/Internet_Control_Message_Protocol#Les_diff%C3%A9rents_types">numéro 
+			de type et un numéro de code</a>) qui indique si la transmission s'est bien déroulée. Une réponse de "code 0" indique en général que tout s'est bien passé.</p>
+			<p>Il existe une version de l'ICMP pour l'IPv6.</p>
+			
+			<h4>IPv6</h4>
+			<p>Ce protocole permet un adressage beaucoup plus vaste. Les adresses sont codées sur 128 bits, ce qui offre par conséquent 2<sup>128</sup> possibilités (340 sextillons&nbsp;; c'est un nombre à 39 chiffres&nbsp;!).
+			On ne peut malheureusement pas facilement passer à l'utilisation de l'IPv6, car les adresses IPv6 ne sont pas compatibles avec les adresses IPv4. Il faudrait donc que le monde entier
+			soit prêt pour ce changement et que l'on transitionne tous au même moment. Or, 
+			<a href="https://www.google.com/intl/en/ipv6/statistics.html#tab=per-country-ipv6-adoption" target="_blank">selon les statistiques de Google</a>, on est loin du compte...</p>
+			
+			
+			<h3>Couche 4 : Transport (TCP, UDP)</h3>
+			<p>La couche transport est la plaque tournante de tous les protocoles. Elle fonctionne en trois phases&nbsp;: établissement, transfert, libération. Son intérêt principal est de fournir une
+			abstraction aux logiciels&nbsp;; il n'est pas nécessaire de savoir quel type de réseau se cache sous la couche 4, ce qui simplifie le côté applicatif (couche 7). La couche 4 est 
+			exécutée principalement sur les terminaux (càd l'appareil du client, de l'utilisateur final&nbsp;; donc un PC, un smartphone...) tandis que les couches 2 et 3 se chargent
+			de l'équipement réseau.</p>
+			<h4>TCP</h4>
+			<p>Dans les réseaux informatiques, la couche transport est généralement prise en charge par le <span class="bold">Transmission Control Protocol</span> (TCP). Il traite de bout en bout
+			des données de manière fiable sur des réseaux qui ne le sont pas toujours. Il est aussi capable de s'adapter dynamiquement à des variations de débit (bits/s), de nombre d'utilisateurs et à
+			d'éventuelles pannes. TCP complémente l'IP, créant ce qu'on appelle "la suite TCP/IP", aussi appelée "suite des protocoles Internet".
+			TCP parvient à acheminemer les données en garantissant la fiabilité du service grâce à un contrôle des erreurs. 
+			Chaque <a href="https://fr.wikipedia.org/wiki/Transmission_Control_Protocol#Structure_d'un_segment_TCP" title="Vers: Wikipédia 'Structure d'un segment TCP'" target="_blank">segment TCP</a>
+			est composé d'un header et d'un payload (la "charge utile", c'est-à-dire les données).</p>
+			
+			<p>Le TCP est un protocole <span class="bold">orienté connexion</span>. Via un processus appelé "<span class="italic">three-way handshake</span>" (voir plus bas), deux appareils qui veulent 
+			communiquer établissent une connexion préalable en ouvrant un <span class="bold">socket</span> (qui est identifié par un numéro&nbsp;: le <span class="bold">port</span>) avant de commencer 
+			à envoyer des données. Il s'agit d'une étape importante pour assurer la fiabilité des transmissions.</p>
+			
+			<p>Pour détecter des pertes éventuelles de données lors du transfert, TCP utilise un système de <span class="bold">somme de contrôle</span> (<span class="italic">checksum</span>, en anglais).
+			Ce nombre 16 bits est une sorte d'empreinte numérique qui est calculée sur base des éléments contenus dans le segment TCP. L'émetteur joint son <span class="italic">checksum</span> au segment
+			et si le destinataire obtient un résultat différent en calculant le <span class="italic">checksum</span> de son côté, il y a une forte probabilité que des données aient été perdues ou 
+			corrompues. Dans ce cas, le segment est envoyé à nouveau.</p>
+			
+			<p>C'est aussi TCP qui détermine les priorités d'utilisateurs sur un réseau et qui partage la connexion internet.</p>
+			
+			
+			<h4><span class="italic">Three-way handshake</span></h4>
+			<figure class="float-right"><img class="height-350" src="css/images/syn-ack-synack.png"/>
+			<figcaption>Établissement d'une connexion TCP</figcaption></figure>
+			<p>Établir une connexion TCP requiert trois étapes&nbsp;:</p>
+			<ul>
+				<li>Un hôte (Alice) envoie un <span class="bold">SYN</span> (message de synchronisation) à un second hôte (Bob). Ce message est une séquence de nombres qu'on 
+				appelera <span class="bold">x</span>.</li>
+				<li>Bob répond avec un <span class="bold">SYN-ACK</span> (synchronisation-acknoledgement<span class="bold slightly-smaller">&nbsp;(en)</span>/acquittement<span class="bold slightly-smaller">&nbsp;(fr)</span>). 
+				Pour faire cela, il renvoie le nombre de départ incrémenté de 1 
+				(<span class="bold">x + 1</span>) et il envoie également sa propre séquence qu'on appellera <span class="bold">y</span>.</li>
+				<li>Pour terminer, Alice renvoie un <span class="bold">ACK</span> (message d'acknoledgement<span class="bold slightly-smaller">&nbsp;(en)</span>/acquittement<span class="bold slightly-smaller">&nbsp;(fr)</span>) avec le second nombre incrémenté de 1 (<span class="bold">y + 1</span>) 
+				auquel Bob n'a pas besoin de répondre.</li>
+			</ul>
+			<p>Une communication est maintenant établie entre le Alice et Bob. Quand la connexion doit être fermée, Bob ou Alice envoie un FIN (finalize) et l'autre répondra par un FIN ACK 
+			(finalize-acknoledgement), bien que l'autre hôte n'attende pas forcément la réponse.</p>
+			
+			<h4>Sockets réseaux et ports logiciels</h4>
+			<p>Les serveurs ne peuvent pas communiquer avec un nombre illimité de clients simultanément. Par défaut, un serveur ne peut offrir que 65&nbsp;535 <span class="bold">sockets</span> (un entier
+			16&nbsp;bits/2&nbsp;octets) à la fois, car c'est le nombre maximum de <span class="bold">ports TCP</span> disponibles. Parmi ces ports, les 1024 premiers sont
+			<a href="https://fr.wikipedia.org/wiki/Liste_de_ports_logiciels#Ports_connus">réservés à des ports connus</a>. Le port 80 est par exemple le port HTTP. Tous les autres sont libres en théorie.</p>
+			<p>Ainsi, si Alice lance son navigateur pour aller sur Google, elle parle au port 80 d'un de leurs nombreux serveurs. Ensuite, pour libérer le port et laisser Bob parler à son tour avec
+			lui, le serveur renvoie Alice aléatoirement sur un autre port supérieur ou égal à 1024. Le port d'écoute sert donc juste à l'initialisation de la connexion. L'interlocuteur est rapidement 
+			mis sur son propre port pour laisser le 80 libre.</p>
+			
+			<aside><p>Une méthode courante d'<a href="https://fr.wikipedia.org/wiki/Attaque_par_d%C3%A9ni_de_service">attaque par déni de service</a> (DoS attack) consiste à inonder un serveur 
+			de SYN (attaque par <a href="https://fr.wikipedia.org/wiki/SYN_flood">SYN flood</a>) sans jamais renvoyer de ACK par après. Le serveur a envoyé son SYN-ACK et attend le ACK du client, 
+			mais il ne le reçoit jamais. Le serveur a mis le client sur un port disponible en attendant son ACK, et le hacker renvoie pendant ce temps d'autres SYN avec des adresses IP différentes
+			jusqu'à ce que le serveur n'ait plus de ports disponibles. Une demande légitime de SYN venue d'un autre client restera alors sans réponse.</p></aside>
+			
+			<h4>Les champs du header TCP</h4>
+			<p>Dans le header d'un datagramme TCP, on retrouve principalement les informations suivantes&nbsp;:</p>
+			<ul>
+				<li>Le port source</li>
+				<li>Le port de destination</li>
+				<li>Le numéro de séquence SYN</li>
+				<li>Le numéro de séquence ACK (au besoin)</li>
+				<li>Des flags&nbsp;:
+					<ul>
+						<li>URG&nbsp;: données urgentes</li>
+						<li>ACK&nbsp;: paquet acquittement</li>
+						<li>PSH&nbsp;: données à transmission immédiate</li>
+						<li>RST&nbsp;: reset de la transmission</li>
+						<li>SYN&nbsp;: demande de synchro/connexion</li>
+						<li>FIN&nbsp;: fin de la connexion</li>
+					</ul>
+				</li>
+				<li>Une "window" qui permet au récepteur d'indiquer à l'émetteur la quantité de données qu'il est capable d'accepter.</li>
+				<li>Une somme de contrôle</li>
+				<li>Des options (facultatives)</li>
+				<li>Du padding (pour arriver à 32&nbsp;bits au besoin)</li>
+			</ul>
+			
+			<h4>UDP</h4>
+			<p>Le <span class="bold">User Datagram Protocol</span> (UDP) est un protocole de transmission <span class="bold">en mode sans-connexion</span> qui est utilisé à la place de TCP 
+			dans certains cas. Contrairement à TCP, il
+			n'établit pas de connexion préalable et il ne cherche pas à s'assurer que l'information est bien parvenue à destination. L'UDP convient donc lorsque le contrôle d'erreur
+			n'est pas vital ou que la rapidité de transmission est plus importante que la fiabilité (le streaming audio ou vidéo, par exemple). UDP est parfois utilisé conjointement à un contrôle
+			d'erreur au niveau application (couche 7).</p>
+			
+			<h3>Couche 5 : Session, couche 6 : Présentation, couche 7 : Application</h3>
+			<p>Ces couches ne seront abordées en détails qu'en Bloc 2 dans le cadre du cours de Réseaux&nbsp;2.</p>
+			
+			
+			
+			
+			<h2 id="calcul-ip">3. Sous-réseaux et calcul d'IPv4</h2>
+			<p>En fonction de la topologie qu'on désire, il est possible de découper logiquement un réseau en plusieurs petits réseaux, qu'on appelle <span class="bold">sous-réseaux</span>.
+			On peut ensuite interconnecter ces sous-réseaux si on le souhaite, mais ce n'est pas obligatoire. On peut aussi choisir de créer un réseau très étendu avec énormément de machines
+			connectées dessus et peu, voire pas, de sous-réseau dedans. Dans tous les cas, il faudra faire des <span class="bold">calculs d'adresses IP<span class="bold">.</p>
+			<p>Un sous-réseau est donc une subdivision logique d'un réseau de taille plus importante. Le <span class="bold">masque de sous-réseau</span> permet de distinguer la partie de l'adresse
+			commune à tous les appareils du sous-réseau et celle qui varie d'un appareil à l'autre. La subdivision d'un réseau en sous-réseaux permet de limiter la propagation des 
+			<span class="bold">broadcasts</span>, ceux-ci restant alors limités au sous-réseau. Des <span class="bold">routeurs</span> sont utilisés pour la communication entre les machines appartenant 
+			à des sous-réseaux différents.</p>
+			<aside><p>L'intérêt de cette subdivision en multiples sous-réseaux est d'éviter la congestion. Il est techniquement possible de mettre des dizaines de milliers de machines sur un même réseau.
+			En utilisant un <span class="bold">switch</span>, on évite déjà beaucoup de trafic inutile, car chaque paquet n'est envoyé qu'au destinataire. Par le passé, quand on utilisait des 
+			<span class="bold">hubs</span>, chaque machine sur le réseau voyait passer tous les paquets, et devait l'ignorer si elle n'était pas le destinataire prévu. Les switchs ont donc résolu
+			en partie le souci de congestion, mais s'il y a beaucoup de trafic en broadcast, la vitesse du réseau risque de rester très lente.</p></aside>
+			
+			<h3>3.1. Masque de sous-réseau</h3>
+			<p>Une adresse IPv4 ne fonctionne qu'avec un masque qui lui est associé. Un masque fait la même taille qu'une adresse IP (4 octets). Il ressemble à une suite du genre 255.255.255.0.
+			En binaire, cela donne&nbsp;: <span class="code-font">1111 1111 . 1111 1111 . 1111 1111 . 0000 0000</span> </p>
+			<p>Dans un masque de sous-réseau, dès qu'il y a un zéro, il ne peut plus y avoir d'autres 1 sur la droite du nombre en binaire. De plus, il n'existe pas de masque avec uniquement des 0. 
+			Par conséquent, il n'y a que 32 masques de réseau possibles. <span class="bold rouge">Deux adresses IP appartiennent à un même sous-réseau si elles ont en commun les bits du masque 
+			de sous-réseau</span>. </p>
+			<aside><p>Pour simplifier l'écriture des masques, on voit parfois les adresses IP suivies d'un
+			<span class="code-font">/</span> et d'un nombre entre <span class="code-font">1</span> et <span class="code-font">32</span>. Ce nombre représente le masque de sous-réseau.
+			Il indique le nombre de 1 présents dans le masque&nbsp;: <a href="css/images/octet-masque.jpg">on peut donc en déduire immédiatement le masque en binaire</a>. Pour le masque donné
+			dans le premier paragraphe, on peut donc écrire <span class="code-font">/24</span>.</p></aside>
+			
+			<h3>3.2. Calculer une adresse de sous-réseau</h3>
+			<p>Pour calculer l'adresse de sous-réseau liée à une adresse IP donnée, on effectue
+			<a href="langage-c.html#operations-bit-a-bit" title="Vers : Langage C 'Opérateurs de traitement bit à bit'">une opération ET logique bit à bit</a> entre l'adresse IP et le masque 
+			de sous-réseau. <br />
+			Dans l'exemple suivant, nous reprenons l'adresse IP 192.168.0.12 et le masque 255.255.255.0&nbsp;:</p>
+			<p class="code-font smaller-on-phones">
+										1100 0000 . 1010 1000 . 0000 0000 . 0000 1100 <br />
+				<span class="underline">1111 1111 . 1111 1111 . 1111 1111 . 0000 0000</span> ET <br />
+										1100 0000 . 1010 1000 . 0000 0000 . 0000 0000
+			</p>
+			<p>En nombres décimaux, l'adresse de sous-réseau est donc 192.168.0.0. Pas de grosse surprise ici, car le masque avait un nombre de 0 qui est un multiple de 8 (ici, 24). Cela signifie
+			qu'outre les 8 bits de droite, on va forcément conserver tous les bits à 1 de l'adresse IP sans en ajouter (puisque 1 ET 1 = 1). Avec un peu d'expérience, on connaît facilement le
+			résultat sans avoir à faire trop d'opérations. En revanche, ça se corse quand on a des masques un peu plus exotiques. <br />
+			Prenons 10.13.55.62/22 en exemple&nbsp;:</p>
+			<p class="code-font smaller-on-phones">
+										0000 1010 . 0000 1101 . 0011 0111 . 0011 1110 <br />
+				<span class="underline">1111 1111 . 1111 1111 . 1111 1100 . 0000 0000</span> ET <br />
+										0000 1010 . 0000 1101 . 0011 0100 . 0000 0000
+			</p>
+			<p>En nombres décimaux, l'adresse de sous-réseau est donc 10.13.52.0. Cette fois, le troisième octet a été modifié, car il y avait des 1 tout à droite de l'adresse. Mais ça n'aurait pas
+			été le cas si le troisième octet avait été 184 (1011 1000) ou 60 (0011 1100)&nbsp;! Bref, c'est assez difficile de "deviner" l'adresse d'un réseau sans au minimum écrire chaque octet
+			en binaire.</p>
+			
+			
+			<h3>3.3. Broadcast, hôte minimum/maximum et passerelle</h3>
+			<p>Maintenant que nous sommes capables de calculer l'adresse d'un réseau, il nous est possible d'obtenir d'autres infos sur base de cela&nbsp;: l'<span class="bold">adresse de broadcast</span> 
+			("diffusion", c'est l'adresse avec laquelle on s'adresse à toutes les machines présentes sur le réseau), l'adresse de la <span class="bold">passerelle 
+			par défaut</span> (le routeur&nbsp;; la <span class="italic">default gateway</span> en anglais), et les <span class="bold">adresses min. et max. des hôtes</span>.</p>
+			
+			<h4>Adresse de broadcast</h4>
+			<p>Pour calculer l'adresse de broadcast, on effectue <a href="langage-c.html#operations-bit-a-bit" title="Vers : Langage C 'Opérateurs de traitement bit à bit'">une 
+			opération OU logique bit à bit</a> entre l'adresse du réseau et le complément du masque ("l'inverse" du masque). <br />
+			Reprenons l'adresse réseau 10.13.52.0 et cette fois le complément de son masque /22&nbsp;: </p>
+			<p class="code-font smaller-on-phones">
+										0000 1010 . 0000 1101 . 0011 0100 . 0000 0000 <br />
+				<span class="underline">0000 0000 . 0000 0000 . 0000 0011 . 1111 1111</span> OU <br />
+										0000 1010 . 0000 1101 . 0011 0111 . 1111 1111
+			</p>
+			<p>En nombres décimaux, l'adresse de broadcast est donc 10.13.55.255. Si on utilise cette adresse pour envoyer une information, on l'envoie à toutes les machines qui sont sur le 
+			sous-réseau.</p>
+			
+			
+			<h4>Hôtes et passerelle</h4>
+			<p>Chaque sous-réseau possède un nombre d'hôtes maximum. Ce nombre est égal au nombre d'adresses IP qu'on peut attribuer sur ce sous-réseau.</p>
+			<p>La première adresse d'un sous-réseau (l'<span class="bold">hôte minimum</span>), c'est l'<span class="bold">adresse du réseau + 1</span>. Dans le cas du réseau 10.13.52.0, l'adresse min. est donc 10.13.52.1. 
+			Cette adresse est généralement attribuée à la passerelle (le routeur) qui est sur le réseau. On évitera donc de l'attribuer à une autre machine. Dans les faits, la première adresse IP
+			qu'on attribuera sera donc l'adresse du réseau + 2.</p>
+			<p>La dernière adresse possible d'un sous réseau, (l'<span class="bold">hôte maximum</span>), c'est l'<span class="bold">adresse de broadcast - 1</span>. Dans le cas du réseau 10.13.52.0, 
+			qui a une adresse de broadcast de 10.13.55.255, l'adresse max. est donc 10.13.55.254.</p>
+			<aside><p>Si l'on veut connaître le nombre d'hôtes maximum possibles sur un sous-réseau, il faut faire 2<sup>N</sup>-2, où N est le nombre de 0 présents dans le masque. On doit soustraire 2, 
+			car on ne peut attribuer ni l'adresse du réseau ni l'adresse de broadcast comme adresse IP. Pour le masque /22, il y a dix 0, donc 2<sup>10</sup>-2 = 1022 adresses IP possibles.</p></aside>
+			
+			<h3>3.4. Outils en ligne</h3>
+			<p>Bien qu'il soit utile de comprendre comment calculer les IP à la main, c'est un processus qui peut s'avérer long et sujet à erreur. Il existe évidemment des outils en ligne qui
+			permettent de faire ces calculs à notre place. En voici quelques-uns&nbsp;:</p>
+			<ul>
+				<li>Le site <a href="http://jodies.de/ipcalc">IPCalc</a>, avec une interface d'un autre âge, mais qui fait très bien le travail.</li>
+				<li>Le site <a href="http://www.subnet-calculator.com/">IP Subnet Calculator</a>, qui n'a rien de mieux à offrir visuellement, mais qui va aussi très bien.</li>
+				<li>L'<a href="https://connected.helha.be/pluginfile.php/748787/mod_resource/content/2/IPCalc.exe">exécutable de M. Michaux</a>, codé en WinDev, que votre PC va détecter comme 
+				un programme louche, mais qui ne comporte a priori aucun risque ;-)</li>
+			</ul>
+			<p>Mais pour rappel, <span class="bold">les calculs d'IP à faire à la main sont un des éléments de l'évaluation de ce cours&nbsp;!</span></p>
+			
+			<h4>3.5. DHCP (Dynamic Host Configuration Protocol)</h4>
+			<p>Pour faciliter la configuration du réseau, on automatise souvent l'attribution des paramètres IP. Aucun logiciel n'est nécessaire du côté client, tout est prévu par le serveur DHCP 
+			qui s'assure qu'aucune adresse IP ne soit attribuée deux fois. Au niveau domestique, nos Box s'occupent de cette tâche.</p>
+			<p>Lorsqu'un appareil se connecte pour la première fois sur un réseau, il fait une DHCPDISCOVERY. Si le serveur DHCP valide ce client, il lui fait une offre d'adresse IP. Le client
+			acceptera alors par un processus appelé le DHCPREQUEST, et il se voit attribuer cette adresse IP.</p>
+			<p>On comprend vite l'intérêt de cette technologie pour l'utilisateur&nbsp;! Pas besoin de gestion du réseau, pas besoin d'entrer soi-même une IP...</p>
+			
+			
+			
+			
+			
+			
+			
+			
+			<h2 id="matériel-réseau">4. Matériel réseau</h2>			
+			<h3>4.1. Cartes réseaux</h3>
+			<p>De nos jours, presque toutes les cartes réseaux sont des <span class="bold">cartes Ethernet</span>, des <span class="bold">cartes Wi-Fi</span> ou encore des
+			<span class="bold">cartes Bluetooth</span>. On les appelle parfois aussi adaptateurs réseau ou encore Network Interface Cards (NIC). La plupart du temps, les NIC de bureau sont
+			au format PCI-Express (c'est-à-dire qu'elles se connectent sur un port PCI-Express de la carte-mère).</p>
+			<p>À notre époque, on trouve des cartes réseaux dans toutes sortes d'appareils&nbsp;: smartphones, routeurs, télévisions, imprimantes, tous les appareils domotisés... Si un appareil
+			est capable de se connecter à un autre via un réseau informatique, il a nécessairement une carte réseau.</p>
+			<p>Ce sont les cartes réseaux qui donnent les adresses MAC aux appareils. Un ordinateur qui possède de façon distincte une carte Ethernet, une carte Wi-Fi et une carte Bluetooth
+			se retrouve donc avec trois adresses MAC différentes. Pour les serveurs, il n'est pas rare qu'on installe deux cartes réseaux qui remplissent le même rôle, car cela permet une
+			meilleure qualité de service (cela évite notamment les pannes).</p>
+			
+			<h4>Modes de transmissions</h4>
+			<p>Le rôle de ces cartes est de connecter les appareils au réseau. Pour cela, elles doivent transmettre les signaux électriques au bon format. Les échanges doivent être
+			<span class="bold">cadencés</span> pour qu'on sache où commence et où s'arrête chaque donnée&nbsp;; sinon, on aurait juste un flot ininterrompu et incompréhensible de 0 et de 1.</p>
+			<p>On distingue trois modes de transmissions&nbsp;:</p>
+			<ul>
+				<li><span class="bold">Simplex :</span> Le transfert se fait dans un seul sens. Celui qui reçoit ne peut pas répondre à l'émetteur. On utilise ce principe pour la télévision, la
+				radio FM, ...</li>
+				<li><span class="bold">Half-duplex :</span> Le transfert d'information est possible dans les deux sens, mais pas de façon simultanée. C'est ce qui se passe quand on communique avec des
+				talkies-walkies, par exemple.</li>
+				<li><span class="bold">Full-duplex :</span> L'information peut aller dans les deux sens de façon simultanée. C'est le cas pour le réseau GSM, le protocole Ethernet, etc.</li>
+			</ul>
+			
+			<h3 id="hub-et-switch">4.2. Hub et switch</h3>
+			<p>Les <span class="bold">hubs</span> (concentrateurs) et <span class="bold">swtichs</span> (commutateurs) sont des appareils permettant de mettre plusieurs machines en réseau. 
+			Dans les deux cas, les appareils sont reliés (physiquement ou logiquement) au switch ou au hub. La différence vient de la façon dont les informations circulent entre les machines.</p>
+			<p>Avec un hub, on a un <a href="#bus">schéma logique de bus</a>. Quand une information circule, toutes les machines la voient. Elles ne sont pas toutes forcément destinataires
+			des données qui circulent, mais chaque machine voit toutes les données passer.
+			Plus il y a d'hôtes qui communiquent sur un seul hub, plus le réseau sera lent, car il faut attendre son tour pour "parler". Un hub ne travaille qu'au niveau de la couche 1 puisqu'il
+			ne sait pas lire les trames. À notre époque, on n'utilise pratiquement plus jamais de hubs pour des réseaux locaux, car il ne présentent aucun avantage (plus lents, moins sécurisés...).</p>
+			<p>Avec un switch, les paquets sont commutés, c'est-à-dire aiguillés, vers le(s) destinataire(s). On est sur un <a href="#étoile">schéma logique d'étoile</a>. Un switch possède sa propre table ARP 
+			et il n'a pas besoin de CSMA, car il n'y a presque plus de collisions.</p>
+			
+			<h4>Anatomie et fonctionnement d'un switch</h4>
+			<p>Le switch centralise les différents appareils d'un réseau qui lui sont connectés de façon physique (câble Ethernet) ou logique (par wifi).
+			Un switch seul forme une topologie en étoile et plusieurs swtichs interconnectés forment une topologie en arbre. Un switch a toujours des <span class="bold">ports standards</span> en façade (vitesse souvent
+			10/100/1000 Mbps), qui servent à connecter les appareils au switch,
+			et il possède parfois des ports plus rapides (<span class="bold italic">uplink port</span>) qui sont prévus pour connecter des switchs entre eux. Il peut s'agir de <span class="bold">ports SFP</span> pour connecter
+			de la fibre optique (vitesse max 10&nbsp;Gbps&nbsp;!).</p>
+			<p>Il existe des switchs <span class="bold">de niveau 2 et de niveau 3</span>. Les switchs de niveau 2 ne travaillent que sur les couches 1 et 2 du modèle OSI. Ils sont capables de garder
+			en mémoire les adresses MAC des appareils qui communiquent avec eux. Un switch de niveau 3 peut également travailler sur la couche 3, il gère alors aussi les adresses IP et peut 
+			les garder en mémoire également. Avec un switch de niveau 3 <span class="bold">manageable</span> (<span class="bold">administrable</span>), il est aussi possible de créer des sous-réseau
+			et de brider la connexion de certains utilisateurs. Un switch de ce genre a donc sa propre adresse IP.</p>
+			<p>Un switch fonctionne en full-duplex. Il travaille majoritairement avec une seule liaison à la fois, ce qui évite grandement les risques de collisions. Toute la bande passante
+			est octroyée à chaque liaison et ne doit donc pas être partagée.</p>
+			<p>Lorsqu'un switch reçoit une trame ou un paquet, il vérifie sa validité&nbsp;: si c'est invalide, il droppe. Si c'est valide, il extrait les adresses de l'émetteur et du destinataire, et il
+			la garde en mémoire pendant 5 minutes (pas plus, car la mémoire des switchs est assez limitée). Lorsque le destinataire est inconnu, le switch inonde le réseau (tous les appareils sauf
+			l'émetteur) pour retrouver le destinataire.</p>
+			<p>Certains switchs évolués permettent même d'alimenter des appareils en 24&nbsp;V ou 48&nbsp;V directement via le câble Ethernet&nbsp;; c'est ce qu'on appelle le <span class="bold">Power
+			over Ethernet</span> (PoE). On peut y brancher des appareils tels que des téléphones fixes, des caméras, des capteurs, des micro-ordinateurs, de l'équipement réseau...</p>
+			
+			
+			<h3>4.3. Routeurs</h3>
+			<p>Les switchs relient les noeuds d'un réseau local entre eux et les <span class="bold">routeurs</span> relient ces réseaux locaux entre eux pour former un réseau étendu. Le routeur
+			sert de <span class="bold">passerelle</span> pour chaque réseau local&nbsp;: c'est la "porte de sortie/d'entrée" vers Internet.</p>
+			<p>Un routeur travaille sur les couches 1, 2 et 3 du modèle OSI. Quand il reçoit une trame venue de l'extérieur, il la désencapsule pour lire le paquet IP. Si la destination est sur son réseau,
+			il fera suivre l'information. Sinon, il transfèrera la trame vers un autre routeur en fonction de sa <span class="bold">table de routage</span> (une liste d'autres réseaux qu'il connaît&nbsp;;
+			ça fonctionne un peu comme la table ARP des switchs). Quand un switch reçoit un paquet IP avec une destination vers l'adresse de la passerelle (... .1), il l'envoie au routeur qui se charge
+			du reste.</p>
+			<p>Pendant tout le transfert de l'information, les adresses IP de l'émetteur et du destinataire restent les mêmes. Par contre, les adresses MAC sont modifiées à chaque saut d'un routeur
+			à un autre. L'itinéraire que prend un paquet n'est pas toujours le même, il change en fonction de l'encombrement sur le réseau étendu. Si un routeur tombe, cela n'aura pas un grand impact.
+			Les paquets transiterons simplement par une autre route dans la toile complexe que forment ces réseaux interconnectés.</p>
+			<p>Un utilisateur lamba comme nous ne possède pas vraiment de routeur. Nous avons des BBox (ou équivalent) qui proviennent de notre FAI et qui offrent une large gamme de fonctionnalités 
+			(sert de routeur, modem, switch, point d'accès sans fil, serveur, chromecast...).</p>
+			
+			
+			<h2 id="internet">5. Internet</h2>
+			<p>Internet est un système mondial composé de réseaux informatiques interconnectés&nbsp;: c'est le réseau des réseaux. Il utilise la suite des protocoles internet TCP/IP pour
+			assurer la communications entre les réseaux et les appareils. Il permet toute une série de service, dont le <span class="italic">world wide web</span>, le partage de fichiers (FTP),
+			l'envoi d'emails (SMTP), les messageries instantanées, l'IRC, l'XMPP, le P2P, les VPN, la téléphonie, la télévision, etc.</p>
+			
+			<h3>5.1. Le web</h3>
+			<p>Le <span class="italic">world wide web</span> (WWW), ou simplement web, est un système d'information multiformat auquel on peut accéder grâce à internet. C'est donc une des
+			facette d'Internet, mais il est important de comprendre que tout Internet n'est pas le web.</p>
+			
+			<h4>Serveurs web</h4>
+			<p>Les serveurs utilisés sont spécifiques pour fournir le service web&nbsp;: on parle de <span class="bold">serveur web</span>, car ils hébergent le contenus des pages webs. Un serveur
+			web fonctionne avec du hardware adapté et des logiciels capables de gérer les requêtes venues du réseau étendu grâce à l'Hypertext Transfer Protocol (HTTP&nbsp;; le protocole qui
+			codifie le transfert de ces informations).</p>
+			<p>La fonction principale d'un serveur web est donc de stocker des pages webs et de les envoyer lorsqu'un client le demande via un URL. Le serveur lit l'URL et renvoie l'information
+			concernée. Les pages fournies sont des documents Hypertext Markup Language (HTML&nbsp;; le language commun de toutes les pages webs).</p>
+			
+			<h4>Navigateurs</h4>
+			<p>Une page web est identifiée par une adresse unique, l'Uniform Ressource Locator (URL). Avec un navigateur internet, on peut accéder à ces URL et afficher de façon lisible les pages
+			web, car le navigateur se charge de traduire le language HTML. Le navigateur envoie une requête en utilisant le protocole HTTP et le serveur web lui répond avec le contenu souhaité,
+			ou bien avec un message d'erreur s'il est dans l'incapacité de le faire. Un <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_client_errors" target="_blank">code d'erreur
+			qui se situe dans les 400</a> indique un problème du côté du client, tandis qu'<a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#5xx_server_errors" target="_blank">une
+			erreur dans les 500</a> indique un souci du côté serveur.</p>
+			
+			<h4>DNS</h4>
+			<p>Le Domain Name System (DNS) permet d'éviter de devoir connaître les adresses IP de tous les services que nous utilisons sur Internet. En effet, pour communiquer avec un hôte distant,
+			on doit en principe connaître son adresse IP&nbsp;! Les serveurs DNS mettent en place un mécanisme qui permet de trouver la correspondance entre un <span class="bond">nom de domaine</span>
+			et son adresse IP&nbsp;: on appelle cela la <span class="bold">résolution de nom</span>. Ce système fonctionne en gros selon un principe de recherche automatique sur un énorme annuaire.</p>
+			<p>Il y a des serveurs de noms répartis dans le monde entier pour gérer l'espace DNS de façon hiérarchique. Ces serveurs contiennent des tables de conversions qui permettent de résoudre
+			les noms. La résolution se fait de droite à gauche&nbsp;: ".be", puis "google", puis "www.". La résolution complète se fait par questionnement successif des différents domaines
+			jusqu'à tomber sur celui qui s'occupe de la zone recherchée.</p>
+			
+			<h3>5.2. File Transfer Protocol (FTP)</h3>
+			<p>Les <span class="bold">serveurs FTP</span> permettent l'échange de larges données. Pour y accéder facilement, on utilise des logiciels comme FileZilla. La RFC initiale du FTP est la RFC959.</p>
+			
+			<h4>TFTP</h4>
+			<p>Le Trivial FTP fonctionne de la même façon que le FTP, mais pour les réseaux locaux. Ce système permet de démarrer des machines en envoyant l'OS directement au travers du réseau.
+			Il est plus rapide que le FTP, car il n'est pas sécurisé. Il ne gère pas les erreurs de transmission.</p>
+			
+			<h3>5.3. SSH (Secure Shell)</h3>
+			<p>Le Secure Shell est un protocole cryptographique qui permet de faire fonctionner des services réseaux de façon sécurisée sur des réseaux non-sécurisés. On s'en sert notamment pour
+			envoyer des lignes de commande à distance et pour se connecter à distance, mais tous les services immaginables sur un réseau informatique peuvent être sécurisé par un SSH.</p>
+			<p>Le protocole Secure Shell parvient à garantir un canal sécurisé sur des réseaux non fiables en utilisant une architecture client-serveur, en connectant le
+			<span class="bold">client SSH</span> à un <span class="bold">serveur SSH</span>.</p>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<h2 id="fracture">6. Fracture numérique</h2>
+			<p>La fracture numérique décrit les inégalités dans l'accès aux technologies de l'information et de la communication (TIC). On parle au moins de deux types de fractures&nbsp;: 
+			l'<span class="bold">accès physique</span> (1re fracture), l'<span class="bold">accès réel</span> (2e fracture). On parle aussi parfois de la <span class="bold">capacité d'usage</span> 
+			(3e fracture).</p>
+			
+			
+			<h3>6.1. Accès physique</h3>
+			<div class="flex">
+				<div>
+					<p>À travers le monde, l'accès à la technologie est loin d'être une norme pour tous. La richesse des pays a un impact direct sur cet accès. Sur la carte ci-jointe, on peut voir
+					que les pays du centre de l'Afrique ont un accès bien moins répandu que dans les pays de l'hémisphère nord.</p>
+					<p>La situation géographique au sein d'un même pays a aussi un impact considérable. La couverture d'accès à Internet est bien moins bonne dans les zones où la densité de population
+					est faible, comme dans les campagnes où dans des villes de montagnes. Et tous les pays ne sont pas égaux au niveau de leur topologie géographique.</p>
+				</div>
+				<figure>
+					<a href="css/images/couverture-internet.jpg" target="_blank"><img class="large-image" src="css/images/couverture-internet.jpg" /></a>
+					<figcaption>Cliquez pour agrandir&ensp;&emsp;&emsp;</figcaption>
+				</figure>
+			</div>
+			
+			<h3>6.2. Accès réel</h3>
+			<p>L'accès à la technologie dans un endroit donné ne signifie pas que tout le monde y ait accès, ni que toute l'étendue de cette technologie soit accessible. Les considérations d'ordre
+			socio-économique montrent que <a href="https://thejournal.com/articles/2020/05/14/poverty-race-linked-to-lack-of-internet-for-students.aspx" target="_blank">les individus les plus pauvres
+			dans une société donnée ont moins facilement accès à la technologie</a>.</p>
+			<p>De plus, certains pays dictatoriaux ou autoritaires imposent une censure sur le World Wide Web, en bloquant certains serveurs. Dans ces pays, avoir accès à internet ne signifie par
+			forcément que l'on peut consulter l'intégralité de son contenu.</p>
+			
+			<h3>6.3. Capacité d'usage</h3>
+			<p>Utiliser la technologie n'est pas une science infuse. Il y a des centaines de notions à maîtriser pour pouvoir utiliser correctement, et pleinement, une technologie comme internet.</p>
+			<p>La crise sanitaire du COVID-19 a par exemple montré <a href="https://www.clubic.com/antivirus-securite-informatique/virus-hacker-piratage/phishing-hameconnage/actualite-889780-sr-phishing-pleine-recrudescence-crise-sanitaire-pieges-eviter.html">une recrudescence du phishing</a>.
+			En effet, les confinements ont non seulement eu pour effet d'<a href="https://www.lemonde.fr/pixels/article/2020/04/09/pendant-la-pandemie-de-covid-19-le-temps-passe-sur-smartphone-augmente_6036113_4408996.html">augmenter le temps passé sur nos smartphones</a>,
+			mais ils ont sans doute aussi poussé de nouvelles personnes à se mettre à ces technologies alors qu'elles la connaissent mal.</p>
+			
+			
+			
+			
+			
+			<h2 id="lexique-réseaux">A. Annexes</h2>
+			<h3>A.1. Définitions</h3>
+			<p><span class="formula-font slightly-larger">Checksum :</span> (ou somme de contrôle, en français) courte séquence de données numériques calculée à partir d'un bloc de données plus 
+			important (par exemple un fichier ou un message) permettant de vérifier, avec une très haute probabilité, que l'intégrité de ce bloc a été préservée lors d'une opération de copie, 
+			stockage ou transmission. On parle aussi parfois d'empreinte numérique.</p>
+			<p><span class="formula-font slightly-larger">Datagramme :</span> Paquet de données transmis par un réseau local (LAN), composé d'un entête (header) et des informations à transmettre
+			(la "charge utile", ou "payload").</p>
+			<p><span class="formula-font slightly-larger">Entête (header):</span> Données présentes au début d'un paquet Ethernet, d'un paquet IP ou d'un segment TCP. Le header d'un paquet IP contient,
+			entre autres, les adresses IP de l'émetteur et du destinataire, le protocole du format de la charge utile, etc. Le header d'un segment TCP contient, entre autres, le port source,
+			le port destination, le SYN, le ACK, des flags, etc.</p>
+			<p><span class="formula-font slightly-larger">Hôte :</span> Terme général pour décrire tout noeud relié à un réseau informatique, qu'il fournisse des services 
+			à d'autres systèmes ou utilisateurs (serveur informatique, ou "système hôte") ou qu'il soit un simple client.</p>
+			<p><span class="formula-font slightly-larger">Modèle OSI :</span> Modèle conceptuel, devenu la norme, qui établit en 7 couches les fonctions de communication d'un réseau informatique
+			ou de télécommunication.</p>
+			<p><span class="formula-font slightly-larger" id="noeud">Noeud :</span> Élément d'un réseau qui reçoit ou émet. Exemples : un ordinateur, un modem, un hub, un switch...</p>
+			<p><span class="formula-font slightly-larger">Paquet</span> : Entité de transmission de la couche réseau (couche 3) permettant de transmettre un message d'une machine à une autre 
+			sur un réseau.</p>
+			<p><span class="formula-font slightly-larger" id="routage">Routage</span> : Mécanisme par lequel des chemins sont sélectionnés dans un réseau pour acheminer les données d'un expéditeur jusqu'à 
+			un ou plusieurs destinataires. Un routeur qui sert d'intermédiaire dans la transmission d'un message. <a href="https://fr.wikipedia.org/wiki/Routage" title="Wikipédia : Routage">Plus d'infos 
+			ici</a>.</p>
+			<p><span class="formula-font slightly-larger">Segment</span> : Entité de transmission de la couche transport (couche 4).</p>
+			<p><span class="formula-font slightly-larger">Topologie de réseau</span> : Arrangement (physique ou logique) d'un réseau informatique, définissant les liaisons entre les équipements du 
+			réseau et une hiérarchie éventuelle entre eux.</p>
+			<p><span class="formula-font slightly-larger">Time to live (TTL)</span> : Dans le cas de l'IPv4, champs du header qui indique le nombre de sauts qu'un paquet peut faire au maximum
+			avant d'expirer.</p>
+			<p><span class="formula-font slightly-larger">Trame</span> : Entité de transmission de la couche liaison (couche 2).</p>
+			
+			<h3>A.2. Acronymes et sigles</h3>
+			<p>De nombreux acronymes et sigles sont issus du cours d'Installation et maintenance des ordinateurs. En rouge sont mentionnés les acronymes les plus importants.</p>
+			<section class="definitions-block flex">
+				<article>
+					<p><span>AP</span>Access Point</p>
+					<p><span>API</span>Application Programmable Interface</p>
+					<p><span>APN</span>Access Point Name</p>
+					<p><span class="rouge">ARP</span>Address Resolution Protocol</p>
+					<p><span>BIOS</span>Basic Input Output System</p>
+					<p><span>CAS</span>Column Address Strobe</p>
+					<p><span>CFS</span>Completely Fair Scheduler</p>
+					<p><span>CISC</span>Complex Instruction Set Computer</p>
+					<p><span class="rouge">CLI</span>Command Line Interface</p>
+					<p><span class="rouge">CPU</span>Central Processing Unit</p>
+					<p><span>CRC</span>Cyclic Redundancy Check</p>
+					<p><span>DHCP</span>Dynamic Host Configuration Protocol</p>	
+					<p><span>DIMM</span>Dual Inline Memory Module</p>
+					<p><span>DOS</span>Disk Operating System</p>
+					<p><span>DNS</span>Domain Name System/Server</p>
+					<p><span>ECC</span>Error Correcting Code (RAM)</p>
+					<p><span>ERP</span>Enterprise Resource Planning</p>
+					<p><span>FAI</span>Fournisseur d'accès à Internet</p>
+					<p><span>FAT</span>File Allocation Table</p>
+					<p><span>FB</span>Fully Buffered (DIMM)</p>
+					<p><span class="rouge">FTP</span>File Transfer Protocol</p>
+					<p><span>GPU</span>Graphical Processing Unit</p>
+					<p><span class="rouge">GUI</span>Graphical User Interface</p>
+					<p><span class="rouge">HTML</span>Hypertext Markup Language</p>
+					<p><span class="rouge">http</span>Hypertext Transfer Protocol</p>
+					<p><span>https</span>Hypertext Transfer Protocol Secure</p>
+					<p><span>IEEE</span>Institute of Electrical and Electronics Engineers</p>
+					<p><span>IETF</span>Internet Engineering Task Force</p>
+					<p><span>ICMP</span>Internet Control Message Protocol</p>
+					<p><span>iLO</span>Integrated Lights-Out (tech HP)</p>
+					<p><span>IM</span>Instant Messaging</p>
+					<p><span class="rouge">IP</span>Internet Protocol</p>
+					<p><span>IRC</span>Internet Relay Chat</p>
+					<p><span>ISDN</span>Integrated Services Digital Network</p>
+					<p><span>ISO</span>International Organization for Standardization</p>
+					<p><span>ISP</span>Internet Service Provider</p>
+					<p><span>IT</span>Information Technology</p>
+					<p><span class="rouge">KVM</span>Keyboard-Video-Mouse</p>
+					<p><span class="rouge">LAN</span>Local Area Network</p>
+					<p><span>LGA</span>Land Grid Array</p>
+					<p><span>LLC</span>Logical Link Control</p>
+					<p><span class="rouge">MAC</span>Media Access Control</p>
+				</article>
+				<article>
+					<p><span>MAN</span>Metropolitan Area Network</p>
+					<p><span class="rouge">MTU</span>Maximum Transmission Unit</p>
+					<p><span>NAS</span>Network-Attached Storage</p>
+					<p><span>NAT</span>Network Address Translation</p>
+					<p><span>NIC</span>Network Interface Card</p>
+					<p><span class="rouge">NTFS</span>New Technology File System</p>
+					<p><span>NVMe</span>Non-Volatile Memory Express</p>
+					<p><span class="rouge">OSI</span>Open System Interconnection</p>
+					<p><span>P2P</span>Peer-to-peer</p>					
+					<p><span>PAN</span>Personal Area Network</p>
+					<p><span>PoE</span>Power over Ethernet</p>
+					<p><span>POST</span>Power-On-Self-Test</p>
+					<p><span>QPI</span>QuickPath Interconnect</p>
+					<p><span class="rouge">RAM</span>Random Access Memory</p>
+					<p><span class="rouge">RAID</span>Redundant Array of Independent Disks</p>
+					<p><span>RFC</span>Request for comment</p>
+					<p><span>RISC</span>Reduced Instruction Set Computer</p>
+					<p><span>RTOS</span>Real-Time operating System</p>
+					<p><span>SAS</span>Serial Attached SCSI</p>
+					<p><span>SCSI</span>Small Computer System Interface</p>
+					<p><span>SFP</span>Small Form-Factor Pluggable</p>
+					<p><span>SJF</span>Shortest Job First</p>
+					<p><span>SMTP</span>Simple Mail Transfer Protocol</p>
+					<p><span>SO</span>Small Outline (DIMM)</p>
+					<p><span class="rouge">SSD</span>Solid State Drive</p>
+					<p><span>SSH</span>Secure Shell (protocol)</p>
+					<p><span class="rouge">TCP</span>Transmission Control Protocol</p>
+					<p><span class="rouge">TTL</span>Time To Live</p>
+					<p><span>UDP</span>User Datagram Protocol</p>
+					<p><span class="rouge">UPS</span>Uninterruptible Power Supply</p>
+					<p><span>URL</span>Uniform Resource Locator</p>
+					<p><span>UTP</span>Unshielded Twisted Pair</p>
+					<p><span>VDSL</span>Very high-speed Digital Subscriber Line</p>
+					<p><span>VoIP</span>Voice over Internet Protocol</p>
+					<p><span>VPN</span>Virtual Private Network</p>
+					<p><span>WAN</span>Wide Area Network</p>
+					<p><span>WoL</span>Wake-on-LAN</p>
+					<p><span class="rouge">Wi-Fi</span>Wireless Fidelity</p>
+					<p><span>www</span>World Wide Web</p>
+					<p><span>XMPP</span>Extensible Messaging &amp; Presence Protocol</p>
+				</article>
+			</section>	
+			<h3>A.3. Autres notions importantes</h3>
+			<section class="definitions-block flex">
+				<article>
+					<p><span>802.3</span> Normes Ethernet/LAN</p>
+					<p><span>802.11</span> Normes Wi-Fi</p>
+					<p><span>802.15</span> Normes Bluetooth</p>
+					<p><span>RFC768</span> RFC initiale de l'UDP</p>
+					<p><span>RFC791</span> RFC initiale de l'IP</p>
+					<p><span>RFC792</span> RFC initiale de l'ICMP</p>
+					<p><span>RFC793</span> RFC initiale du TCP</p>
+					<p><span>RFC826</span> RFC initiale de l'ARP</p>
+					<p><span>RFC959</span> RFC initiale du FTP</p>
+					<p><span>RFC1945</span> RFC initiale du HTTP</p>
+				</article>
+			</section>
+			
+		</div>
+
+		<footer><p>&copy; Website built by Nicolas Toffolo (2020-2021)</p></footer>
+	</body>
+
+
+</html>
